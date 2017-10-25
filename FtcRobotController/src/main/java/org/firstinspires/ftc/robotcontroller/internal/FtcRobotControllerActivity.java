@@ -108,9 +108,19 @@ import org.firstinspires.ftc.robotcore.internal.ui.UILocation;
 import org.firstinspires.ftc.robotcore.internal.webserver.RobotControllerWebInfo;
 import org.firstinspires.ftc.robotcore.internal.webserver.WebServer;
 import org.firstinspires.inspection.RcInspectionActivity;
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import dalvik.system.DexFile;
 
 @SuppressWarnings("WeakerAccess")
 public class FtcRobotControllerActivity extends Activity
@@ -154,6 +164,8 @@ public class FtcRobotControllerActivity extends Activity
   protected FtcEventLoop eventLoop;
   protected Queue<UsbDevice> receivedUsbAttachmentNotifications;
 
+    DexFile dxFile;
+
   protected class RobotRestarter implements Restarter {
 
     public void requestRestart() {
@@ -175,6 +187,26 @@ public class FtcRobotControllerActivity extends Activity
       controllerService = null;
     }
   };
+
+    static{
+      initializeGlobals();
+    }
+
+    private BaseLoaderCallback mOpenCVCallBack = new BaseLoaderCallback(this) {
+      @Override
+      public void onManagerConnected(int status) {
+        switch (status) {
+          case LoaderCallbackInterface.SUCCESS:
+          {
+            RobotLog.i(TAG, "OpenCV loaded successfully");
+          } break;
+          default:
+          {
+            super.onManagerConnected(status);
+          } break;
+        }
+      }
+    };
 
   @Override
   protected void onNewIntent(Intent intent) {
@@ -304,6 +336,20 @@ public class FtcRobotControllerActivity extends Activity
     ServiceController.startService(FtcRobotControllerWatchdogService.class);
     bindToService();
     logPackageVersions();
+
+    try {
+      dxFile = new DexFile(getPackageCodePath());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }//catch
+
+    if (!OpenCVLoader.initDebug()) {
+      RobotLog.d("OpenCV", "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+      OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this, mOpenCVCallBack);
+    } else {
+      RobotLog.d("OpenCV", "OpenCV library found inside package. Using it!");
+      mOpenCVCallBack.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+    }//else
   }
 
   protected UpdateUI createUpdateUI() {
@@ -502,7 +548,11 @@ public class FtcRobotControllerActivity extends Activity
       startActivity(intent);
       return true;
     }
-    else if (id == R.id.action_exit_app) {
+    else if (id == R.id.action_globals) {
+      Intent intent = new Intent(this, GlobalValuesActivity.class);
+      startActivity(intent);
+      return true;
+    } else if (id == R.id.action_exit_app) {
       finish();
       return true;
     }
@@ -621,4 +671,65 @@ public class FtcRobotControllerActivity extends Activity
       }
     }
   }
+
+    public static void initializeGlobals() {
+      HashMap<String, Object> values = new HashMap<>();
+      String globalsPath = AppUtil.getInstance().getApplication().getExternalFilesDir(null).getAbsolutePath() + "/globals.txt";
+
+      GlobalValuesActivity.GLOBALS_FILE_PATH = globalsPath;
+
+      try {
+        new File(globalsPath).createNewFile();
+
+        BufferedReader globalsRead = new BufferedReader(new FileReader(globalsPath));
+
+        String toAdd = globalsRead.readLine();
+        while (toAdd != null) {
+          String[] data = toAdd.split(",;");
+
+          String key = data[1];
+          Object val = null;
+          if (data[0].equals("d")) {
+            val = Double.parseDouble(data[2]);
+            GlobalValuesActivity.add(key, (Double) val);
+          } else if (data[0].equals("b")) {
+            val = Boolean.parseBoolean(data[2]);
+            GlobalValuesActivity.add(key, (Boolean) val);
+          } else {
+            val = data[2];
+            GlobalValuesActivity.add(key, (String) val);
+          }//else
+
+
+          toAdd = globalsRead.readLine();
+        }//while
+
+      } catch (Exception e) {
+        e.printStackTrace();
+      }//catch
+
+      int numEntries = GlobalValuesActivity.globals.size();
+
+      GlobalValuesActivity.tentativelyAdd("RedAlliance", true);
+      GlobalValuesActivity.tentativelyAdd("TeleBeginAngle", 0.);
+      GlobalValuesActivity.tentativelyAdd("EncoderDistance", 500);
+      GlobalValuesActivity.tentativelyAdd("VeerProportional", 0.03);
+      GlobalValuesActivity.tentativelyAdd("VeerDerivative", (5 / 9) * 1E-6);
+      GlobalValuesActivity.tentativelyAdd("VeerIntegral", 3.1E-5);
+      GlobalValuesActivity.tentativelyAdd("WaitTime", 15000);
+
+      GlobalValuesActivity.tentativelyAdd("WallProportional", 0.2);
+      GlobalValuesActivity.tentativelyAdd("WallDerivative", 0.2);
+      GlobalValuesActivity.tentativelyAdd("WallIntegral", 0);
+
+      GlobalValuesActivity.addDashboard("WaitTime", 10000);
+      GlobalValuesActivity.addDashboard("NumBalls", 1);
+      GlobalValuesActivity.addDashboard("Cap-ball", true);
+      GlobalValuesActivity.addDashboard("Ramp",false);
+
+      if (GlobalValuesActivity.globals.size() > numEntries) {
+        GlobalValuesActivity.writeValuesToFile();
+      }//if
+
+    }
 }
