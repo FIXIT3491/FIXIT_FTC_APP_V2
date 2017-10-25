@@ -11,5 +11,6 @@ public class GlobalValuesExample extends AutoOpMode {
     @Override
     public void runOp() throws InterruptedException {
         RC.globalDouble("name");
+        RC.globalBool("boolname");
     }
 }
