@@ -201,6 +201,7 @@ public class VortexUtils {
             //getting camera image...
             Bitmap bm = Bitmap.createBitmap(img.getWidth(), img.getHeight(), Bitmap.Config.RGB_565);
             bm.copyPixelsFromBuffer(img.getPixels());
+            //Hi
 
             //turning the corner pixel coordinates into a proper bounding box
             Mat crop = OCVUtils.bitmapToMat(bm, CvType.CV_8UC3);
