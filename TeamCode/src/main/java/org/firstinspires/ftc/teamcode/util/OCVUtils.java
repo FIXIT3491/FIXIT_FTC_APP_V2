@@ -6,7 +6,10 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.vuforia.Image;
+
 import org.firstinspires.ftc.robotcontroller.internal.FtcControllerUtils;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.R;
 import org.firstinspires.ftc.teamcode.RC;
 import org.opencv.android.Utils;
@@ -117,6 +120,20 @@ public final class OCVUtils {
 
     public static void hideImage() {
         FtcControllerUtils.emptyView(R.id.cameraMonitorViewId);
+    }
+
+    public static Bitmap getVuforiaImage(VuforiaLocalizer.CloseableFrame frame, int format){
+        Image img;
+        long numImgs = frame.getNumImages();
+        for (int i = 0; i < numImgs; i++) {
+            if (frame.getImage(i).getFormat() == format) {
+                img =  frame.getImage(i);
+                Bitmap bm = Bitmap.createBitmap(img.getWidth(), img.getHeight(), Bitmap.Config.RGB_565);
+                bm.copyPixelsFromBuffer(img.getPixels());
+                return bm;
+            }//if
+        }//for
+        return null;
     }
 
 }
