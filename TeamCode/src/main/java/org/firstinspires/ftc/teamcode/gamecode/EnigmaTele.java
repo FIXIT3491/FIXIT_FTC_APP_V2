@@ -1,12 +1,14 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Enigma;
 
 /**
  * Created by Aila on 2017-08-21.
  */
-
+@TeleOp(name="Tele Op")
 public class EnigmaTele extends TeleOpMode {
 
     private Enigma code;
