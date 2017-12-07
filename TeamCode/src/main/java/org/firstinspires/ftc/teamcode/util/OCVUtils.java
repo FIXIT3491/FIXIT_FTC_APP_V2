@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.util;
 
+import android.content.ContextWrapper;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +17,8 @@ import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -134,6 +137,29 @@ public final class OCVUtils {
             }//if
         }//for
         return null;
+    }
+
+    public static String saveToInternalStorage(Mat img, String name) {
+        Bitmap bitmapImage = matToBitmap(img);
+        ContextWrapper cw = new ContextWrapper(RC.c().getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = RC.c().getExternalFilesDir("");
+        // Create imageDir
+        File mypath = new File(directory, name + ".jpg");
+
+        FileOutputStream fos = null;
+        try {
+
+            fos = new FileOutputStream(mypath);
+
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return directory.getAbsolutePath();
     }
 
 }
