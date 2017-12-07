@@ -14,8 +14,10 @@ public class OpenCVExample extends AutoOpMode {
 
     @Override
     public void runOp() throws InterruptedException {
-        cam = new FXTCamera(FXTCamera.FACING_BACKWARD, true);
+        cam = new FXTCamera(FXTCamera.FACING_BACKWARD, true);//shows camera before init
+
         waitForStart();
+
 
         //Do some thing with opencv here example
         OCVUtils.bitmapToMat(cam.photo(), CvType.CV_8UC4);

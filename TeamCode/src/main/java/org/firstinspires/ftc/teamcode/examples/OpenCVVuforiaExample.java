@@ -20,6 +20,7 @@ import org.opencv.core.CvType;
 public class OpenCVVuforiaExample extends AutoOpMode {
     @Override
     public void runOp() throws InterruptedException {
+        //do the camera thing before init to see the camera before init
         VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
         params.vuforiaLicenseKey = RC.VUFORIA_LICENSE_KEY;
         params.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
