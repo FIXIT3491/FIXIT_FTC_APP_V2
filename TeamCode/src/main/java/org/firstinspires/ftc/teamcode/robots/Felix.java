@@ -8,14 +8,15 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.newhardware.Motor;
+
 /**
  * Created by Aila on 2017-12-06.
  */
 
-public class Felix extends Robot {
+public class Felix extends Robot{
 
-    public DcMotor driveL = null;
-    public DcMotor driveR = null;
     public DcMotor glifter = null;
 
     public Servo jewelL = null;
@@ -24,42 +25,35 @@ public class Felix extends Robot {
     public CRServo handL = null;
     public CRServo handR = null;
 
-    public BNO055IMU imu = null;
     public ColorSensor colourSensor = null;
 
     public static final double WHEEL_SIZE = 4.0;
 
-    public static final double LEFT_JEWEL_UP = 0.5;
-    public static final double LEFT_JEWEL_DOWN = 1;
-    public static final double RIGHT_JEWEL_UP = 0.5;
-    public static final double RIGHT_JEWEL_DOWN = 0.0;
+    public static double LEFT_JEWEL_UP = 1;
+    public static double LEFT_JEWEL_DOWN = 0.2;
+    public static double RIGHT_JEWEL_UP = 0.5;
+    public static double RIGHT_JEWEL_DOWN = 0.0;
 
-    HardwareMap hwmap = null;
-
-    public Felix() {}
+    public Felix() {
+        init(RC.h);
+    }
 
     public void init (HardwareMap ahwMap) {
-        hwmap = ahwMap;
+        HardwareMap hwmap = ahwMap;
 
-        driveL = hwmap.get(DcMotor.class, "driveL");
-        driveR = hwmap.get(DcMotor.class, "driveR");
+        reverseDriveSystem();
+
         glifter = hwmap.get(DcMotor.class, "glifter");
-        driveL.setDirection(DcMotorSimple.Direction.REVERSE);
-        driveR.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        driveL.setPower(0);
-        driveR.setPower(0);
         glifter.setPower(0);
 
-        driveL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        driveR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         glifter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         jewelL = hwmap.get(Servo.class, "jewelL");
         jewelR = hwmap.get(Servo.class, "jewelR");
 
-        jewelL.setPosition(LEFT_JEWEL_UP);
-        jewelR.setPosition(RIGHT_JEWEL_UP);
+        jewelL.setPosition(0.2);
+        jewelR.setPosition(0.2);
 
         handL = hwmap.get(CRServo.class, "handL");
         handR = hwmap.get(CRServo.class, "handR");
@@ -67,7 +61,6 @@ public class Felix extends Robot {
         handL.setPower(-0.1);
         handR.setPower(0.1);
 
-        imu = hwmap.get(BNO055IMU.class, "imu");
         colourSensor = hwmap.get(ColorSensor.class, "colourSensor");
     }
 
@@ -81,4 +74,19 @@ public class Felix extends Robot {
         handR.setPower(0.7);
     }
 
+    public void stop () {
+        super.stop();
+
+        handL.setPower(0);
+        handR.setPower(0);
+    }
+
+    public void leftJewel (boolean up) {
+        if (!up) {
+            jewelL.setPosition(0.2);
+        }
+        else {
+            jewelL.setPosition(1);
+        }
+    }
 }

@@ -30,6 +30,7 @@ public class OpenCVLearning extends AutoOpMode{
 
 
     public static boolean getJewelConfig (Mat img){
+
         Mat pic = new Mat();
         Mat pic2 = new Mat();
         Mat pic3 = new Mat();

@@ -16,11 +16,16 @@ import org.firstinspires.ftc.teamcode.RC;
 import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Size;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import static org.opencv.imgproc.Imgproc.getRotationMatrix2D;
+import static org.opencv.imgproc.Imgproc.warpAffine;
 
 /**
  * Created by FIXIT on 16-07-04.
@@ -160,6 +165,14 @@ public final class OCVUtils {
             e.printStackTrace();
         }
         return directory.getAbsolutePath();
+    }
+
+    public static Mat rotate(Mat src, double angle) {
+        Mat dst = new Mat();
+        Point pt = new Point(src.cols()/2, src.rows()/2);
+        Mat r = getRotationMatrix2D(pt, angle, 1.0);
+        warpAffine(src, dst, r, new Size(src.cols(), src.rows()));
+        return dst;
     }
 
 }

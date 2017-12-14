@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Felix;
 
@@ -7,6 +9,7 @@ import org.firstinspires.ftc.teamcode.robots.Felix;
  * Created by Aila on 2017-12-06.
  */
 
+@TeleOp
 public class FelixTeleOp extends TeleOpMode {
 
     private Felix bot;
@@ -16,6 +19,7 @@ public class FelixTeleOp extends TeleOpMode {
     @Override
     public void initialize() {
         bot = new Felix();
+        bot.init(hardwareMap);
         bot.stop();
     }
 
@@ -25,27 +29,20 @@ public class FelixTeleOp extends TeleOpMode {
         double driveRight = joy1.y2();
 
         double glifter = -gamepad2.right_stick_y;
-        double hands = Math.abs(gamepad2.left_trigger);
+        double hands = gamepad2.left_trigger;
 
-        bot.driveL.setPower(driveLeft);
-        bot.driveR.setPower(driveRight);
-
-        if (joy1.buttonX() && !reverse){
-            reverse = true;
-        }
-        else if (joy1.buttonX() && reverse){
-            reverse = false;
+        if (joy1.rightTrigger()) {
+            driveLeft = driveLeft * 0.4;
+            driveRight = driveRight * 0.4;
         }
 
-        if (joy1.rightTrigger() | joy1.leftTrigger()){
-            bot.driveL.setPower(0.4 * driveLeft);
-            bot.driveR.setPower(0.4 * driveLeft);
+        if (joy1.leftTrigger()) {
+            driveLeft = driveLeft * -1;
+            driveRight = driveRight * -1;
         }
 
-        if (reverse) {
-            bot.driveL.setPower(-driveLeft);
-            bot.driveR.setPower(-driveRight);
-        }
+        bot.driveL(driveLeft);
+        bot.driveR(driveRight);
 
         bot.glifter.setPower(glifter);
 
@@ -56,6 +53,13 @@ public class FelixTeleOp extends TeleOpMode {
         else {
             bot.handL.setPower(0.7);
             bot.handR.setPower(-0.7);
+        }
+
+        if (joy2.y1() > 0.1) {
+            bot.jewelL.setPosition(1);
+        }
+        if (joy2.y1() < -0.1) {
+            bot.jewelL.setPosition(0.2);
         }
     }
 }
