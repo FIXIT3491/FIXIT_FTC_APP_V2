@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.robots;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -58,20 +59,19 @@ public class Felix extends Robot{
         handL = hwmap.get(CRServo.class, "handL");
         handR = hwmap.get(CRServo.class, "handR");
 
-        handL.setPower(-0.1);
-        handR.setPower(0.1);
+        releaseGlyph();
 
         colourSensor = hwmap.get(ColorSensor.class, "colourSensor");
     }
 
     public void holdGlyph () {
-        handL.setPower(0.7);
-        handR.setPower(-0.7);
+        handL.setPower(-0.9);
+        handR.setPower(0.9);
     }
 
     public void releaseGlyph () {
-        handL.setPower(-0.7);
-        handR.setPower(0.7);
+        handL.setPower(0.7);
+        handR.setPower(-0.7);
     }
 
     public void stop () {
@@ -88,5 +88,38 @@ public class Felix extends Robot{
         else {
             jewelL.setPosition(1);
         }
+    }
+
+    public static void wait(int time) {
+        if(RC.o instanceof LinearOpMode){
+            RC.l.sleep(time);
+        }
+    }//wait
+
+    public void lift (int ticks, double speed) {
+        int pos = glifter.getCurrentPosition();
+        int target = pos + ticks;
+        glifter.setTargetPosition(target);
+        while (glifter.getCurrentPosition() < target){
+            glifter.setPower(speed);
+        }
+        glifter.setPower(0);
+    }
+
+    public void drop (int ticks, double speed) {
+        int pos = glifter.getCurrentPosition();
+        int target = pos - ticks;
+        glifter.setTargetPosition(target);
+        while (glifter.getCurrentPosition() > target){
+            glifter.setPower(speed);
+        }
+        glifter.setPower(0);
+    }
+
+    public void gliftAuto () {
+        //Lifts glyph ~3"
+        glifter.setPower(0.4);
+        wait(200);
+        glifter.setPower(0);
     }
 }

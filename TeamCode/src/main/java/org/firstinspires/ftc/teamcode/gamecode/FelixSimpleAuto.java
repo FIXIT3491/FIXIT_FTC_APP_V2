@@ -22,15 +22,24 @@ public class FelixSimpleAuto extends AutoOpMode {
 
         waitForStart();
 
-        felix.holdGlyph();
-        sleep(1000);
         felix.releaseGlyph();
         sleep(1000);
+        felix.holdGlyph();
+        sleep(1000);
 
+        felix.lift(3000, 0.8);
+        felix.drop(3500, -0.8);
+
+        felix.forwardDistance(500, 0.4);
+        felix.backwardDistance(500, 0.4);
+
+        /*
         felix.imuTurnR(90, 0.4);
         sleep(1000);
 
+
         felix.forwardDistance(100, 0.4);
         sleep(1000);
+        */
     }
 }

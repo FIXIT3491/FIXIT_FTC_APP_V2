@@ -33,6 +33,8 @@ public class FelixRedJewel extends AutoOpMode{
         chai = new Felix();
         chai.init(hardwareMap);
 
+        chai.releaseGlyph();
+
         int count = 0;
 
         VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
@@ -54,11 +56,14 @@ public class FelixRedJewel extends AutoOpMode{
 
             OCVUtils.saveToInternalStorage(rimg, "FieldPic");
 
+            chai.holdGlyph();
+            chai.lift(1500, 0.8);
+
             if (!getJewelConfig(newImg)) {
                 Log.i("Jewels", "Red Blue");
                 chai.leftJewel(true);
                 sleep(500);
-                chai.backwardDistance(25, 0.4);
+                chai.backwardDistance(55, 0.4);
                 chai.stop();
                 sleep(300);
                 chai.leftJewel(false);
@@ -71,12 +76,12 @@ public class FelixRedJewel extends AutoOpMode{
                 Log.i("Jewels", "Blue Red");
                 chai.leftJewel(true);
                 sleep(500);
-                chai.forwardDistance(25, 0.4);
+                chai.forwardDistance(55, 0.4);
                 chai.stop();
                 sleep(300);
                 chai.leftJewel(false);
                 sleep(200);
-                chai.forwardDistance(200, 0.4);
+                chai.forwardDistance(400, 0.4);
                 sleep(200);
                 chai.stop();
                 count = count + 1;

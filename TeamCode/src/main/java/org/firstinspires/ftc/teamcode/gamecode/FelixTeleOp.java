@@ -47,12 +47,12 @@ public class FelixTeleOp extends TeleOpMode {
         bot.glifter.setPower(glifter);
 
         if (hands > 0.1) {
-            bot.handL.setPower(-0.9);
-            bot.handR.setPower(0.9);
-        }
-        else {
             bot.handL.setPower(0.7);
             bot.handR.setPower(-0.7);
+        }
+        else {
+            bot.handL.setPower(-0.9);
+            bot.handR.setPower(0.9);
         }
 
         if (joy2.y1() > 0.1) {
