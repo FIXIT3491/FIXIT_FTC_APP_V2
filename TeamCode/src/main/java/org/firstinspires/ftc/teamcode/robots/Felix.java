@@ -18,6 +18,9 @@ import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 public class Felix extends Robot{
 
+    public DcMotor wheelL = null;
+    public DcMotor wheelR = null;
+
     public DcMotor glifter = null;
 
     public Servo jewelL = null;
@@ -43,6 +46,14 @@ public class Felix extends Robot{
         HardwareMap hwmap = ahwMap;
 
         reverseDriveSystem();
+
+        wheelL = hwmap.get(DcMotor.class, "wheelL");
+
+        wheelL.setPower(0);
+
+        wheelR = hwmap.get(DcMotor.class, "wheelR");
+
+        wheelR.setPower(0);
 
         glifter = hwmap.get(DcMotor.class, "glifter");
 
