@@ -8,7 +8,6 @@ import org.firstinspires.ftc.teamcode.robots.Enigma;
 /**
  * Created by Aila on 2017-08-21.
  */
-@TeleOp(name="Tele Op")
 public class EnigmaTele extends TeleOpMode {
 
     private Enigma code;
