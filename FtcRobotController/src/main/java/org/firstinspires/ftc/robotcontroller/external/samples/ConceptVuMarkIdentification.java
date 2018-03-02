@@ -76,8 +76,8 @@ public class ConceptVuMarkIdentification extends LinearOpMode {
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
      * localization engine.
-     */
-    VuforiaLocalizer vuforia;
+     */    VuforiaLocalizer vuforia;
+
 
     @Override public void runOpMode() {
 

@@ -24,10 +24,13 @@ import org.firstinspires.ftc.teamcode.robots.Felix;
 @Autonomous
 public class BlueGlyph1 extends AutoOpMode{
 
-    final Felix cocoa = new Felix();
+    private Felix cocoa = null;
 
     @Override
     public void runOp() throws InterruptedException {
+
+        cocoa = new Felix();
+        cocoa.init(hardwareMap);
 
         VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
         params.vuforiaLicenseKey = RC.VUFORIA_LICENSE_KEY;
@@ -57,14 +60,22 @@ public class BlueGlyph1 extends AutoOpMode{
 
             if (vumark == RelicRecoveryVuMark.RIGHT) {
                 Log.i("Movement", "Right Vumark");
+                telemetry.addData("Movement", "Right Vumark");
 
             }
             else if (vumark == RelicRecoveryVuMark.CENTER) {
                 Log.i("Movement", "Right Vumark");
+                telemetry.addData("Movement", "Centre Vumark");
+
+            }
+            else if (vumark == RelicRecoveryVuMark.LEFT){
+                Log.i("Movement", "Left Vumark");
+                telemetry.addData("Movement", "Left Vumark");
 
             }
             else {
-                Log.i("Movement", "Right Vumark");
+                Log.i("Movement", "No Vumark");
+                telemetry.addData("Movement", "No Vumark");
 
             }
 

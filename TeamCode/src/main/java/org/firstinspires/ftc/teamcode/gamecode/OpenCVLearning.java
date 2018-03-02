@@ -23,7 +23,6 @@ import org.opencv.imgproc.Moments;
 /**
  * Created by Windows on 2017-11-10.
  */
-@Autonomous(name = "OpenCV")
 public class OpenCVLearning extends AutoOpMode{
 
     // static final boolean ON_LEFT = true;
@@ -82,8 +81,10 @@ public class OpenCVLearning extends AutoOpMode{
             // Mat newImg = img.submat(989, 1477, 624, 2854);
             if (getJewelConfig(img)) {
                 System.out.println("The blue jewel is on the left side.");
+                telemetry.addData("Jewels", "Blue Red");
             } else {
                 System.out.println("The blue jewel is on the right side.");
+                telemetry.addData("Jewels", "Red Blue");
             }
         }
     }

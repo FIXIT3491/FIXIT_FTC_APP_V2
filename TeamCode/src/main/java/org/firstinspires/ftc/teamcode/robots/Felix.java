@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.robots;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -17,15 +18,18 @@ import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 public class Felix extends Robot{
 
+    public DcMotor wheelL = null;
+    public DcMotor wheelR = null;
+
     public DcMotor glifter = null;
 
     public Servo jewelL = null;
     public Servo jewelR = null;
 
+    /*
     public CRServo handL = null;
     public CRServo handR = null;
-
-    public ColorSensor colourSensor = null;
+    */
 
     public static final double WHEEL_SIZE = 4.0;
 
@@ -43,42 +47,50 @@ public class Felix extends Robot{
 
         reverseDriveSystem();
 
+        wheelL = hwmap.get(DcMotor.class, "wheelL");
+        wheelL.setPower(0);
+
+        wheelR = hwmap.get(DcMotor.class, "wheelR");
+        wheelR.setPower(0);
+
         glifter = hwmap.get(DcMotor.class, "glifter");
-
         glifter.setPower(0);
-
-        glifter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         jewelL = hwmap.get(Servo.class, "jewelL");
         jewelR = hwmap.get(Servo.class, "jewelR");
 
-        jewelL.setPosition(0.2);
-        jewelR.setPosition(0.2);
+        jewelL.setPosition(1);
+        jewelR.setPosition(1);
 
+        /*
         handL = hwmap.get(CRServo.class, "handL");
         handR = hwmap.get(CRServo.class, "handR");
+        */
 
-        handL.setPower(-0.1);
-        handR.setPower(0.1);
+        //releaseGlyph();
 
-        colourSensor = hwmap.get(ColorSensor.class, "colourSensor");
     }
+
 
     public void holdGlyph () {
-        handL.setPower(0.7);
-        handR.setPower(-0.7);
+        wheelL.setPower(-0.9);
+        wheelR.setPower(0.9);
     }
 
+
     public void releaseGlyph () {
-        handL.setPower(-0.7);
-        handR.setPower(0.7);
+        /*
+        handL.setPower(0.7);
+        handR.setPower(-0.7);
+        */
     }
 
     public void stop () {
         super.stop();
 
-        handL.setPower(0);
-        handR.setPower(0);
+        wheelL.setPower(0);
+        wheelR.setPower(0);
+
     }
 
     public void leftJewel (boolean up) {
@@ -88,5 +100,38 @@ public class Felix extends Robot{
         else {
             jewelL.setPosition(1);
         }
+    }
+
+    public static void wait(int time) {
+        if(RC.o instanceof LinearOpMode){
+            RC.l.sleep(time);
+        }
+    }//wait
+
+    public void lift (int ticks, double speed) {
+        int pos = glifter.getCurrentPosition();
+        int target = pos + ticks;
+        glifter.setTargetPosition(target);
+        while (glifter.getCurrentPosition() < target){
+            glifter.setPower(speed);
+        }
+        glifter.setPower(0);
+    }
+
+    public void drop (int ticks, double speed) {
+        int pos = glifter.getCurrentPosition();
+        int target = pos - ticks;
+        glifter.setTargetPosition(target);
+        while (glifter.getCurrentPosition() > target){
+            glifter.setPower(speed);
+        }
+        glifter.setPower(0);
+    }
+
+    public void gliftAuto () {
+        //Lifts glyph ~3"
+        glifter.setPower(0.4);
+        wait(200);
+        glifter.setPower(0);
     }
 }
