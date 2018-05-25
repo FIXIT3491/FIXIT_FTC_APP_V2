@@ -19,23 +19,37 @@ public class FelixWheelTeleOp extends TeleOpMode {
     @Override
     public void initialize() {
         bot = new Felix();
-//        bot.init(hardwareMap);
         bot.stop();
     }
 
     @Override
     public void loopOpMode() {
-        double driveLeft = joy1.y1();
-        double driveRight = joy1.y2();
+        double driveLeft = joy2.y1();
+        double driveRight = joy2.y2();
 
-        double hands = gamepad2.left_trigger;
+        double intakeLeft = joy1.y1();
+        double intakeRight = joy1.y2();
 
         if (joy1.rightTrigger()) {
+            bot.glifter.setPower(0.5);
+        }
+        else{
+            bot.glifter.setPower(0);
+        }
+
+        if (joy1.leftTrigger()) {
+            bot.glifter.setPower(-0.5);
+        }
+        else{
+            bot.glifter.setPower(0);
+        }
+
+        if (joy2.rightTrigger()) {
             driveLeft = driveLeft * 0.4;
             driveRight = driveRight * 0.4;
         }
 
-        if (joy1.leftTrigger()) {
+        if (joy2.leftTrigger()) {
             driveLeft = driveLeft * -1;
             driveRight = driveRight * -1;
         }
@@ -43,9 +57,10 @@ public class FelixWheelTeleOp extends TeleOpMode {
         bot.driveL(driveLeft);
         bot.driveR(driveRight);
 
-        bot.wheelL.setPower(joy2.y1());
-        bot.wheelR.setPower(joy2.y2());
+        bot.wheelL.setPower(intakeLeft);
+        bot.wheelR.setPower(intakeRight);
 
+        /*
         if (joy2.rightBumper()) {
             bot.glifter.setPower(1);
         } else if (joy2.rightTrigger()) {
@@ -53,13 +68,16 @@ public class FelixWheelTeleOp extends TeleOpMode {
         } else {
             bot.glifter.setPower(0);
         }//else
+        */
 
 
-        if (joy2.y1() > 0.1) {
+        if (joy2.buttonX()) {
             bot.jewelL.setPosition(1);
+            bot.jewelR.setPosition(0.2);
         }
-        if (joy2.y1() < -0.1) {
+        if (joy2.buttonB()) {
             bot.jewelL.setPosition(0.2);
+            bot.jewelR.setPosition(1);
         }
     }
 }

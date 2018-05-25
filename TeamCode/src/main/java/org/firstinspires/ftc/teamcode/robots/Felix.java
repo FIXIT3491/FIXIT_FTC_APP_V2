@@ -26,10 +26,10 @@ public class Felix extends Robot{
     public Servo jewelL = null;
     public Servo jewelR = null;
 
+    /*
     public CRServo handL = null;
     public CRServo handR = null;
-
-    public ColorSensor colourSensor = null;
+    */
 
     public static final double WHEEL_SIZE = 4.0;
 
@@ -48,48 +48,49 @@ public class Felix extends Robot{
         reverseDriveSystem();
 
         wheelL = hwmap.get(DcMotor.class, "wheelL");
-
         wheelL.setPower(0);
 
         wheelR = hwmap.get(DcMotor.class, "wheelR");
-
         wheelR.setPower(0);
 
         glifter = hwmap.get(DcMotor.class, "glifter");
-
         glifter.setPower(0);
-
-        glifter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         jewelL = hwmap.get(Servo.class, "jewelL");
         jewelR = hwmap.get(Servo.class, "jewelR");
 
-        jewelL.setPosition(0.2);
-        jewelR.setPosition(0.2);
+        jewelL.setPosition(1);
+        jewelR.setPosition(1);
 
+        /*
         handL = hwmap.get(CRServo.class, "handL");
         handR = hwmap.get(CRServo.class, "handR");
+        */
 
-        releaseGlyph();
+        //releaseGlyph();
 
-        colourSensor = hwmap.get(ColorSensor.class, "colourSensor");
     }
+
 
     public void holdGlyph () {
-        handL.setPower(-0.9);
-        handR.setPower(0.9);
+        wheelL.setPower(-0.9);
+        wheelR.setPower(0.9);
     }
 
+
     public void releaseGlyph () {
+        /*
         handL.setPower(0.7);
         handR.setPower(-0.7);
+        */
     }
 
     public void stop () {
         super.stop();
 
-        handL.setPower(0);
-        handR.setPower(0);
+        wheelL.setPower(0);
+        wheelR.setPower(0);
+
     }
 
     public void leftJewel (boolean up) {

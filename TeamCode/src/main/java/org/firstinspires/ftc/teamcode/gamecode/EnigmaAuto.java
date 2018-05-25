@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.robots.Enigma;
  * Created by Aila on 2017-08-21.
  */
 
-@Autonomous
+
 public class EnigmaAuto extends AutoOpMode {
     @Override
     public void runOp() throws InterruptedException {

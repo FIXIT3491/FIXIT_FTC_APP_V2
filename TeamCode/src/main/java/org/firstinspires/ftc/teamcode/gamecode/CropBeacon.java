@@ -20,7 +20,7 @@ import org.firstinspires.ftc.teamcode.util.VortexUtils;
 /**
  * Created by FIXIT on 16-09-18.
  */
-@Autonomous
+
 public class CropBeacon extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
