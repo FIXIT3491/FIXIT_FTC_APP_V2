@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.robots.Fermion;
 /**
  * Created by Aila on 16-12-10.
  */
-@Autonomous
+
 public class CapBallAuto extends AutoOpMode{
 
     @Override

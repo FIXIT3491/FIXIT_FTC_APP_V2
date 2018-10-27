@@ -15,7 +15,6 @@ import org.firstinspires.ftc.teamcode.robots.Enigma;
  * Created by Aila on 2017-08-27.
  */
 
-@Autonomous
 public class VuforiaTest extends AutoOpMode {
 
     @Override

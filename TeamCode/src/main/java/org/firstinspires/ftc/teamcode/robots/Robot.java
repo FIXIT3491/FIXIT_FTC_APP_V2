@@ -5,6 +5,7 @@ import android.util.Log;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
@@ -201,6 +202,9 @@ public class Robot {
             if(motorR.isFin()){
                 motorR.stop();
             }//if
+
+            Log.i("Encoders", "Left: " + motorL.getPosition() + ", Right: " + motorR.getPosition());
+
         }//while
         stop();
 
