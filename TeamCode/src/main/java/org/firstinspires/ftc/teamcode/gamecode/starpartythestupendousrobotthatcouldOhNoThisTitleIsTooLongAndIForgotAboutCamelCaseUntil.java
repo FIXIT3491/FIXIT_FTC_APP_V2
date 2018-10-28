@@ -51,6 +51,7 @@ public class starpartythestupendousrobotthatcouldOhNoThisTitleIsTooLongAndIForgo
 
         if (joy1.rightTrigger()) {
             CLAWWW.setPosition(1);
-        }else if (joy1.rightBumper())
+        } else if (joy1.rightBumper())
             CLAWWW.setPosition(-1);
+    }
 }

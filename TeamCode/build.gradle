@@ -16,3 +16,6 @@ apply from: '../build.common.gradle'
 dependencies {
     compile project(':openCV')
 }
+android {
+    compileSdkVersion 23
+}
