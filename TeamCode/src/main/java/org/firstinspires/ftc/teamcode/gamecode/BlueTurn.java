@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.gamecode;
 import android.graphics.Bitmap;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.vuforia.PIXEL_FORMAT;
 import com.vuforia.Vuforia;
 
@@ -22,7 +23,7 @@ import static org.firstinspires.ftc.teamcode.gamecode.OpenCVLearning.getJewelCon
 /**
  * Created by Aila on 2018-01-22.
  */
-
+@Disabled
 @Autonomous
 public class BlueTurn extends AutoOpMode{
 

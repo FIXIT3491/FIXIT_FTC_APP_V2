@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.vuforia.PIXEL_FORMAT;
 import com.vuforia.Vuforia;
 
@@ -27,7 +28,7 @@ import static org.firstinspires.ftc.teamcode.gamecode.OpenCVLearning.getJewelCon
 /**
  * Created by Aila on 2017-12-10.
  */
-
+@Disabled
 @Autonomous
 public class FelixBlueJewel extends AutoOpMode{
 

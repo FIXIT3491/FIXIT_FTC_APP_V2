@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.gamecode;
 import android.graphics.Bitmap;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.vuforia.PIXEL_FORMAT;
 import com.vuforia.Vuforia;
 
@@ -24,6 +25,7 @@ import static org.firstinspires.ftc.teamcode.gamecode.OpenCVLearning.getJewelCon
  */
 
 @Autonomous
+@Disabled
 public class BlueStraight extends AutoOpMode{
 
     private Felix bot = null;

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RC;
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.robots.*;
 /**
  * Created by Windows on 2017-01-21.
  */
+@Disabled
 @Autonomous
 public class DashTest extends AutoOpMode {
 

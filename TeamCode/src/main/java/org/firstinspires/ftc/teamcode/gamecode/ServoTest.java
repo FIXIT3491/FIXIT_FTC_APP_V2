@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Felix;
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.robots.Felix;
  */
 
 @Autonomous
+@Disabled
 public class ServoTest extends AutoOpMode {
 
     private Felix green = null;

@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.gamecode;
 import android.speech.tts.TextToSpeech;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RC;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.teamcode.robots.Robot;
  */
 
 @TeleOp
+@Disabled
 public class JudgingInterview2 extends LinearTeleOpMode implements TextToSpeech.OnInitListener{
 
 

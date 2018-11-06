@@ -1,22 +1,44 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
-
 @TeleOp
+
+
 public class ArmstrongTeleop extends TeleOpMode {
     Armstrong armstrong;
     @Override
     public void initialize() {
+
         armstrong = new Armstrong();
+
+        telemetry.addData("Status", "Initialized");
     }
+
 
     @Override
     public void loopOpMode() {
-        armstrong.driveR(joy1.y2());
-        armstrong.driveL(joy1.y1());
+        double leftPower;
+        double rightPower;
+        leftPower  = gamepad1.left_stick_y;
+        rightPower = gamepad1.right_stick_y;
+
+
+        if (joy1.rightTrigger()) {
+            telemetry.addData("Status", "Slow Mode");
+            armstrong.driveL(leftPower * 0.4);
+            armstrong.driveR(rightPower * 0.4);
+        }
+        //slow Button
+
+        else{
+            armstrong.driveL(leftPower);
+            armstrong.driveR(rightPower);
+        }
+        // normal speed
 
         if (joy2.rightBumper() == true) {
             armstrong.lifterUp();

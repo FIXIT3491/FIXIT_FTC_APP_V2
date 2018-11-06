@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.vuforia.PIXEL_FORMAT;
 import com.vuforia.Vuforia;
@@ -29,6 +30,7 @@ import static org.firstinspires.ftc.teamcode.gamecode.OpenCVLearning.getJewelCon
  */
 
 @Autonomous
+@Disabled
 public class TestCropJewel extends AutoOpMode {
 
     private Felix gem = null;

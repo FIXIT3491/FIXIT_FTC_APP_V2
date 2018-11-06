@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
@@ -8,7 +9,7 @@ import org.firstinspires.ftc.teamcode.robots.Felix;
 /**
  * Created by Aila on 2018-01-19.
  */
-
+@Disabled
 @TeleOp
 public class FelixTeloOpL2 extends TeleOpMode{
     private Felix iron;

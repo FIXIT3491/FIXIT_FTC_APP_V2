@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
  * Created by khoui on 2018-05-24.
  */
 @TeleOp
+@Disabled
 public class starpartythestupendousrobotthatcouldOhNoThisTitleIsTooLongAndIForgotAboutCamelCaseUntil extends TeleOpMode{
 
     Motor Right = null;

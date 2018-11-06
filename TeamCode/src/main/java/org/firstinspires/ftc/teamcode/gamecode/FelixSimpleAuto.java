@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
@@ -9,7 +10,7 @@ import org.firstinspires.ftc.teamcode.robots.Felix;
 /**
  * Created by Aila on 2017-12-10.
  */
-
+@Disabled
 @Autonomous
 public class FelixSimpleAuto extends AutoOpMode {
 
