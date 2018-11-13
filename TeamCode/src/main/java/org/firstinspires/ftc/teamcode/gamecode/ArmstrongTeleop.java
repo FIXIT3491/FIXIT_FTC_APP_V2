@@ -27,19 +27,20 @@ public class ArmstrongTeleop extends TeleOpMode {
         rightPower = gamepad1.right_stick_y;
 
 
-        if (joy1.rightTrigger()) {
+        if (joy1.rightTrigger()== true) {
             telemetry.addData("Status", "Slow Mode");
             armstrong.driveL(leftPower * 0.4);
             armstrong.driveR(rightPower * 0.4);
         }
         //slow Button
-
         else{
             armstrong.driveL(leftPower);
             armstrong.driveR(rightPower);
         }
         // normal speed
 
+
+        //lifter
         if (joy2.rightBumper() == true) {
             armstrong.lifterUp();
         }
@@ -50,12 +51,24 @@ public class ArmstrongTeleop extends TeleOpMode {
             armstrong.lifterStop();
         }
 
+
+        //latcher
         if (joy2.leftBumper() == true) {
-            armstrong.wallUp();
+            armstrong.setLatch();
         }
         else if (joy2.leftTrigger() == true){
+            armstrong.unlatch();
+        }
+
+        //marker
+
+        if(joy2.buttonY()){
+            armstrong.wallUp();
+        }
+        else if(joy2.buttonA()){
             armstrong.wallDown();
         }
+
 
     }
 }

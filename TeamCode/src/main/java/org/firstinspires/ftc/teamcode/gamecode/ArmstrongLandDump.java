@@ -16,16 +16,23 @@ public class ArmstrongLandDump extends AutoOpMode {
         waitForStart();
         //this is after the driver presses play
         armstrong.lifterUp();
-        sleep(10100);
+        sleep(8000);
+        armstrong.lifterStop();
 
-        armstrong.turnL(3);
-        sleep(90);
+        armstrong.unlatch();
+        sleep(1000);
 
         armstrong.backward(0.5);
-        sleep(550);
+        sleep(600);
+        armstrong.motorL.stop();
+        armstrong.motorR.stop();
 
         armstrong.wallDown();
-        sleep(20);
+        sleep(1000);
+        telemetry.addData("Status", "WallDown");
+
+        armstrong.stop();
+
 
 
 

@@ -1,7 +1,10 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.hardware.adafruit.AdafruitBNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 @Autonomous
@@ -11,22 +14,21 @@ public class ArmstrongTest extends AutoOpMode {
     public void runOp() throws InterruptedException {
         //init phase
         Armstrong armstrong = new Armstrong();
-        armstrong.wallUp();
         telemetry.addData("Status", "Initialized");
         waitForStart();
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
-        sleep(200);
-        armstrong.backward(0.5);
-        sleep(500);
-        //stop();
-        telemetry.addData("Status", "Ones");
 
-        armstrong.wallDown();
-        sleep(20);
+        armstrong.unlatch();
+        sleep(1000);
 
 
-        telemetry.addData("Status", "2");
+
+        //Orientation orient = armstrong.imu.getAngularOrientation();
+        //while (opModeIsActive())
+        //{   RC.t.addData(orient.secondAngle);
+        //    RC.t.addData(orient.firstAngle);
+        //    RC.t.addData(orient.thirdAngle);}
 
 
 
