@@ -16,14 +16,14 @@ public class ArmstrongLandDump extends AutoOpMode {
         waitForStart();
         //this is after the driver presses play
         armstrong.lifterUp();
-        sleep(8000);
+        sleep(10000);
         armstrong.lifterStop();
 
         armstrong.unlatch();
         sleep(1000);
 
         armstrong.backward(0.5);
-        sleep(600);
+        sleep(850);
         armstrong.motorL.stop();
         armstrong.motorR.stop();
 
@@ -31,10 +31,25 @@ public class ArmstrongLandDump extends AutoOpMode {
         sleep(1000);
         telemetry.addData("Status", "WallDown");
 
+        sleep(1000);
+
+        armstrong.turnR(0.5);
+        sleep(250);
+        armstrong.motorL.stop();
+        armstrong.motorR.stop();
+        sleep(200);
+
+
+//
+        armstrong.backward(0.5);
+        sleep(800);
+
+
+
         armstrong.stop();
 
 
-
+// to park turn 200 and forwards 30002
 
 
 

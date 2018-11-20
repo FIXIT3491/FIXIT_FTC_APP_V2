@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
@@ -23,28 +24,38 @@ public class ArmstrongTeleop extends TeleOpMode {
     public void loopOpMode() {
         double leftPower;
         double rightPower;
+        double slowleft;
+        double slowright;
         leftPower  = gamepad1.left_stick_y;
         rightPower = gamepad1.right_stick_y;
+        slowleft = gamepad1.left_stick_y/2;
+        slowright = gamepad1.right_stick_y/2;
 
 
-        if (joy1.rightTrigger()== true) {
+
+
+
+        if (joy1.rightTrigger()){
             telemetry.addData("Status", "Slow Mode");
-            armstrong.driveL(leftPower * 0.4);
-            armstrong.driveR(rightPower * 0.4);
-        }
-        //slow Button
-        else{
-            armstrong.driveL(leftPower);
+            armstrong.driveL(slowleft);
+            armstrong.driveR(slowright);
+            telemetry.addData("slow left", slowleft);
+            telemetry.addData("Slow right", slowright);
+
+       }
+       if (!joy1.rightTrigger()){
+            armstrong.driveL(gamepad1.left_stick_y);
             armstrong.driveR(rightPower);
         }
+
         // normal speed
 
 
         //lifter
-        if (joy2.rightBumper() == true) {
+        if (joy2.rightBumper()) {
             armstrong.lifterUp();
         }
-        else if(joy2.rightTrigger() == true){
+        else if(joy2.rightTrigger()){
             armstrong.lifterDown();
         }
         else {
@@ -53,10 +64,10 @@ public class ArmstrongTeleop extends TeleOpMode {
 
 
         //latcher
-        if (joy2.leftBumper() == true) {
+        if (joy2.leftBumper()) {
             armstrong.setLatch();
         }
-        else if (joy2.leftTrigger() == true){
+        else if (joy2.leftTrigger()){
             armstrong.unlatch();
         }
 

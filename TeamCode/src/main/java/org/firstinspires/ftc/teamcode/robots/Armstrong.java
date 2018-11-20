@@ -17,7 +17,7 @@ public class Armstrong extends Robot {
     private Motor driveL;
     private Motor driveR;
     public LynxEmbeddedIMU imu;
-
+    //private long lift;
     public Armstrong() {
         super();
         lifter = new Motor("lifter");
@@ -25,6 +25,9 @@ public class Armstrong extends Robot {
         driveR = new Motor("driveR");
         driveL = new Motor("driveL");
         latch = new FXTServo("latch");
+
+        //lift = 8000;
+
         BNO055IMU.Parameters params = new BNO055IMU.Parameters();
         params.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         params.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
@@ -32,7 +35,7 @@ public class Armstrong extends Robot {
         imu = (LynxEmbeddedIMU) RC.h.get(BNO055IMU.class, "imu");
         imu.initialize(params);
 
-
+        wallUp();
     }
 
     //setting direction for lifter
@@ -46,13 +49,14 @@ public class Armstrong extends Robot {
 
     //setting position for marker servo
     public void wallUp() {marker.setPosition(0.20);}
-    public void wallDown() {marker.setPosition(0.75);}
+    public void wallDown() {marker.setPosition(0.8);}
 
-    public void unlatch() {latch.setPosition(0.5);}
-    public void setLatch() {latch.setPosition(0.8);}
+    public void unlatch() {latch.setPosition(0.45);}
+    public void setLatch() {latch.setPosition(0.9);}
 
     //setting IMU turn
     public void IMUTurnLeft(double degrees, double speed){
+
 
     }
 

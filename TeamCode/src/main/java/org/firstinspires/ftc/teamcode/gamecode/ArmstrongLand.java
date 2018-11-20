@@ -17,7 +17,7 @@ public class ArmstrongLand extends AutoOpMode {
         waitForStart();
         //this is after the driver presses play
         armstrong.lifterUp();
-        sleep(8000);
+        sleep(10000);
         armstrong.lifterStop();
         armstrong.unlatch();
         sleep(1000);

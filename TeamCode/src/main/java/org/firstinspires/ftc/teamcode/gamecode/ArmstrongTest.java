@@ -19,16 +19,18 @@ public class ArmstrongTest extends AutoOpMode {
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
 
-        armstrong.unlatch();
-        sleep(1000);
+        armstrong.turnL(0.5);
+        sleep(250);
 
 
 
-        //Orientation orient = armstrong.imu.getAngularOrientation();
-        //while (opModeIsActive())
-        //{   RC.t.addData(orient.secondAngle);
-        //    RC.t.addData(orient.firstAngle);
-        //    RC.t.addData(orient.thirdAngle);}
+ //       Orientation orient = armstrong.imu.getAngularOrientation();
+   //     while (opModeIsActive())
+     //   {   telemetry.addData("second angle",orient.secondAngle);
+       //     telemetry.addData("first angle", orient.firstAngle);
+         //   telemetry.addData("3rd angle", orient.thirdAngle);
+           // sleep(10);
+   //     }
 
 
 
