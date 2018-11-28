@@ -40,6 +40,7 @@ public class Motor implements FXTDevice, Timeable {
     public Motor (DcMotor motor) {
         this.m = motor;
         m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }//Motor
 
     public Motor(String address) {

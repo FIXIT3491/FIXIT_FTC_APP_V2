@@ -43,12 +43,12 @@ public class Robot {
     /**
      * The diameter of the wheel in inches. Default is 4 inches
      */
-    public int wheelDiameter = 4;
+    public float wheelDiameter = 4;
 
     /**
      * The minimum power to supply the wheels when turning
      */
-    private double minTurningSpeed = 0.1;
+    private double minTurningSpeed = 0.09;
 
     /**
      * The built in Adafruit IMU
@@ -190,12 +190,18 @@ public class Robot {
      *              If speed > 1 speed will be modified to match the parameters of the Motor
      */
     public void forwardDistance(int mm, double speed) {
-        mm *= 1120 / (wheelDiameter * 25.4 * Math.PI); //convert mm to tiks
+        int target = (int)(mm * 1120 / (wheelDiameter * 25.4 * Math.PI)); //convert mm to tiks
 
-        motorL.setTargetAndPower(mm, speed);
-        motorR.setTargetAndPower(mm, speed);
+        motorL.resetEncoder();
+        motorR.resetEncoder();
+
+        motorL.setTargetAndPower(target, speed);
+        motorR.setTargetAndPower(target, speed);
 
         while(RC.l.opModeIsActive() && !motorR.isFin() && !motorL.isFin()){
+            motorL.setPower((motorL.getTarget()-motorL.getPosition())*0.005*speed + minTurningSpeed);
+            motorR.setPower((motorR.getTarget()-motorR.getPosition())*0.005*speed + minTurningSpeed);
+
             if(motorL.isFin()){
                 motorL.stop();
             }//if
@@ -204,6 +210,7 @@ public class Robot {
             }//if
 
             Log.i("Encoders", "Left: " + motorL.getPosition() + ", Right: " + motorR.getPosition());
+            Log.i("EncodersT", "Left: " + motorL.getTarget() + ", Right: " + motorR.getTarget());
 
         }//while
         stop();
@@ -217,22 +224,32 @@ public class Robot {
      *              If speed > 1 speed will be modified to match the parameters of the Motor
      */
     public void backwardDistance(int mm, double speed) {
-        mm *= 1120 / (wheelDiameter * 25.4 * Math.PI); //convert mm to tiks
+        int target = (int)(mm * 1120 / (wheelDiameter * 25.4 * Math.PI)); //convert mm to tiks
 
-        motorL.setTargetAndPower(-mm, -speed); //target checking corrects motor direction
-        motorR.setTargetAndPower(-mm, -speed);
+        motorL.resetEncoder();
+        motorR.resetEncoder();
+
+        motorL.setTargetAndPower(-target, speed);
+        motorR.setTargetAndPower(-target, speed);
 
         while(RC.l.opModeIsActive() && !motorR.isFin() && !motorL.isFin()){
+            motorL.setPower((motorL.getTarget()-motorL.getPosition())*0.005*speed + minTurningSpeed);
+            motorR.setPower((motorR.getTarget()-motorR.getPosition())*0.005*speed + minTurningSpeed);
+
             if(motorL.isFin()){
                 motorL.stop();
             }//if
             if(motorR.isFin()){
                 motorR.stop();
             }//if
+
+            Log.i("Encoders", "Left: " + motorL.getPosition() + ", Right: " + motorR.getPosition());
+            Log.i("EncodersT", "Left: " + motorL.getTarget() + ", Right: " + motorR.getTarget());
+
         }//while
         stop();
 
-    }//backwardDistance
+    }//forwardDistance
 
     /**
      * Begins turning the robot towards the left
@@ -284,13 +301,13 @@ public class Robot {
         if(degrees < degreeTolerance) return;
         turnR(speed);
 
-        double beginAngle = MathUtils.cvtAngleToNewDomain(getIMUAngle()[0]);
+        double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
         double targetAngle = MathUtils.cvtAngleToNewDomain(beginAngle + degrees);
 
 
         while (RC.l.opModeIsActive()) {
 
-            double currentAngle = MathUtils.cvtAngleToNewDomain(getIMUAngle()[0]);
+            double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
             double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(targetAngle - currentAngle);
 
             Log.i("Angle", currentAngle + "");
@@ -317,12 +334,12 @@ public class Robot {
         if(degrees < degreeTolerance) return;
         turnL(speed);
 
-        double beginAngle = MathUtils.cvtAngleToNewDomain(getIMUAngle()[0]);
+        double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
         double targetAngle = MathUtils.cvtAngleToNewDomain(beginAngle - degrees);
 
         while (RC.l.opModeIsActive()) {
 
-            double currentAngle = MathUtils.cvtAngleToNewDomain(getIMUAngle()[0]);
+            double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
             double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(currentAngle - targetAngle);
 
             turnL(Math.signum(angleToTurn) * (Math.abs(angleToTurn) / 180 * (speed - minTurningSpeed) + minTurningSpeed));
@@ -341,7 +358,7 @@ public class Robot {
      * @param speed The speed at which to turn
      */
     public void absoluteIMUTurn(double degrees, double speed) {
-        double currentAngle = MathUtils.cvtAngleToNewDomain(getIMUAngle()[0]);
+        double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
 
         double toTurn = MathUtils.cvtAngleToNewDomain(degrees - currentAngle);
 
@@ -443,6 +460,10 @@ public class Robot {
 
         return new double[] {-orient.firstAngle, -orient.secondAngle, -orient.thirdAngle};
     }//getIMUAngle
+
+    public double getAngle(){
+        return getIMUAngle()[0];
+    }
 
 
 }//Robot

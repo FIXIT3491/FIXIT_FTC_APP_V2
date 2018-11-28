@@ -14,17 +14,19 @@ public class Armstrong extends Robot {
     private Motor lifter;
     private FXTServo marker;
     private FXTServo latch;
-    private Motor driveL;
-    private Motor driveR;
     public LynxEmbeddedIMU imu;
+    private float GEAR_RATIO = 32/16;
     //private long lift;
     public Armstrong() {
         super();
         lifter = new Motor("lifter");
         marker = new FXTServo("marker");
-        driveR = new Motor("driveR");
-        driveL = new Motor("driveL");
         latch = new FXTServo("latch");
+
+
+        wheelDiameter = wheelDiameter * GEAR_RATIO;
+
+        reverseDriveSystem();
 
         //lift = 8000;
 
@@ -53,6 +55,11 @@ public class Armstrong extends Robot {
 
     public void unlatch() {latch.setPosition(0.45);}
     public void setLatch() {latch.setPosition(0.9);}
+
+    public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
+
+
+    public long DOWNDISTANCE = 1000;
 
     //setting IMU turn
     public void IMUTurnLeft(double degrees, double speed){
