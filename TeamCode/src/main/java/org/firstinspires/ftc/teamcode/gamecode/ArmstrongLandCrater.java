@@ -23,11 +23,9 @@ public class ArmstrongLandCrater extends AutoOpMode {
         sleep(1000);
 
         armstrong.backward(0.5);
-        sleep(800);
+        sleep(1600);
 
-        armstrong.wallUp();
-        armstrong.stop();
-        armstrong.wallUp();
+        armstrong.wallDown();
 
 
     }

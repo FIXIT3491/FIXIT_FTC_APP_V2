@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 
 public class Armstrong extends Robot {
-
+    private Motor sweeper;
     private Motor lifter;
     private FXTServo marker;
     private FXTServo latch;
@@ -22,11 +22,11 @@ public class Armstrong extends Robot {
         lifter = new Motor("lifter");
         marker = new FXTServo("marker");
         latch = new FXTServo("latch");
+        sweeper = new Motor("sweeper");
 
 
         wheelDiameter = wheelDiameter * GEAR_RATIO;
 
-        reverseDriveSystem();
 
         //lift = 8000;
 
@@ -39,6 +39,13 @@ public class Armstrong extends Robot {
 
         wallUp();
     }
+
+
+    //setting modes for sweeper
+    public void SweepPush() {sweeper.setPower(1);}
+    public void SweepPull() {sweeper.setPower(-1);}
+    public void SweepStop() {sweeper.setPower(0);}
+
 
     //setting direction for lifter
     public void lifterUp(){

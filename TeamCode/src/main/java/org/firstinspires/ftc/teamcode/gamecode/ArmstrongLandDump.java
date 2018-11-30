@@ -23,9 +23,8 @@ public class ArmstrongLandDump extends AutoOpMode {
         sleep(1000);
 
         armstrong.backward(0.5);
-        sleep(850);
-        armstrong.motorL.stop();
-        armstrong.motorR.stop();
+        sleep(1990);
+        armstrong.stop();
 
         armstrong.wallDown();
         sleep(1000);
@@ -34,7 +33,7 @@ public class ArmstrongLandDump extends AutoOpMode {
         sleep(1000);
 
         armstrong.turnR(0.5);
-        sleep(250);
+        sleep(550);
         armstrong.motorL.stop();
         armstrong.motorR.stop();
         sleep(200);
@@ -42,7 +41,7 @@ public class ArmstrongLandDump extends AutoOpMode {
 
 //
         armstrong.backward(0.5);
-        sleep(800);
+        sleep(2200);
 
 
 
@@ -51,7 +50,7 @@ public class ArmstrongLandDump extends AutoOpMode {
 
 // to park turn 200 and forwards 30002
 
-
+//change the other programs based on these ones the ones without land
 
     }
 }

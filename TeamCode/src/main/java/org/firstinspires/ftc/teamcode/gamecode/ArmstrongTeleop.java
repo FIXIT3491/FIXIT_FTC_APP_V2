@@ -22,33 +22,31 @@ public class ArmstrongTeleop extends TeleOpMode {
 
     @Override
     public void loopOpMode() {
-        double leftPower;
-        double rightPower;
-        double slowleft;
-        double slowright;
-        leftPower  = gamepad1.left_stick_y;
-        rightPower = gamepad1.right_stick_y;
-        slowleft = gamepad1.left_stick_y/2;
-        slowright = gamepad1.right_stick_y/2;
-
-
-
 
 
         if (joy1.rightTrigger()){
             telemetry.addData("Status", "Slow Mode");
-            armstrong.driveL(slowleft);
-            armstrong.driveR(slowright);
-            telemetry.addData("slow left", slowleft);
-            telemetry.addData("Slow right", slowright);
+            armstrong.driveL(gamepad1.left_stick_y/4);
+            armstrong.driveR(gamepad1.right_stick_y/4);
+            telemetry.addData("slow left", gamepad1.left_stick_y);
+            telemetry.addData("Slow right", gamepad1.right_stick_y);
 
-       }
-       if (!joy1.rightTrigger()){
-            armstrong.driveL(gamepad1.left_stick_y);
-            armstrong.driveR(rightPower);
         }
 
-        // normal speed
+        if (joy1.leftTrigger()){
+            telemetry.addData("status", "Reverse");
+            armstrong.driveR(gamepad1.left_stick_y);
+            armstrong.driveL(gamepad1.right_stick_y);
+        }
+
+        if (!joy1.leftTrigger()){
+            if (!joy1.rightTrigger()) {
+                armstrong.driveL(gamepad1.left_stick_y);
+                armstrong.driveR(gamepad1.right_stick_y);
+            } //if rightTrigger
+        } // If leftTrigger
+
+
 
 
         //lifter
@@ -81,5 +79,15 @@ public class ArmstrongTeleop extends TeleOpMode {
         }
 
 
+        if (joy2.buttonB()){
+            armstrong.SweepPush();
+        }
+        else{
+            armstrong.SweepStop();
+        }
+
     }
 }
+
+
+//FOR THE FRIRSTS TIME IN FOREVERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
