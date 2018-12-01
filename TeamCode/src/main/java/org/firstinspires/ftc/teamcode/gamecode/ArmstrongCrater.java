@@ -15,10 +15,17 @@ public class ArmstrongCrater extends AutoOpMode {
         telemetry.addData("Status", "Initialized");
         waitForStart();
         //this is after the driver presses play
+        armstrong.lifterUp();
+        sleep(10000);
+        armstrong.lifterStop();
+
+        armstrong.unlatch();
+        sleep(1000);
+
         armstrong.backward(0.5);
-        sleep(450);
+        sleep(1600);
 
-
+        armstrong.wallDown();
 
 
     }

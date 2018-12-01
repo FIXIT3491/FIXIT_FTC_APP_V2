@@ -15,12 +15,31 @@ public class ArmstrongDump extends AutoOpMode {
         telemetry.addData("Status", "Initialized");
         waitForStart();
         //this is after the driver presses play
-
         armstrong.backward(0.5);
-        sleep(500);
+        sleep(1990);
+        armstrong.stop();
 
         armstrong.wallDown();
-        sleep(20);
+        sleep(1000);
+        telemetry.addData("Status", "WallDown");
+
+        sleep(1000);
+
+        armstrong.turnR(0.5);
+        sleep(550);
+        armstrong.motorL.stop();
+        armstrong.motorR.stop();
+        sleep(200);
+
+
+//
+        armstrong.backward(0.5);
+        sleep(2200);
+
+
+
+        armstrong.stop();
+
 
 
 
