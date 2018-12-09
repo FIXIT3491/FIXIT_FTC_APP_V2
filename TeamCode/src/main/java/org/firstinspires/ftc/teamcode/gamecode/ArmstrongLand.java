@@ -11,7 +11,7 @@ public class ArmstrongLand extends AutoOpMode {
     public void runOp() throws InterruptedException {
         //init phase
         Armstrong armstrong = new Armstrong();
-        armstrong.wallUp();
+        armstrong.markUp();
         armstrong.setLatch();
         telemetry.addData("Status", "Initialized");
         waitForStart();

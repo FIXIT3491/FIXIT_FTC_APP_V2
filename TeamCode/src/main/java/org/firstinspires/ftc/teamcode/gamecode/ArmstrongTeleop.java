@@ -70,22 +70,36 @@ public class ArmstrongTeleop extends TeleOpMode {
             armstrong.unlatch();
         }
 
-        //marker
 
+
+
+        //markera and wall
         if(joy2.buttonY()){
-            armstrong.wallUp();
+            armstrong.markUp();
         }
         else if(joy2.buttonA()){
-            armstrong.wallDown();
+            armstrong.markDown();
         }
 
 
+
+        //SWEEP
         if (joy2.buttonB()){
             armstrong.SweepPush();
+        }
+        if (joy2.buttonX()){
+            armstrong.SweepPull();
         }
         else{
             armstrong.SweepStop();
         }
+
+
+        //Wall-E!!!
+
+
+
+
 
     }
 }

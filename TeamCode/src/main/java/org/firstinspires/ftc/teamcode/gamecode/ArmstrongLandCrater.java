@@ -11,7 +11,7 @@ public class ArmstrongLandCrater extends AutoOpMode {
     public void runOp() throws InterruptedException {
         //init phase
         Armstrong armstrong = new Armstrong();
-        armstrong.wallUp();
+        armstrong.markUp();
         telemetry.addData("Status", "Initialized");
         waitForStart();
         //this is after the driver presses play
@@ -25,7 +25,7 @@ public class ArmstrongLandCrater extends AutoOpMode {
         armstrong.backward(0.5);
         sleep(1600);
 
-        armstrong.wallDown();
+        armstrong.markDown();
 
 
     }

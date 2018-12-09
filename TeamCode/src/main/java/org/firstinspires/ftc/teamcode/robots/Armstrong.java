@@ -10,6 +10,8 @@ import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 
 public class Armstrong extends Robot {
+    private FXTServo wall;
+    private FXTServo wallE;
     private Motor sweeper;
     private Motor lifter;
     private FXTServo marker;
@@ -19,6 +21,7 @@ public class Armstrong extends Robot {
     //private long lift;
     public Armstrong() {
         super();
+        wallE = new FXTServo("wall-E");
         lifter = new Motor("lifter");
         marker = new FXTServo("marker");
         latch = new FXTServo("latch");
@@ -37,7 +40,7 @@ public class Armstrong extends Robot {
         imu = (LynxEmbeddedIMU) RC.h.get(BNO055IMU.class, "imu");
         imu.initialize(params);
 
-        wallUp();
+        markUp();
     }
 
 
@@ -57,21 +60,21 @@ public class Armstrong extends Robot {
     }
 
     //setting position for marker servo
-    public void wallUp() {marker.setPosition(0.20);}
-    public void wallDown() {marker.setPosition(0.8);}
+    public void markUp() {marker.setPosition(0.20);}
+    public void markDown() {marker.setPosition(0.8);}
 
+    //setting latch
     public void unlatch() {latch.setPosition(0.45);}
     public void setLatch() {latch.setPosition(0.9);}
 
-    public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
 
+    //setting IMU
+    public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
 
     public long DOWNDISTANCE = 1000;
 
-    //setting IMU turn
-    public void IMUTurnLeft(double degrees, double speed){
-
-
-    }
+    //Set Wall-E position
+    public void UpWalle() {wallE.setPosition(0);}
+    public void DownWalle() {wallE.setPosition(0.7);}
 
 }
