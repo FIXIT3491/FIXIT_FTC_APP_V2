@@ -96,6 +96,12 @@ public class ArmstrongTeleop extends TeleOpMode {
 
 
         //Wall-E!!!
+        if (joy2.buttonUp()){
+            armstrong.Upwall();
+        }
+        if (joy2.buttonDown()){
+            armstrong.Downwall();
+        }
 
 
 

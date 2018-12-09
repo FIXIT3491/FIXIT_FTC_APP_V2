@@ -26,6 +26,7 @@ public class Armstrong extends Robot {
         marker = new FXTServo("marker");
         latch = new FXTServo("latch");
         sweeper = new Motor("sweeper");
+        wall = new FXTServo("wall");
 
 
         wheelDiameter = wheelDiameter * GEAR_RATIO;
@@ -66,6 +67,11 @@ public class Armstrong extends Robot {
     //setting latch
     public void unlatch() {latch.setPosition(0.45);}
     public void setLatch() {latch.setPosition(0.9);}
+
+
+    //setting wall up and down
+    public void Upwall() {wall.setPosition(0);}
+    public void Downwall() {wall.setPosition(1);}
 
 
     //setting IMU
