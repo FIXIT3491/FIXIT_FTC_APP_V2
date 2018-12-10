@@ -16,7 +16,7 @@ public class ArmstrongLandCrater extends AutoOpMode {
         waitForStart();
         //this is after the driver presses play
         armstrong.lifterUp();
-        sleep(10000);
+        sleep(11000);
         armstrong.lifterStop();
 
         armstrong.unlatch();
@@ -26,6 +26,7 @@ public class ArmstrongLandCrater extends AutoOpMode {
         sleep(1600);
 
         armstrong.markDown();
+        sleep(1000);
 
 
     }

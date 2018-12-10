@@ -49,6 +49,18 @@ public class ArmstrongTeleop extends TeleOpMode {
 
 
 
+        ////DEBIGGINH STUFF STARTS HERE
+
+        if (joy1.buttonA()){
+            armstrong.UpWalle();
+        }
+        if (joy1.buttonB()){
+            armstrong.DownWalle();
+        }
+        /////debigging ends HERE
+
+
+
 
         //lifter
         if (joy2.rightBumper()) {
@@ -65,15 +77,19 @@ public class ArmstrongTeleop extends TeleOpMode {
         //latcher
         if (joy2.leftBumper()) {
             armstrong.setLatch();
+            telemetry.addData("latch is UP", "UP MAN");
+
         }
         else if (joy2.leftTrigger()){
             armstrong.unlatch();
+            telemetry.addData("latch is DOWN", "UNLATCHED");
+
         }
 
 
 
 
-        //markera and wall
+        //marker
         if(joy2.buttonY()){
             armstrong.markUp();
         }
@@ -101,6 +117,17 @@ public class ArmstrongTeleop extends TeleOpMode {
         }
         if (joy2.buttonDown()){
             armstrong.Downwall();
+        }
+
+
+        //big wall
+        if (joy2.buttonDown()){
+            armstrong.Upwall();
+            telemetry.addData("Wall is UP", "UP MAN");
+        }
+        if (joy2.buttonRight()){
+            armstrong.Downwall();
+            telemetry.addData("STATYS", "DOWN MAN");
         }
 
 

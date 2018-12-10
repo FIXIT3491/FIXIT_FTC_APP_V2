@@ -4,8 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
+
 @Autonomous
-public class ArmstrongLandDump extends AutoOpMode {
+public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
     @Override
 
     public void runOp() throws InterruptedException {
@@ -16,26 +17,27 @@ public class ArmstrongLandDump extends AutoOpMode {
         waitForStart();
         //this is after the driver presses play
         armstrong.lifterUp();
-        sleep(10000);
+        sleep(11000);
         armstrong.lifterStop();
 
         armstrong.unlatch();
         sleep(1000);
 
+        armstrong.Downwall();
+        sleep(100);
+
         armstrong.backward(0.5);
-        sleep(2000);
+        sleep(2200);
         armstrong.stop();
 
         armstrong.markDown();
         sleep(1000);
         telemetry.addData("Status", "WallDown");
 
-        sleep(1000);
+        sleep(1110);
 
-        armstrong.turnR(0.5);
-        sleep(550);
-        armstrong.motorL.stop();
-        armstrong.motorR.stop();
+        armstrong.imuTurnR(30, 0.5);
+        armstrong.stop();
         sleep(200);
 
 
@@ -48,9 +50,7 @@ public class ArmstrongLandDump extends AutoOpMode {
         armstrong.stop();
 
 
-// to park turn 200 and forwards 30002
 
-//change the other programs based on these ones the ones without land
 
     }
 }

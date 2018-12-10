@@ -20,7 +20,7 @@ public class ArmstrongTest extends AutoOpMode {
         telemetry.addData("Status", "Play");
 
 
-        armstrong.backwardDistance(300, 0.25);
+        armstrong.imuTurnR(10, 0.3);
 
 //        while (opModeIsActive()){
 //        RC.t.addData("LEFT", armstrong.motorL.getPosition());
@@ -45,12 +45,9 @@ public class ArmstrongTest extends AutoOpMode {
         //armstrong.turnL(0.5);
        // sleep(250);
 
-
-
-       // while (opModeIsActive())
-
-
-//        {
+//
+//
+//        while (opModeIsActive()) {
 //            Orientation orient = armstrong.imu.getAngularOrientation();
 //
 //            telemetry.addData("second angle",orient.secondAngle);
@@ -59,8 +56,8 @@ public class ArmstrongTest extends AutoOpMode {
 //            telemetry.update();
 //            sleep(10);
 //        }
-
-
+//
+//
 
 
 

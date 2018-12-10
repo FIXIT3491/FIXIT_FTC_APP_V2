@@ -65,13 +65,13 @@ public class Armstrong extends Robot {
     public void markDown() {marker.setPosition(0.8);}
 
     //setting latch
-    public void unlatch() {latch.setPosition(0.45);}
-    public void setLatch() {latch.setPosition(0.9);}
+    public void unlatch() {latch.setPosition(0.2);}
+    public void setLatch() {latch.setPosition(0.8);}
 
 
     //setting wall up and down
-    public void Upwall() {wall.setPosition(0);}
-    public void Downwall() {wall.setPosition(1);}
+    public void Upwall() {wall.setPosition(0.8);}
+    public void Downwall() {wall.setPosition(0.3);}
 
 
     //setting IMU
