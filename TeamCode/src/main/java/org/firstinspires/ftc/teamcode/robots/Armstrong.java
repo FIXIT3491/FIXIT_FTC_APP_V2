@@ -80,7 +80,7 @@ public class Armstrong extends Robot {
     public long DOWNDISTANCE = 1000;
 
     //Set Wall-E position
-    public void UpWalle() {wallE.setPosition(0);}
-    public void DownWalle() {wallE.setPosition(0.7);}
+    public void UpWalle() {wallE.setPosition(0.9);}
+    public void DownWalle() {wallE.setPosition(0);}
 
 }

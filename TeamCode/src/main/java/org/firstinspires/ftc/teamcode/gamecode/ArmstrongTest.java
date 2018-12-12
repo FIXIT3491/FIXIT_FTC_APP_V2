@@ -19,14 +19,21 @@ public class ArmstrongTest extends AutoOpMode {
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
 
+        armstrong.encTurnR(1000, 0.5);
 
-        armstrong.imuTurnR(10, 0.3);
+
+
+//        armstrong.imuTurnR(180, 0.3);
+//        while (opModeIsActive()) {
+//            Orientation orient = armstrong.imu.getAngularOrientation();
+//            telemetry.addData("first angle", orient.firstAngle)
+//;
+        }
 
 //        while (opModeIsActive()){
 //        RC.t.addData("LEFT", armstrong.motorL.getPosition());
 //        RC.t.addData("RIGHT", armstrong.motorR.getPosition());
 //        }
-
 
 
 //
@@ -42,411 +49,27 @@ public class ArmstrongTest extends AutoOpMode {
 //        sleep(500);
 //        armstrong.stop();
 
-        //armstrong.turnL(0.5);
-       // sleep(250);
+            //armstrong.turnL(0.5);
+            // sleep(250);
 
 //
-//
+
 //        while (opModeIsActive()) {
 //            Orientation orient = armstrong.imu.getAngularOrientation();
 //
-//            telemetry.addData("second angle",orient.secondAngle);
-//            telemetry.addData("first angle", orient.firstAngle);
-//            telemetry.addData("3rd angle", orient.thirdAngle);
+//            telemetry.addData("first angle",orient.firstAngle);
+//            telemetry.addData("second angle", orient.secondAngle);
+//            telemetry.addData("third angle", orient.thirdAngle);
 //            telemetry.update();
 //            sleep(10);
 //        }
 //
-//
 
 
+            //sleep(10);
+            //armstrong.3(10);
+            //sleep(1000);
 
 
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        sleep(10);
-        //armstrong.3(10);
-        //sleep(1000);
-
-
-
-
-
-    }
-}

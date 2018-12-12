@@ -299,15 +299,17 @@ public class Robot {
     public void imuTurnR(double degrees, double speed) {
 
         if(degrees < degreeTolerance) return;
+        //if its a really small degree, don't bother ^^^
         turnR(speed);
 
         double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
+        //Assigns begin angle and target angle
         double targetAngle = MathUtils.cvtAngleToNewDomain(beginAngle + degrees);
-
 
         while (RC.l.opModeIsActive()) {
 
             double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
+            //figure out curret angl
             double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(targetAngle - currentAngle);
 
             Log.i("Angle", currentAngle + "");

@@ -52,10 +52,10 @@ public class ArmstrongTeleop extends TeleOpMode {
         ////DEBIGGINH STUFF STARTS HERE
 
         if (joy1.buttonA()){
-            armstrong.UpWalle();
+            armstrong.markUp();
         }
         if (joy1.buttonB()){
-            armstrong.DownWalle();
+            armstrong.markDown();
         }
         /////debigging ends HERE
 
@@ -91,10 +91,10 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         //marker
         if(joy2.buttonY()){
-            armstrong.markUp();
+            armstrong.UpWalle();
         }
         else if(joy2.buttonA()){
-            armstrong.markDown();
+            armstrong.DownWalle();
         }
 
 
