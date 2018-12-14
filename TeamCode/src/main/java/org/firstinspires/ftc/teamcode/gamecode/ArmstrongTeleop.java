@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 @TeleOp
@@ -35,8 +36,8 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         if (joy1.leftTrigger()){
             telemetry.addData("Status", "Reverse");
-            armstrong.driveR(-gamepad1.left_stick_y);
-            armstrong.driveL(-gamepad1.right_stick_y);
+            armstrong.driveR(-gamepad1.left_stick_y*0.9);
+            armstrong.driveL(-gamepad1.right_stick_y*0.9);
         }
 
         if (!joy1.leftTrigger()){
@@ -92,6 +93,7 @@ public class ArmstrongTeleop extends TeleOpMode {
         //marker
         if(joy2.buttonY()){
             armstrong.UpWalle();
+            RC.t.addData("up");
         }
         else if(joy2.buttonA()){
             armstrong.DownWalle();

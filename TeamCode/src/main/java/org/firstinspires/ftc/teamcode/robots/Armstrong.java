@@ -29,6 +29,7 @@ public class Armstrong extends Robot {
         wall = new FXTServo("wall");
 
 
+
         wheelDiameter = wheelDiameter * GEAR_RATIO;
 
 
@@ -80,7 +81,9 @@ public class Armstrong extends Robot {
     public long DOWNDISTANCE = 1000;
 
     //Set Wall-E position
-    public void UpWalle() {wallE.setPosition(0.9);}
-    public void DownWalle() {wallE.setPosition(0);}
+    public void UpWalle() {wallE.setPosition(0.6);}
+    public void DownWalle() {wallE.setPosition(0.4);}
+
+
 
 }

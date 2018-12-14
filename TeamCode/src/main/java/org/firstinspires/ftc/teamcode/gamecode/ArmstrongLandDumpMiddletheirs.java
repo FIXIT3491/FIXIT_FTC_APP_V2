@@ -23,9 +23,6 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
         armstrong.unlatch();
         sleep(1000);
 
-        armstrong.Downwall();
-        sleep(100);
-
         armstrong.backward(0.5);
         sleep(2200);
         armstrong.stop();
@@ -36,9 +33,9 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
 
         sleep(1110);
 
-        armstrong.imuTurnR(30, 0.5);
-        armstrong.stop();
-        sleep(200);
+
+        armstrong.encTurnR(400, 0.5);
+
 
 
 //

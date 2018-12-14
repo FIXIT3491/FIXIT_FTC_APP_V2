@@ -5,8 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
+import org.firstinspires.inspection.RcInspectionActivity;
+
 @Autonomous
 public class ArmstrongTest extends AutoOpMode {
     @Override
@@ -14,12 +17,30 @@ public class ArmstrongTest extends AutoOpMode {
     public void runOp() throws InterruptedException {
         //init phase
         Armstrong armstrong = new Armstrong();
+
+
+
+
+
+        // Send telemetry message to signify robot waiting;
+        telemetry.addData("Status", "Resetting Encoders");    //
+        telemetry.update();
+
+
+
         telemetry.addData("Status", "Initialized");
+
+
+
+
+
+
         waitForStart();
         //this is after the driver presses play
-        telemetry.addData("Status", "Play");
+        telemetry.addData("Status", "Playy");
 
-        armstrong.encTurnR(1000, 0.5);
+        armstrong.forwardDistance(100, 0.3);
+
 
 
 

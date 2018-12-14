@@ -389,6 +389,16 @@ public class Robot {
 
     public void encTurnR(int tik, double speed) {
 
+        //Ines added this code
+        motorL.resetEncoder();
+        motorR.resetEncoder();
+        RC.t.addData("Status", "Resetting Encoders");    //
+
+
+
+
+        //okay done
+
         motorL.setTargetAndPower(tik, speed);
         motorR.setTargetAndPower(-tik, -speed);
 
