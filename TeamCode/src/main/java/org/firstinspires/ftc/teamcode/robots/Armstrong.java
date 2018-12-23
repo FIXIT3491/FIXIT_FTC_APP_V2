@@ -43,6 +43,7 @@ public class Armstrong extends Robot {
         imu.initialize(params);
 
         markUp();
+        UpWalle();
     }
 
 
@@ -81,8 +82,8 @@ public class Armstrong extends Robot {
     public long DOWNDISTANCE = 1000;
 
     //Set Wall-E position
-    public void UpWalle() {wallE.setPosition(0.6);}
-    public void DownWalle() {wallE.setPosition(0.4);}
+    public void UpWalle() {wallE.setPosition(0.813);}
+    public void DownWalle() {wallE.setPosition(0.1);}
 
 
 

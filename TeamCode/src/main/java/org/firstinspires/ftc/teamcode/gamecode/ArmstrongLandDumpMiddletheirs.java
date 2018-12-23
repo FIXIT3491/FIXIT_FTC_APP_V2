@@ -34,13 +34,15 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
         sleep(1110);
 
 
-        armstrong.encTurnR(400, 0.5);
-
+        armstrong.turnR(0.3);
+        sleep(808);
 
 
 //
         armstrong.backward(0.5);
-        sleep(2250);
+        sleep(2280);
+
+        armstrong.markDown();
 
 
 

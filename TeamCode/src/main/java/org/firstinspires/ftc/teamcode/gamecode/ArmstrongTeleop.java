@@ -103,10 +103,10 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         //SWEEP
         if (joy2.buttonB()){
-            armstrong.SweepPush();
-        }
-        if (joy2.buttonX()){
             armstrong.SweepPull();
+        }
+        else if (joy2.buttonX()){
+            armstrong.SweepPush();
         }
         else{
             armstrong.SweepStop();

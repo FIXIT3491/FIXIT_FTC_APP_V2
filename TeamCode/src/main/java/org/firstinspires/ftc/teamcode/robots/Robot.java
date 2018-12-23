@@ -394,9 +394,6 @@ public class Robot {
         motorR.resetEncoder();
         RC.t.addData("Status", "Resetting Encoders");    //
 
-
-
-
         //okay done
 
         motorL.setTargetAndPower(tik, speed);

@@ -23,8 +23,8 @@ public class ArmstrongTest extends AutoOpMode {
 
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Resetting Encoders");    //
-        telemetry.update();
+        //telemetry.addData("Status", "Resetting Encoders");    //
+        //telemetry.update();
 
 
 
@@ -37,9 +37,13 @@ public class ArmstrongTest extends AutoOpMode {
 
         waitForStart();
         //this is after the driver presses play
-        telemetry.addData("Status", "Playy");
+        telemetry.addData("Status", "Play");
 
-        armstrong.forwardDistance(100, 0.3);
+        armstrong.backward(0.5);
+        sleep(2280);
+
+       // telemetry.addData('dklgjl', armstrong.driveL.getCurrentPosition());
+
 
 
 
