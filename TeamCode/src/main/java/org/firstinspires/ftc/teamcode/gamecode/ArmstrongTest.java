@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
-import org.firstinspires.inspection.RcInspectionActivity;
+//import org.firstinspires.inspection.RcInspectionActivity;
 
 @Autonomous
 public class ArmstrongTest extends AutoOpMode {

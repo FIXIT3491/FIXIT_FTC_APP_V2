@@ -18,6 +18,7 @@ public class Armstrong extends Robot {
     private FXTServo latch;
     public LynxEmbeddedIMU imu;
     private float GEAR_RATIO = 32/16;
+
     //private long lift;
     public Armstrong() {
         super();
@@ -26,7 +27,7 @@ public class Armstrong extends Robot {
         marker = new FXTServo("marker");
         latch = new FXTServo("latch");
         sweeper = new Motor("sweeper");
-        wall = new FXTServo("wall");
+        //wall = new FXTServo("wall");
 
 
 
@@ -72,8 +73,8 @@ public class Armstrong extends Robot {
 
 
     //setting wall up and down
-    public void Upwall() {wall.setPosition(0.8);}
-    public void Downwall() {wall.setPosition(0.3);}
+    //public void Upwall() {wall.setPosition(0.8);}
+    //public void Downwall() {wall.setPosition(0.3);}
 
 
     //setting IMU

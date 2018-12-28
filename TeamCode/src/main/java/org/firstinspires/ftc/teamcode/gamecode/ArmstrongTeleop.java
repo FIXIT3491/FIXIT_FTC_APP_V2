@@ -115,22 +115,12 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         //Wall-E!!!
         if (joy2.buttonUp()){
-            armstrong.Upwall();
+            armstrong.UpWalle();
         }
         if (joy2.buttonDown()){
-            armstrong.Downwall();
+            armstrong.DownWalle();
         }
 
-
-        //big wall
-        if (joy2.buttonDown()){
-            armstrong.Upwall();
-            telemetry.addData("Wall is UP", "UP MAN");
-        }
-        if (joy2.buttonRight()){
-            armstrong.Downwall();
-            telemetry.addData("STATYS", "DOWN MAN");
-        }
 
 
 

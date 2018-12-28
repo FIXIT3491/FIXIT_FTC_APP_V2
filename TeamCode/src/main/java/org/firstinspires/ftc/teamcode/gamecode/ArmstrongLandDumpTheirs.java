@@ -26,8 +26,6 @@ public class ArmstrongLandDumpTheirs extends AutoOpMode {
         sleep(2000);
         armstrong.stop();
 
-        armstrong.Downwall();
-        sleep(100);
 
         armstrong.markDown();
         sleep(1000);
