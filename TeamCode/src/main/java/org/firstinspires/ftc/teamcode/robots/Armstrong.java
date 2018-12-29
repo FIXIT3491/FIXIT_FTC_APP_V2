@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.robots;
 import com.qualcomm.hardware.adafruit.AdafruitBNO055IMU;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.lynx.LynxEmbeddedIMU;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.FXTServo;
@@ -18,6 +19,7 @@ public class Armstrong extends Robot {
     private FXTServo latch;
     public LynxEmbeddedIMU imu;
     private float GEAR_RATIO = 32/16;
+    public DigitalChannel digitalTouch;
 
     //private long lift;
     public Armstrong() {
@@ -28,6 +30,8 @@ public class Armstrong extends Robot {
         latch = new FXTServo("latch");
         sweeper = new Motor("sweeper");
         //wall = new FXTServo("wall");
+        digitalTouch = RC.h.get(DigitalChannel.class, "sensor_digital");
+        digitalTouch.setMode(DigitalChannel.Mode.INPUT);
 
 
 

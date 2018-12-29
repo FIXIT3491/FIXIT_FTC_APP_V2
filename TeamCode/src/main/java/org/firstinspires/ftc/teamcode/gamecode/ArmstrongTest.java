@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.gamecode;
 import com.qualcomm.hardware.adafruit.AdafruitBNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
@@ -39,8 +40,22 @@ public class ArmstrongTest extends AutoOpMode {
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
 
-        armstrong.backward(0.5);
-        sleep(2280);
+
+
+
+
+//        while (opModeIsActive()) {
+//            if (armstrong.digitalTouch.getState()) {
+//                telemetry.addData("status", "not");
+//            } else {
+//                telemetry.addData("sa", "touched");
+//            }
+//
+//        }
+
+        armstrong.reverseDriveSystem();
+        armstrong.imuTurnR(90, 0.5);
+
 
        // telemetry.addData('dklgjl', armstrong.driveL.getCurrentPosition());
 
