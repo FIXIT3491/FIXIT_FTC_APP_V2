@@ -17,13 +17,17 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
         waitForStart();
         //this is after the driver presses play
         armstrong.lifterUp();
+        armstrong.collectServoLeftSlow();
+        armstrong.collectServoRightSlow();
         sleep(11000);
         armstrong.lifterStop();
 
         armstrong.unlatch();
-        sleep(1000);
+        armstrong.armup();
+        sleep(250);
+        armstrong.armstop();
 
-        armstrong.backward(0.5);
+        armstrong.forward(0.5);
         sleep(2200);
         armstrong.stop();
 
@@ -34,13 +38,12 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
         sleep(1110);
 
 
-        armstrong.turnR(0.3);
+        armstrong.turnL(0.3);
         sleep(808);
 
-
 //
-        armstrong.backward(0.5);
-        sleep(2280);
+        armstrong.forward(0.5);
+        sleep(2200);
 
         armstrong.markDown();
 

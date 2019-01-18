@@ -34,6 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import org.firstinspires.ftc.teamcode.robots.Armstrong;
 
 /*
  * This is an example LinearOpMode that shows how to use
@@ -78,10 +79,12 @@ public class TensorFlowtests extends LinearOpMode {
             // if the digital channel returns true it's HIGH and the button is unpressed.
             if (digitalTouch.getState() == true) {
                 telemetry.addData("Digital Touch", "Is Not Pressed");
+
             }
 
             else {
                 telemetry.addData("Digital Touch", "Is Pressed");
+
             }
 
 

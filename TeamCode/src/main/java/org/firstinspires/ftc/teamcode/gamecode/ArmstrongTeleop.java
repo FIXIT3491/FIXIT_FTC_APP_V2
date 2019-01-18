@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 @TeleOp
@@ -14,9 +15,7 @@ public class ArmstrongTeleop extends TeleOpMode {
     Armstrong armstrong;
     @Override
     public void initialize() {
-
         armstrong = new Armstrong();
-
         telemetry.addData("Status", "Initialized");
     }
 
@@ -50,15 +49,13 @@ public class ArmstrongTeleop extends TeleOpMode {
 
 
 
-        ////DEBIGGINH STUFF STARTS HERE
 
-        if (joy1.buttonA()){
+        if (joy2.buttonX()){
             armstrong.markUp();
         }
-        if (joy1.buttonB()){
+        if (joy2.buttonB()){
             armstrong.markDown();
         }
-        /////debigging ends HERE
 
 
 
@@ -87,39 +84,25 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         }
 
-
-
-
-        //marker
-        if(joy2.buttonY()){
-            armstrong.UpWalle();
-            RC.t.addData("up");
+        if(joy2.buttonY()) {
+            armstrong.collectServoLeftUp();
+            armstrong.collectServoRightUp();
+            RC.t.addData("servos up");
         }
-        else if(joy2.buttonA()){
-            armstrong.DownWalle();
-        }
-
-
-
-        //SWEEP
-        if (joy2.buttonB()){
-            armstrong.SweepPull();
-        }
-        else if (joy2.buttonX()){
-            armstrong.SweepPush();
+        else if (joy2.buttonA()){
+            armstrong.collectServoLeftDown();
+            armstrong.collectServoRightDown();
+            RC.t.addData("servos down");
         }
         else{
-            armstrong.SweepStop();
+            armstrong.collectServoLeftStop();
+            armstrong.collectServoRightStop();
+            RC.t.addData("stop");
         }
 
+        armstrong.CollectMotor.setPower(gamepad2.left_stick_y/2);
 
-        //Wall-E!!!
-        if (joy2.buttonUp()){
-            armstrong.UpWalle();
-        }
-        if (joy2.buttonDown()){
-            armstrong.DownWalle();
-        }
+
 
 
 

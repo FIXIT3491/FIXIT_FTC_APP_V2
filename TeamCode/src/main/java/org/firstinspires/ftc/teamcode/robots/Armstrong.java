@@ -6,32 +6,40 @@ import com.qualcomm.hardware.lynx.LynxEmbeddedIMU;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.newhardware.FXTCRServo;
 import org.firstinspires.ftc.teamcode.newhardware.FXTServo;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 
 public class Armstrong extends Robot {
-    private FXTServo wall;
-    private FXTServo wallE;
-    private Motor sweeper;
+
+
     private Motor lifter;
     private FXTServo marker;
     private FXTServo latch;
     public LynxEmbeddedIMU imu;
     private float GEAR_RATIO = 32/16;
-    public DigitalChannel digitalTouch;
+    //public DigitalChannel digitalTouch;
+    public Motor CollectMotor;
+
+    private FXTCRServo leftCollectServo;
+    private FXTCRServo rightCollectServo;
+
+
 
     //private long lift;
     public Armstrong() {
         super();
-        wallE = new FXTServo("wall-E");
         lifter = new Motor("lifter");
         marker = new FXTServo("marker");
         latch = new FXTServo("latch");
-        sweeper = new Motor("sweeper");
-        //wall = new FXTServo("wall");
-        digitalTouch = RC.h.get(DigitalChannel.class, "sensor_digital");
-        digitalTouch.setMode(DigitalChannel.Mode.INPUT);
+     // new motors and servos
+        CollectMotor = new Motor("CollectMotor");
+
+        leftCollectServo = new FXTCRServo("leftCollectServo");
+        rightCollectServo = new FXTCRServo("rightCollectServo");
+        //digitalTouch = RC.h.get(DigitalChannel.class, "sensor_digital");
+        //digitalTouch.setMode(DigitalChannel.Mode.INPUT);
 
 
 
@@ -48,14 +56,12 @@ public class Armstrong extends Robot {
         imu.initialize(params);
 
         markUp();
-        UpWalle();
+
+
     }
 
 
     //setting modes for sweeper
-    public void SweepPush() {sweeper.setPower(1);}
-    public void SweepPull() {sweeper.setPower(-1);}
-    public void SweepStop() {sweeper.setPower(0);}
 
 
     //setting direction for lifter
@@ -68,18 +74,31 @@ public class Armstrong extends Robot {
     }
 
     //setting position for marker servo
-    public void markUp() {marker.setPosition(0.20);}
-    public void markDown() {marker.setPosition(0.8);}
+    public void markUp() {marker.setPosition(0.45);}
+    public void markDown() {marker.setPosition(0);}
 
     //setting latch
     public void unlatch() {latch.setPosition(0.2);}
     public void setLatch() {latch.setPosition(0.8);}
 
 
-    //setting wall up and down
-    //public void Upwall() {wall.setPosition(0.8);}
-    //public void Downwall() {wall.setPosition(0.3);}
 
+
+    public void collectServoLeftDown(){leftCollectServo.setPower(-0.7);}
+    public void collectServoRightDown(){rightCollectServo.setPower(0.7);}
+
+    public void collectServoLeftUp(){leftCollectServo.setPower(0.7);}
+    public void collectServoRightUp(){rightCollectServo.setPower(-0.7);}
+
+    public void collectServoRightStop() {rightCollectServo.setPower(0);}
+    public void collectServoLeftStop() {leftCollectServo.setPower(0);}
+
+    public void collectServoLeftSlow() {leftCollectServo.setPower(0.05);}
+    public void collectServoRightSlow() {rightCollectServo.setPower(-0.05);}
+
+    public void armup() {CollectMotor.setPower(0.2);}
+    public void armdown() {CollectMotor.setPower(-0.2);}
+    public void armstop() {CollectMotor.setPower(0);}
 
     //setting IMU
     public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
@@ -87,8 +106,7 @@ public class Armstrong extends Robot {
     public long DOWNDISTANCE = 1000;
 
     //Set Wall-E position
-    public void UpWalle() {wallE.setPosition(0.813);}
-    public void DownWalle() {wallE.setPosition(0.1);}
+
 
 
 

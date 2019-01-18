@@ -32,14 +32,15 @@ public class ArmstrongTest extends AutoOpMode {
         telemetry.addData("Status", "Initialized");
 
 
-
-
-
-
         waitForStart();
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
 
+
+        armstrong.motorR.setPower(-0.5);
+        armstrong.motorL.setPower(-0.5);
+        sleep(100000);
+        armstrong.stop();
 
 
 
@@ -53,13 +54,13 @@ public class ArmstrongTest extends AutoOpMode {
 //
 //        }
 
-        armstrong.reverseDriveSystem();
-        armstrong.imuTurnR(90, 0.5);
-
-
-       // telemetry.addData('dklgjl', armstrong.driveL.getCurrentPosition());
-
-
+//        armstrong.reverseDriveSystem();
+//        armstrong.imuTurnR(180, 0.3);
+//
+//
+//       // telemetry.addData('dklgjl', armstrong.driveL.getCurrentPosition());
+//
+//
 
 
 
