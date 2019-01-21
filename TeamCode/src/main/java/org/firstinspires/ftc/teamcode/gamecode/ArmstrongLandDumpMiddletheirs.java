@@ -19,8 +19,10 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
         armstrong.lifterUp();
         armstrong.collectServoLeftSlow();
         armstrong.collectServoRightSlow();
-        sleep(11000);
+        sleep(10790);
         armstrong.lifterStop();
+        armstrong.collectServoLeftStop();
+        armstrong.collectServoRightStop();
 
         armstrong.unlatch();
         armstrong.armup();
@@ -28,18 +30,23 @@ public class ArmstrongLandDumpMiddletheirs extends AutoOpMode {
         armstrong.armstop();
 
         armstrong.forward(0.5);
-        sleep(2200);
+        sleep(1300);
         armstrong.stop();
 
         armstrong.markDown();
         sleep(1000);
         telemetry.addData("Status", "WallDown");
 
-        sleep(1110);
+        armstrong.backward(0.3);
+        sleep(150);
+        armstrong.stop();
 
-
-        armstrong.turnL(0.3);
+        armstrong.imuTurnR(92, 0.3);
         sleep(808);
+
+        armstrong.armup();
+        sleep(250);
+        armstrong.armstop();
 
 //
         armstrong.forward(0.5);

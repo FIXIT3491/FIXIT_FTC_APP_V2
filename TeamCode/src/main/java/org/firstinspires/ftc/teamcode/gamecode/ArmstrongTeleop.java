@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.gamecode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
@@ -100,12 +102,20 @@ public class ArmstrongTeleop extends TeleOpMode {
             RC.t.addData("stop");
         }
 
-        armstrong.CollectMotor.setPower(gamepad2.left_stick_y/2);
+        armstrong.CollectMotor.setPower(gamepad2.left_stick_y/3);
 
 
+        //to make sure the robot doesn't flip
 
+        if (System.currentTimeMillis()%1000 == 0);{
+            armstrong.MOTOR_SPEED_PAST = armstrong.MOTOR_SPEED;
+            armstrong.MOTOR_SPEED = gamepad1.left_stick_y;
+            armstrong.AVR_MOTOR_DIFF = Math.abs(armstrong.MOTOR_SPEED - armstrong.MOTOR_SPEED_PAST);
+        }
 
-
+        if(armstrong.AVR_MOTOR_DIFF > 0.7){
+            armstrong.driveR((armstrong.MOTOR_SPEED + armstrong.MOTOR_SPEED_PAST)/2);
+        }
 
 
 

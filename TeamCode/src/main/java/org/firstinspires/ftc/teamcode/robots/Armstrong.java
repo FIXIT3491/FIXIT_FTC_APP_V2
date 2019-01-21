@@ -19,6 +19,9 @@ public class Armstrong extends Robot {
     private FXTServo latch;
     public LynxEmbeddedIMU imu;
     private float GEAR_RATIO = 32/16;
+    public float MOTOR_SPEED;
+    public float MOTOR_SPEED_PAST;
+    public float AVR_MOTOR_DIFF;
     //public DigitalChannel digitalTouch;
     public Motor CollectMotor;
 
@@ -69,9 +72,7 @@ public class Armstrong extends Robot {
         lifter.setPower(-1);
     }
     public void lifterDown(){ lifter.setPower(1); }
-    public void lifterStop(){
-        lifter.setPower(0);
-    }
+    public void lifterStop(){lifter.setPower(0); }
 
     //setting position for marker servo
     public void markUp() {marker.setPosition(0.45);}
