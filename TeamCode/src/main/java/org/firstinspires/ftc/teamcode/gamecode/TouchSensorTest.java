@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 
+import org.firstinspires.ftc.teamcode.newhardware.FXTCRServo;
+import org.firstinspires.ftc.teamcode.newhardware.FXTServo;
+import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 
 @Autonomous
@@ -19,17 +22,16 @@ public class TouchSensorTest extends LinearOpMode {
      * The lower (first) pin stays unconnected.*
      */
 
-    DigitalChannel digitalTouch;  // Hardware Device Object
+    public DigitalChannel digitalTouch;  // Hardware Device Object
 
     @Override
     public void runOpMode() {
 
         // get a reference to our digitalTouch object.
         digitalTouch = hardwareMap.get(DigitalChannel.class, "sensor_digital");
-
         // set the digital channel to input.
         digitalTouch.setMode(DigitalChannel.Mode.INPUT);
-        Armstrong armstrong = new Armstrong();
+        //Armstrong armstrong = new Armstrong();
         // wait for the start button to be pressed.
         waitForStart();
 
@@ -40,10 +42,11 @@ public class TouchSensorTest extends LinearOpMode {
 
             // send the info back to driver station using telemetry function.
             // if the digital channel returns true it's HIGH and the button is unpressed.
-            if (digitalTouch.getState() == true) {
+            if (digitalTouch.getState()) {
                 telemetry.addData("Digital Touch", "Is Not Pressed");
             } else {
                 telemetry.addData("Digital Touch", "Is Pressed");
+
             }
             telemetry.update();
 
