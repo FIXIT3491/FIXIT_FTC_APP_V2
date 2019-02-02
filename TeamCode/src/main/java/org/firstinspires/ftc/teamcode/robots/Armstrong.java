@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 public class Armstrong extends Robot {
 
-    public DigitalChannel digitalTouch;
+    public DigitalChannel magnetSensor;
     private Motor lifter;
     private FXTServo marker;
     private FXTServo latch;
@@ -41,14 +41,9 @@ public class Armstrong extends Robot {
 
         leftCollectServo = new FXTCRServo("leftCollectServo");
         rightCollectServo = new FXTCRServo("rightCollectServo");
-        //digitalTouch = RC.h.get(DigitalChannel.class, "sensor_digital");
-        //digitalTouch.setMode(DigitalChannel.Mode.INPUT);
+        magnetSensor = RC.h.get(DigitalChannel.class, "sensor_digital");
+        magnetSensor.setMode(DigitalChannel.Mode.INPUT);
 
-        // get a reference to our digitalTouch object.
-       // digitalTouch = hardwareMap.get(DigitalChannel.class, "sensor_digital");
-        //digitalTouch = new DigitalChannel("sensor_digital");
-        // set the digital channel to input.
-        digitalTouch.setMode(DigitalChannel.Mode.INPUT);
         //Armstrong armstrong = new Armstrong();
 
         wheelDiameter = wheelDiameter * GEAR_RATIO;
