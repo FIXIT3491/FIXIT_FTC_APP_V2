@@ -10,8 +10,10 @@ public class ArmstrongDump extends AutoOpMode {
 
     public void runOp() throws InterruptedException {
         //init phase
+
         Armstrong armstrong = new Armstrong();
         armstrong.markUp();
+
         telemetry.addData("Status", "Initialized");
         waitForStart();
         //this is after the driver presses play
@@ -30,7 +32,6 @@ public class ArmstrongDump extends AutoOpMode {
         armstrong.motorL.stop();
         armstrong.motorR.stop();
         sleep(200);
-
 
 
 //

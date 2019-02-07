@@ -50,6 +50,27 @@ public class ArmstrongTeleop extends TeleOpMode {
         } // If !leftTrigger
 
 
+        if (joy2.buttonUp()) {
+            armstrong.RightSample();
+        }
+        if (joy2.buttonDown()){
+            armstrong.RightWingStore();
+        }
+        if (joy2.buttonLeft()){
+            armstrong.LeftSample();
+        }
+        if (joy2.buttonRight()){
+            armstrong.LeftWingStore();
+        }
+
+
+        if (joy1.buttonA()){
+            armstrong.wallIn();
+        }
+        if (joy1.buttonX()){
+            armstrong.wallPush();
+        }
+
 
 
         if (joy2.buttonX()){
@@ -102,7 +123,7 @@ public class ArmstrongTeleop extends TeleOpMode {
             RC.t.addData("stop");
         }
 
-        armstrong.CollectMotor.setPower(gamepad2.left_stick_y/3);
+        armstrong.CollectMotor.setPower(gamepad2.left_stick_y/5);
 
 
         //to make sure the robot doesn't flip

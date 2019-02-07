@@ -12,7 +12,6 @@ import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
 
 public class Armstrong extends Robot {
-
     public DigitalChannel magnetSensor;
     private Motor lifter;
     private FXTServo marker;
@@ -22,9 +21,11 @@ public class Armstrong extends Robot {
     public float MOTOR_SPEED;
     public float MOTOR_SPEED_PAST;
     public float AVR_MOTOR_DIFF;
-    //public DigitalChannel digitalTouch;
     public Motor CollectMotor;
-
+   // public boolean state;
+    private FXTServo linear;
+    private FXTServo rightWing;
+    private FXTServo leftWing;
     private FXTCRServo leftCollectServo;
     private FXTCRServo rightCollectServo;
 
@@ -38,7 +39,9 @@ public class Armstrong extends Robot {
         latch = new FXTServo("latch");
      // new motors and servos
         CollectMotor = new Motor("CollectMotor");
-
+        linear =  new FXTServo("linear");
+        rightWing = new FXTServo("rightWing");
+        leftWing = new FXTServo("leftWing");
         leftCollectServo = new FXTCRServo("leftCollectServo");
         rightCollectServo = new FXTCRServo("rightCollectServo");
         magnetSensor = RC.h.get(DigitalChannel.class, "sensor_digital");
@@ -59,6 +62,8 @@ public class Armstrong extends Robot {
         imu.initialize(params);
 
         markUp();
+        LeftWingStore();
+        RightWingStore();
 
 
     }
@@ -75,8 +80,8 @@ public class Armstrong extends Robot {
     public void lifterStop(){lifter.setPower(0); }
 
     //setting position for marker servo
-    public void markUp() {marker.setPosition(0.45);}
-    public void markDown() {marker.setPosition(0);}
+    public void markUp() {marker.setPosition(1);}
+    public void markDown() {marker.setPosition(0.45);}
 
     //setting latch
     public void unlatch() {latch.setPosition(0.2);}
@@ -105,6 +110,19 @@ public class Armstrong extends Robot {
     public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
 
     public long DOWNDISTANCE = 1000;
+
+    public void RightSample() {rightWing.setPosition(0.15);}
+    public void LeftSample()  {leftWing.setPosition(0.8);}
+
+    public void RightWingStore() {rightWing.setPosition(0.9);}
+    public void LeftWingStore() {leftWing.setPosition(0.1);}
+
+    public void wallPush(){linear.setPosition(0.7);}
+    public void wallIn() {linear.setPosition(0.3);}
+    //public void wallStop() {linear.setPosition(0);}
+
+    //
+//    public static state = magnetSensor.getState();
 
     //Set Wall-E position
 
