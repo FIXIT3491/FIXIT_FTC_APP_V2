@@ -22,7 +22,6 @@ public class Armstrong extends Robot {
     public float MOTOR_SPEED_PAST;
     public float AVR_MOTOR_DIFF;
     public Motor CollectMotor;
-   // public boolean state;
     private FXTServo linear;
     private FXTServo rightWing;
     private FXTServo leftWing;
@@ -80,7 +79,7 @@ public class Armstrong extends Robot {
     public void lifterStop(){lifter.setPower(0); }
 
     //setting position for marker servo
-    public void markUp() {marker.setPosition(1);}
+    public void markUp() {marker.setPosition(1.0);}
     public void markDown() {marker.setPosition(0.45);}
 
     //setting latch
@@ -117,9 +116,19 @@ public class Armstrong extends Robot {
     public void RightWingStore() {rightWing.setPosition(0.9);}
     public void LeftWingStore() {leftWing.setPosition(0.1);}
 
-    public void wallPush(){linear.setPosition(0.7);}
-    public void wallIn() {linear.setPosition(0.3);}
+    public void wallPush(){linear.setPosition(0.3);}
+    public void wallIn() {linear.setPosition(0.7);}
     //public void wallStop() {linear.setPosition(0);}
+
+    public void middleMineral() {
+        LeftSample();
+        RightSample();
+        wallPush();
+        RC.l.sleep(1000);
+        RightWingStore();
+        LeftWingStore();
+        RC.l.sleep(1000);
+    }
 
     //
 //    public static state = magnetSensor.getState();

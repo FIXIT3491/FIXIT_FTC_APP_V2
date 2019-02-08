@@ -39,6 +39,11 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 import org.firstinspires.ftc.teamcode.RC;
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
+import org.firstinspires.ftc.teamcode.robots.Armstrong;
 import org.firstinspires.ftc.teamcode.gamecode.ArmstrongLandDumpMiddletheirsdos;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
@@ -55,10 +60,11 @@ import org.firstinspires.ftc.teamcode.robots.Armstrong;
  * is explained below.
  */
 @Autonomous(name = "Concept: TensorFlow Object Detection Webcam", group = "Concept")
-public class ConceptTensorFlowObjectDetection extends LinearOpMode {
+public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
     private static final String TFOD_MODEL_ASSET = "RoverRuckus.tflite";
     private static final String LABEL_GOLD_MINERAL = "Gold Mineral";
     private static final String LABEL_SILVER_MINERAL = "Silver Mineral";
+    Armstrong armstrong = new Armstrong();
 
     /*
      * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
@@ -85,7 +91,6 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
      * Detection engine.
      */
     private TFObjectDetector tfod;
-    Armstrong armstrong;
     @Override
     public void runOpMode() {
         // The TFObjectDetector uses the camera frames from the VuforiaLocalizer, so we create that
@@ -133,23 +138,30 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
                                 if (goldMineralX < silverMineral1X && goldMineralX < silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Left");
                                     armstrong.LeftSample();
+                                    sleep(1000);
                                 } else if (goldMineralX > silverMineral1X && goldMineralX > silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Right");
                                     armstrong.RightSample();
+                                    sleep(1000);
                                 } else {
                                     telemetry.addData("Gold Mineral Position", "Center");
                                     armstrong.wallPush();
+                                    sleep(100);
                                 }
                             }
                         }
                         telemetry.update();
-                    }
-                    else if (updatedRecognitions.size() < 3){
-                        if (System.currentTimeMillis() > 5000){
-                            RC.t.addData("playing middle program anyways");}
 
-
-                    }
+                         if (updatedRecognitions != null) {
+                             if (updatedRecognitions.size() < 3) {
+                                 if (System.currentTimeMillis() > 4000) {
+                                     armstrong.markDown();
+                                     sleep(1000);
+                                     //RC.t.addData("playing middle program anyways");
+                                 }//time
+                             }//size
+                        }//size null
+                    }//null
                 }
             }
         }

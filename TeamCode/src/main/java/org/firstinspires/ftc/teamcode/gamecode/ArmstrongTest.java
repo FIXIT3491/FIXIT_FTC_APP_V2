@@ -34,11 +34,40 @@ public class ArmstrongTest extends AutoOpMode {
 
 
         waitForStart();
+
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
 
-        RC.t.addData(System.nanoTime());
-//);
+        armstrong.forwardDistance(300,0.5);
+//        armstrong.LeftSample();
+//        armstrong.forwardDistance(100, 0.5);
+//        armstrong.LeftWingStore();
+//        armstrong.forwardDistance(200, 0.5);
+
+
+//        while (opModeIsActive()){
+
+//            telemetry.addData("right", armstrong.motorR.getAbsolutePosition());
+//            telemetry.addData("left", armstrong.motorL.getAbsolutePosition());
+//            telemetry.update();
+//            while (armstrong.motorR.getAbsolutePosition() < 10000){
+//                armstrong.motorR.setPower(1);
+//            }
+//            armstrong.motorR.stop();
+//            while (armstrong.motorL.getAbsolutePosition() < 10000){
+//                armstrong.motorL.setPower(1);
+//            }
+//            armstrong.motorL.stop();
+//        }
+
+
+
+
+
+
+
+//        RC.t.addData(System.nanoTime());
+////);
 
 
 //        armstrong.imuTurnR(88, 0.3);

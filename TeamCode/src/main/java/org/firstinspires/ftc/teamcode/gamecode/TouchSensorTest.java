@@ -48,7 +48,7 @@ public class TouchSensorTest extends LinearOpMode {
                 armstrong.collectServoRightSlow();
                 RC.t.addData(System.currentTimeMillis());
                 //new untested
-                if (System.currentTimeMillis() > 1000){
+                if (getRuntime() > 1000){
                     armstrong.unlatch();
                 }
             }

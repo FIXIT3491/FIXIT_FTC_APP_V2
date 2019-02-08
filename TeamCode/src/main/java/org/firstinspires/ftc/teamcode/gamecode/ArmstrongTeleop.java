@@ -63,7 +63,7 @@ public class ArmstrongTeleop extends TeleOpMode {
             armstrong.LeftWingStore();
         }
 
-
+        //linear wall servo
         if (joy1.buttonA()){
             armstrong.wallIn();
         }
@@ -72,11 +72,11 @@ public class ArmstrongTeleop extends TeleOpMode {
         }
 
 
-
-        if (joy2.buttonX()){
+        //marker
+        if (joy2.buttonB()){
             armstrong.markUp();
         }
-        if (joy2.buttonB()){
+        if (joy2.buttonX()){
             armstrong.markDown();
         }
 
