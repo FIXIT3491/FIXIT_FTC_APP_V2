@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.newhardware.FXTSensors.FXTAnalogUltrasonicSensor;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
@@ -19,15 +20,12 @@ public class ArmstrongTest extends AutoOpMode {
     public void runOp() throws InterruptedException {
         //init phase
         Armstrong armstrong = new Armstrong();
-
-
-
+        FXTAnalogUltrasonicSensor ultrasonic = new FXTAnalogUltrasonicSensor("ultrasonic");
 
 
         // Send telemetry message to signify robot waiting;
         //telemetry.addData("Status", "Resetting Encoders");    //
         //telemetry.update();
-
 
 
         telemetry.addData("Status", "Initialized");
@@ -37,28 +35,44 @@ public class ArmstrongTest extends AutoOpMode {
 
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
+        while (opModeIsActive()){
 
-        armstrong.forwardDistance(300,0.5);
+            telemetry.addData("ultrasonic", Math.round(ultrasonic.getDistance()));}
+
+
+
+
+
+
+
+//        armstrong.forwardDistance(300,0.5);
 //        armstrong.LeftSample();
 //        armstrong.forwardDistance(100, 0.5);
 //        armstrong.LeftWingStore();
 //        armstrong.forwardDistance(200, 0.5);
 
+//        armstrong.motorR.resetEncoder();
+//        armstrong.motorL.resetEncoder();
+//
+//
+//
+//        armstrong.forwardDistance(300, 0.5);
 
-//        while (opModeIsActive()){
-
-//            telemetry.addData("right", armstrong.motorR.getAbsolutePosition());
-//            telemetry.addData("left", armstrong.motorL.getAbsolutePosition());
+//            telemetry.addData("right", armstrong.motorR.getPosition());
+//            telemetry.addData("left", armstrong.motorL.getPosition());
 //            telemetry.update();
-//            while (armstrong.motorR.getAbsolutePosition() < 10000){
-//                armstrong.motorR.setPower(1);
-//            }
-//            armstrong.motorR.stop();
-//            while (armstrong.motorL.getAbsolutePosition() < 10000){
-//                armstrong.motorL.setPower(1);
+////            while (armstrong.motorL.getPosition() < 1000 && opModeIsActive()) {
+////                armstrong.motorR.setPower(1);
+////            }
+////            armstrong.motorR.stop();
+//
+////            while (armstrong.motorL.getPosition() < 1000 && opModeIsActive()) {
+////                armstrong.motorL.setPower(1);
 //            }
 //            armstrong.motorL.stop();
 //        }
+    }
+}
 
 
 
@@ -101,7 +115,7 @@ public class ArmstrongTest extends AutoOpMode {
 //            Orientation orient = armstrong.imu.getAngularOrientation();
 //            telemetry.addData("first angle", orient.firstAngle)
 //;
-        }
+//        }
 
 //        while (opModeIsActive()){
 //        RC.t.addData("LEFT", armstrong.motorL.getPosition());
@@ -143,6 +157,6 @@ public class ArmstrongTest extends AutoOpMode {
             //armstrong.3(10);
             //sleep(1000);
 
-
-        }
+//
+//        }
 

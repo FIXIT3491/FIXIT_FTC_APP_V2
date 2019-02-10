@@ -30,3 +30,4 @@ public class FXTAnalogUltrasonicSensor {
         return ultra.getVoltage() * 3072 / ultra.getMaxVoltage();
     }
 }
+//added 2 zeros

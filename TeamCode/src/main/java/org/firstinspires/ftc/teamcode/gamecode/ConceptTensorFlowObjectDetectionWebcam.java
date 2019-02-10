@@ -60,11 +60,11 @@ import org.firstinspires.ftc.teamcode.robots.Armstrong;
  * is explained below.
  */
 @Autonomous(name = "Concept: TensorFlow Object Detection Webcam", group = "Concept")
-public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
+public class ConceptTensorFlowObjectDetectionWebcam extends AutoOpMode {
     private static final String TFOD_MODEL_ASSET = "RoverRuckus.tflite";
     private static final String LABEL_GOLD_MINERAL = "Gold Mineral";
     private static final String LABEL_SILVER_MINERAL = "Silver Mineral";
-    Armstrong armstrong = new Armstrong();
+    Armstrong armstrong;
 
     /*
      * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
@@ -92,10 +92,11 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
      */
     private TFObjectDetector tfod;
     @Override
-    public void runOpMode() {
+    public void runOp() {
         // The TFObjectDetector uses the camera frames from the VuforiaLocalizer, so we create that
         // first.
         initVuforia();
+        armstrong = new Armstrong();
 
         if (ClassFactory.getInstance().canCreateTFObjectDetector()) {
             initTfod();
@@ -107,6 +108,8 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
         telemetry.addData(">", "Press Play to start tracking");
         telemetry.update();
         waitForStart();
+        clearTimer(1);
+
 
         if (opModeIsActive()) {
             /** Activate Tensor Flow Object Detection. */
@@ -154,7 +157,7 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
 
                          if (updatedRecognitions != null) {
                              if (updatedRecognitions.size() < 3) {
-                                 if (System.currentTimeMillis() > 4000) {
+                                 if (getSeconds(1) > 4) {
                                      armstrong.markDown();
                                      sleep(1000);
                                      //RC.t.addData("playing middle program anyways");

@@ -50,40 +50,17 @@ public class TouchSensorTest extends LinearOpMode {
                 //new untested
                 if (getRuntime() > 1000){
                     armstrong.unlatch();
+                    armstrong.lifterStop();
+                    armstrong.collectServoLeftStop();
+                    armstrong.collectServoRightStop();
+
+                    break;
                 }
             }
             if (!armstrong.magnetSensor.getState()){
                 telemetry.addData("Digital Touch", "Is Pressed");
-                armstrong.lifterStop();
-                armstrong.collectServoLeftStop();
-                armstrong.collectServoRightStop();
                 armstrong.unlatch();
-                armstrong.armup();
-
-                sleep(250);
-                armstrong.armstop();
-
-                //here is the difference, what servo goes down
-                //for right
-                armstrong.RightSample();
-                //or
-                armstrong.LeftSample();
-                //or
-                armstrong.LeftSample();
-                armstrong.RightSample();
-                armstrong.wallPush();
-                sleep(1000);
-                armstrong.RightWingStore();
-                armstrong.LeftWingStore();
-
-
-                armstrong.forward(0.5);
-                sleep(1300);
-                armstrong.stop();
-
-                armstrong.markDown();
-                sleep(1000);
-                telemetry.addData("Status", "WallDown");
+                break;
 
             }
             telemetry.update();
