@@ -4,9 +4,11 @@ import com.qualcomm.hardware.adafruit.AdafruitBNO055IMU;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.lynx.LynxEmbeddedIMU;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.UltrasonicSensor;
 
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.FXTCRServo;
+import org.firstinspires.ftc.teamcode.newhardware.FXTSensors.FXTAnalogUltrasonicSensor;
 import org.firstinspires.ftc.teamcode.newhardware.FXTServo;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
 
@@ -28,6 +30,8 @@ public class Armstrong extends Robot {
     private FXTCRServo leftCollectServo;
     private FXTCRServo rightCollectServo;
 
+    public FXTAnalogUltrasonicSensor ultrasonic;
+
 
 
     //private long lift;
@@ -45,6 +49,8 @@ public class Armstrong extends Robot {
         rightCollectServo = new FXTCRServo("rightCollectServo");
         magnetSensor = RC.h.get(DigitalChannel.class, "sensor_digital");
         magnetSensor.setMode(DigitalChannel.Mode.INPUT);
+        FXTAnalogUltrasonicSensor ultrasonic = new FXTAnalogUltrasonicSensor("ultrasonic");
+
 
         //Armstrong armstrong = new Armstrong();
 
@@ -85,6 +91,7 @@ public class Armstrong extends Robot {
     //setting latch
     public void unlatch() {latch.setPosition(0.2);}
     public void setLatch() {latch.setPosition(0.8);}
+
 
 
 
