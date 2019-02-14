@@ -27,7 +27,7 @@ public class FXTAnalogUltrasonicSensor {
     }
 
     public double getDistance(){
-        return ultra.getVoltage() * 3072 / ultra.getMaxVoltage();
+        return ultra.getVoltage() * 1766 / ultra.getMaxVoltage();
     }
 }
 //added 2 zeros
