@@ -162,6 +162,13 @@ public class Robot {
         stop();
     }//forward
 
+
+    public void slantforward(double leftspeed, double rightspeed){
+        motorL.setPower(leftspeed);
+        motorR.setPower(rightspeed);
+
+    }
+
     /**
      * Drives the robot backward. Does not stop the robot after execution.
      * @param speed The speed at which the motors turn value between 0.0 and 1.0

@@ -96,6 +96,7 @@ public class Armstrong extends Robot {
 
 
 
+
     public void collectServoLeftDown(){leftCollectServo.setPower(-0.7);}
     public void collectServoRightDown(){rightCollectServo.setPower(0.7);}
 
@@ -127,7 +128,7 @@ public class Armstrong extends Robot {
     public void wallIn() {linear.setPosition(0.7);}
     //public void wallStop() {linear.setPosition(0);}
 
-    public void middleMineral() {
+    public void MiddleSample() {
         LeftSample();
         RightSample();
         wallPush();

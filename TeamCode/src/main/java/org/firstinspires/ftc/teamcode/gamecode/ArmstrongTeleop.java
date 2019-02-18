@@ -28,24 +28,24 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         if (joy1.rightTrigger()){
             telemetry.addData("Status", "Slow Mode");
-            armstrong.driveL(gamepad1.left_stick_y/4);
-            armstrong.driveR(gamepad1.right_stick_y/4);
-            telemetry.addData("slow left", gamepad1.left_stick_y);
-            telemetry.addData("Slow right", gamepad1.right_stick_y);
+            armstrong.driveL(-gamepad1.left_stick_y/4);
+            armstrong.driveR(-gamepad1.right_stick_y/4);
+            telemetry.addData("slow left", -gamepad1.left_stick_y);
+            telemetry.addData("Slow right", -gamepad1.right_stick_y);
 
         }
 
         if (joy1.leftTrigger()){
             telemetry.addData("Status", "Reverse");
-            armstrong.driveR(-gamepad1.left_stick_y*0.9);
-            armstrong.driveL(-gamepad1.right_stick_y*0.9);
+            armstrong.driveR(gamepad1.left_stick_y*0.9);
+            armstrong.driveL(gamepad1.right_stick_y*0.9);
         }
 
         if (!joy1.leftTrigger()){
             if (!joy1.rightTrigger()) {
                 telemetry.addData("Status", "Normal Driving");
-                armstrong.driveL(gamepad1.left_stick_y);
-                armstrong.driveR(gamepad1.right_stick_y);
+                armstrong.driveL(-gamepad1.left_stick_y);
+                armstrong.driveR(-gamepad1.right_stick_y);
             } //if !rightTrigger
         } // If !leftTrigger
 

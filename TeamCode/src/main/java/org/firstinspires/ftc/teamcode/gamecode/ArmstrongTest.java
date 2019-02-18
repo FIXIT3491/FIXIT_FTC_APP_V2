@@ -35,14 +35,11 @@ public class ArmstrongTest extends AutoOpMode {
 
         //this is after the driver presses play
         telemetry.addData("Status", "Play");
-        while (opModeIsActive()){
-
-            telemetry.addData("ultrasonic", Math.round(ultrasonic.getDistance()));}
-
-
-
-
-
+        armstrong.motorR.resetEncoder();
+        armstrong.motorL.resetEncoder();
+        while (opModeIsActive()) {
+//
+//            telemetry.addData("ultrasonic", Math.round(ultrasonic.getDistance()));}
 
 
 //        armstrong.forwardDistance(300,0.5);
@@ -51,28 +48,34 @@ public class ArmstrongTest extends AutoOpMode {
 //        armstrong.LeftWingStore();
 //        armstrong.forwardDistance(200, 0.5);
 
-//        armstrong.motorR.resetEncoder();
-//        armstrong.motorL.resetEncoder();
+
 //
 //
 //
 //        armstrong.forwardDistance(300, 0.5);
-
 //            telemetry.addData("right", armstrong.motorR.getPosition());
 //            telemetry.addData("left", armstrong.motorL.getPosition());
 //            telemetry.update();
-////            while (armstrong.motorL.getPosition() < 1000 && opModeIsActive()) {
-////                armstrong.motorR.setPower(1);
-////            }
-////            armstrong.motorR.stop();
-//
-////            while (armstrong.motorL.getPosition() < 1000 && opModeIsActive()) {
-////                armstrong.motorL.setPower(1);
-//            }
-//            armstrong.motorL.stop();
-//        }
+
+//            ......
+            armstrong.forwardDistance(100, 0.3);
+        }
     }
 }
+
+//            while (armstrong.motorL.getPosition() < 1000 && opModeIsActive()) {
+//                armstrong.motorL.setPower(1);
+//            }
+//            armstrong.motorL.stop();
+//
+//
+//            while (armstrong.motorR.getPosition() < 1000 && opModeIsActive()) {
+//                armstrong.motorR.setPower(1);
+//            }
+//            armstrong.motorR.stop();
+//        }
+//    }
+//}
 
 
 

@@ -41,6 +41,26 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             }
             armstrong.lifterStop();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             text.speak("Next my latch. I use a one-eighty servo for this dandy device.", TextToSpeech.QUEUE_FLUSH, null);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
@@ -54,21 +74,43 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             armstrong.setLatch();
 
 
-             text.speak("Now to collect minerals. I have here some handy hair scratchers, but not for scratching my beautiful robot hairs." +
+            text.speak("Now to collect minerals. I have here some handy hair scratchers, but not for scratching my beautiful robot hairs." +
                         "These along with my two scoring arms are used to snatch up minerals and score them into the lander." +
                         "The arms are geared and use torque to reach either side of Armstrong.", TextToSpeech.QUEUE_FLUSH, null);
-             while (opModeIsActive() && text.isSpeaking()) {
+            while (opModeIsActive() && text.isSpeaking()) {
                  idle();
-             }
-             armstrong.armup();
+            }
+            armstrong.armup();
 
-             text.speak("Wheeeeee!", TextToSpeech.QUEUE_FLUSH, null);
-             while (opModeIsActive() && text.isSpeaking()) {
+            text.speak("Wheeeeee!", TextToSpeech.QUEUE_FLUSH, null);
+            while (opModeIsActive() && text.isSpeaking()) {
                 idle();
-             }
-             armstrong.armstop();
+            }
+            armstrong.armstop();
+            armstrong.collectServoRightUp();
+            armstrong.collectServoLeftUp();
+            text.speak(" I can boogie with these chain-driven linear slides to reach far away minerals", TextToSpeech.QUEUE_FLUSH, null);
+            while (opModeIsActive() && text.isSpeaking()) {
+                idle();
+            }
+            armstrong.collectServoRightStop();
+            armstrong.collectServoLeftStop();
+
+            text.speak("Also, I deploy a team marker with this one-eighty-servo", TextToSpeech.QUEUE_FLUSH, null);
+            while (opModeIsActive() && text.isSpeaking()) {
+                idle();
+            }
 
 
+            armstrong.RightSample();
+            armstrong.LeftSample();
+            armstrong.markDown();
+
+            text.speak(" I got these groovy wings for sampling as well as this rad wall" +
+                    "wow. With all that, I’m ready to blast off into competition at any time!", TextToSpeech.QUEUE_FLUSH, null);
+            while (opModeIsActive() && text.isSpeaking()) {
+                idle();
+            }
         }
 
 

@@ -14,21 +14,21 @@ public class ArmstrongMinMiddle extends AutoOpMode {
         telemetry.addData("Status", "Initialized");
         waitForStart();
         //this is after the driver presses play
-        armstrong.lifterUp();
-        armstrong.collectServoLeftSlow();
-        armstrong.collectServoRightSlow();
-        sleep(10790);
-        armstrong.lifterStop();
-        armstrong.collectServoLeftStop();
-        armstrong.collectServoRightStop();
+//        armstrong.lifterUp();
+//        armstrong.collectServoLeftSlow();
+//        armstrong.collectServoRightSlow();
+//        sleep(10790);
+//        armstrong.lifterStop();
+//        armstrong.collectServoLeftStop();
+//        armstrong.collectServoRightStop();
 
-        armstrong.unlatch();
+//        armstrong.unlatch();
         armstrong.armup();
         sleep(250);
         armstrong.armstop();
 
 
-        armstrong.middleMineral();
+        armstrong.MiddleSample();
         armstrong.forwardDistance(70, 0.5);
 
         armstrong.markDown();
