@@ -1,11 +1,14 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
-
+@Autonomous
 public class ArmstrongMinRight extends AutoOpMode {
 
     @Override
+
 
     public void runOp() throws InterruptedException {
         //init phase
@@ -27,20 +30,26 @@ public class ArmstrongMinRight extends AutoOpMode {
 //        sleep(250);
 //        armstrong.armstop();
 
-
-        armstrong.forwardDistance(300,0.5);
+        armstrong.forward(0.3);
+        sleep(900);
+        armstrong.stop();
         armstrong.RightSample();
-        armstrong.motorL.resetEncoder();
-        armstrong.motorR.resetEncoder();
-        armstrong.forwardDistance(100, 0.5);
-        armstrong.motorL.resetEncoder();
-        armstrong.motorR.resetEncoder();
-        armstrong.RightWingStore();
-        armstrong.forwardDistance(200, 0.5);
+        sleep(100);
 
-        armstrong.markDown();
+        armstrong.forward(0.3);
+        sleep(1200);
+        armstrong.stop();
+
+        armstrong.RightWingStore();
+        sleep(100);
+        armstrong.forward(0.3);
         sleep(1000);
-        telemetry.addData("Status", "WallDown");
+        armstrong.stop();
+
+
+        armstrong.markWallDown();
+        sleep(1000);
+        telemetry.addData("Status", "Wall and Marker Down");
     }
 }
 

@@ -8,10 +8,11 @@ import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.FXTCRServo;
 import org.firstinspires.ftc.teamcode.newhardware.FXTServo;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
+import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 
 @Autonomous
-public class TouchSensorTest extends LinearOpMode {
+public class TouchSensorTest extends AutoOpMode {
 
     /**
      * The REV Robotics Touch Sensor
@@ -26,13 +27,14 @@ public class TouchSensorTest extends LinearOpMode {
     public DigitalChannel magnetSensor;  // Hardware Device Object
 
     @Override
-    public void runOpMode() {
+    public void runOp() throws InterruptedException {
         magnetSensor = RC.h.get(DigitalChannel.class, "sensor_digital");
         magnetSensor.setMode(DigitalChannel.Mode.INPUT);
         // get a reference to our digitalTouch object.
         Armstrong armstrong = new Armstrong();
         // wait for the start button to be pressed.
         waitForStart();
+        clearTimer(2);
 
         // while the op mode is active, loop and read the light levels.
         // Note we use opModeIsActive() as our loop condition because it is an interruptible method.
@@ -41,29 +43,23 @@ public class TouchSensorTest extends LinearOpMode {
 
             // send the info back to driver station using telemetry function.
             // if the digital channel returns true it's HIGH and the button is unpressed.
-            while (armstrong.magnetSensor.getState()) {
+            while (armstrong.magnetSensor.getState() && getSeconds(2)<5) {
                 telemetry.addData("Digital Touch", "Is Not Pressed");
                 armstrong.lifterUp();
                 armstrong.collectServoLeftSlow();
                 armstrong.collectServoRightSlow();
-                RC.t.addData(System.currentTimeMillis());
+                RC.t.addData(getSeconds(2));
                 //new untested
-                if (getRuntime() > 1000){
-                    armstrong.unlatch();
-                    armstrong.lifterStop();
-                    armstrong.collectServoLeftStop();
-                    armstrong.collectServoRightStop();
-
-                    break;
-                }
             }
-            if (!armstrong.magnetSensor.getState()){
-                telemetry.addData("Digital Touch", "Is Pressed");
-                armstrong.unlatch();
-                break;
 
-            }
-            telemetry.update();
+
+
+
+            telemetry.addData("Digital Touch", "Is Pressed");
+            armstrong.unlatch();
+            break;
+
+
 
 
 
@@ -75,7 +71,7 @@ public class TouchSensorTest extends LinearOpMode {
         }
 
 
-    }
 
+    }
 }
 

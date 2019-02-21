@@ -164,7 +164,7 @@ public class Motor implements FXTDevice, Timeable {
     }//toggleChecking
 
     public void setTargetAndPower(int target, double speed) {
-        setTarget(target);
+        setRelativeTarget(target);
         setPower(speed);
     }//setTargetAndPower
 

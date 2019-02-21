@@ -32,12 +32,22 @@ public class ArmstrongMinLeft extends AutoOpMode {
 
 
         armstrong.forwardDistance(300,0.5);
+        armstrong.stop();
         armstrong.LeftSample();
-        armstrong.forwardDistance(100, 0.5);
-        armstrong.LeftWingStore();
-        armstrong.forwardDistance(200, 0.5);
+        sleep(1000);
+        armstrong.stop();
 
-        armstrong.markDown();
+        armstrong.forwardDistance(100, 0.5);
+        sleep(1000);
+
+        armstrong.LeftWingStore();
+        sleep(600);
+
+
+        armstrong.forwardDistance(250, 0.5);
+        sleep(1000);
+
+        armstrong.markWallDown();
         sleep(1000);
         telemetry.addData("Status", "WallDown");
     }

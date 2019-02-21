@@ -86,7 +86,17 @@ public class Armstrong extends Robot {
 
     //setting position for marker servo
     public void markUp() {marker.setPosition(1.0);}
-    public void markDown() {marker.setPosition(0.45);}
+    public void markDown() { marker.setPosition(0.45);}
+    public void markWallDown(){
+        RightSample();
+        LeftSample();
+        RC.l.sleep(1000);
+        markDown();
+        RC.l.sleep(1000);
+        markUp();
+        RightWingStore();
+        LeftWingStore();
+    }
 
     //setting latch
     public void unlatch() {latch.setPosition(0.2);}
@@ -118,8 +128,8 @@ public class Armstrong extends Robot {
 
     public long DOWNDISTANCE = 1000;
 
-    public void RightSample() {rightWing.setPosition(0.15);}
-    public void LeftSample()  {leftWing.setPosition(0.8);}
+    public void RightSample() {rightWing.setPosition(0.1);}
+    public void LeftSample()  {leftWing.setPosition(0.9);}
 
     public void RightWingStore() {rightWing.setPosition(0.9);}
     public void LeftWingStore() {leftWing.setPosition(0.1);}
@@ -136,6 +146,10 @@ public class Armstrong extends Robot {
         RightWingStore();
         LeftWingStore();
         RC.l.sleep(1000);
+    }
+
+    public void RightForwardSample(){
+        //in here will go the min right program
     }
 
     //

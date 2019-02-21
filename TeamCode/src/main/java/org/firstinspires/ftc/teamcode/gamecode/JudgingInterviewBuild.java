@@ -27,7 +27,7 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             text.speak("Hello judges!" +
                     "My name is Armstrong, and I’m going to show you my mechanisms."+
                     "First off, my drive base, I zoom around with a six wheel drive base, geared two-to-one." +
-                    "My front and back wheels are omni and my middle are standard tetrix wheels." +
+                    "My front and back wheels are Omni and my middle are standard tetrix wheels." +
                     "Now you may have guessed already from my name, I have a super strong arm used for lifting myself, I bet Neil Armstrong couldn’t beat my pull-up skills."
                     + "This strength comes from a rack and pinion device geared with a worm gear.", TextToSpeech.QUEUE_FLUSH, null);
             while (opModeIsActive() && text.isSpeaking()) {
@@ -40,31 +40,15 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
                 idle();
             }
             armstrong.lifterStop();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //spin
 
 
             text.speak("Next my latch. I use a one-eighty servo for this dandy device.", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
+
             armstrong.unlatch();
             text.speak("I use the circular motion and transform it to linear motion." +
                     "It’s pretty effective if I do say so myself.", TextToSpeech.QUEUE_FLUSH, null);
@@ -77,40 +61,49 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             text.speak("Now to collect minerals. I have here some handy hair scratchers, but not for scratching my beautiful robot hairs." +
                         "These along with my two scoring arms are used to snatch up minerals and score them into the lander." +
                         "The arms are geared and use torque to reach either side of Armstrong.", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                  idle();
             }
             armstrong.armup();
 
             text.speak("Wheeeeee!", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
+//            armstrong.armdown();
+//            sleep(200);
             armstrong.armstop();
-            armstrong.collectServoRightUp();
-            armstrong.collectServoLeftUp();
+            armstrong.collectServoRightDown();
+            armstrong.collectServoLeftDown();
             text.speak(" I can boogie with these chain-driven linear slides to reach far away minerals", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
             armstrong.collectServoRightStop();
             armstrong.collectServoLeftStop();
 
-            text.speak("Also, I deploy a team marker with this one-eighty-servo", TextToSpeech.QUEUE_FLUSH, null);
+            text.speak(" I got these groovy wings for sampling as well as this rad wall" +
+                    "wow. With all that, I’m ready to blast off into competition at any time!", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
-
 
             armstrong.RightSample();
             armstrong.LeftSample();
-            armstrong.markDown();
 
-            text.speak(" I got these groovy wings for sampling as well as this rad wall" +
-                    "wow. With all that, I’m ready to blast off into competition at any time!", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(1000);
+
+            text.speak("Also, I deploy a team marker with this one-eighty-servo", TextToSpeech.QUEUE_FLUSH, null);
+            sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
+
+            armstrong.markDown();
         }
 
 
@@ -119,10 +112,7 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
 
     @Override
 
-    public void stopOpMode() {text.stop();
-
-    }
-
+    public void stopOpMode() {text.stop();}
     @Override
     public void onInit(int status) {
         RC.t.addData("Talking", "Enabled");

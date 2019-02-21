@@ -198,6 +198,9 @@ public class Robot {
      */
     public void forwardDistance(int mm, double speed) {
         int target = (int)(mm * 1120 / (wheelDiameter * 25.4 * Math.PI)); //convert mm to tiks
+        target = Math.round(target);
+
+        RC.t.addData(target);
 
         motorL.resetEncoder();
         motorR.resetEncoder();

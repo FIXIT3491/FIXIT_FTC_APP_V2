@@ -32,13 +32,26 @@ public class ArmstrongTest extends AutoOpMode {
 
 
         waitForStart();
-
-        //this is after the driver presses play
-        telemetry.addData("Status", "Play");
-        armstrong.motorR.resetEncoder();
         armstrong.motorL.resetEncoder();
-        while (opModeIsActive()) {
-//
+        armstrong.motorR.resetEncoder();
+        armstrong.forwardDistance(100, 0.3);
+        sleep(1000);
+        telemetry.addData("ml", armstrong.motorL.getPosition());
+        armstrong.forwardDistance(200, 0.3);
+//        //this is after the driver presses play
+//        telemetry.addData("Status", "Play");
+//       armstrong.forwardDistance(100, 0.3);
+//        telemetry.addData("left", armstrong.motorL.getPosition());
+//        telemetry.addData("right", armstrong.motorR.getPosition());
+//        sleep(400);
+//        armstrong.forwardDistance(100, 0.3);
+//        sleep(1000);
+
+
+//        armstrong.motorR.resetEncoder();
+//        armstrong.motorL.resetEncoder();
+//        while (opModeIsActive()) {
+////
 //            telemetry.addData("ultrasonic", Math.round(ultrasonic.getDistance()));}
 
 
@@ -53,13 +66,13 @@ public class ArmstrongTest extends AutoOpMode {
 //
 //
 //        armstrong.forwardDistance(300, 0.5);
-//            telemetry.addData("right", armstrong.motorR.getPosition());
-//            telemetry.addData("left", armstrong.motorL.getPosition());
-//            telemetry.update();
-
-//            ......
-            armstrong.forwardDistance(100, 0.3);
-        }
+////            telemetry.addData("right", armstrong.motorR.getPosition());
+////            telemetry.addData("left", armstrong.motorL.getPosition());
+////            telemetry.update();
+//
+////            ......
+//            armstrong.forwardDistance(100, 0.3);
+//        }
     }
 }
 

@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
-
+@Autonomous
 public class ArmstrongMinMiddle extends AutoOpMode {
 
     @Override
@@ -23,13 +25,13 @@ public class ArmstrongMinMiddle extends AutoOpMode {
 //        armstrong.collectServoRightStop();
 
 //        armstrong.unlatch();
-        armstrong.armup();
-        sleep(250);
-        armstrong.armstop();
+//        armstrong.armup();
+//        sleep(250);
+//        armstrong.armstop();
 
 
         armstrong.MiddleSample();
-        armstrong.forwardDistance(70, 0.5);
+        armstrong.forwardDistance(500, 0.5);
 
         armstrong.markDown();
         sleep(1000);

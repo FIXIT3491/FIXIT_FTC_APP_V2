@@ -59,11 +59,15 @@ import org.firstinspires.ftc.teamcode.robots.Armstrong;
  * IMPORTANT: In order to use this OpMode, you need to obtain your own Vuforia license key as
  * is explained below.
  */
-@Autonomous(name = "Concept: TensorFlow Object Detection Webcam", group = "Concept")
-public class ConceptTensorFlowObjectDetectionWebcam extends AutoOpMode {
+@Autonomous
+public class ArmstrongMarkerLower1st extends AutoOpMode {
     private static final String TFOD_MODEL_ASSET = "RoverRuckus.tflite";
     private static final String LABEL_GOLD_MINERAL = "Gold Mineral";
     private static final String LABEL_SILVER_MINERAL = "Silver Mineral";
+    public static final int LEFT = 1;
+    public static final int CENTER = 2;
+    public static final int RIGHT = 3;
+    public static int mineralOri;
     Armstrong armstrong;
 
     /*
@@ -108,13 +112,32 @@ public class ConceptTensorFlowObjectDetectionWebcam extends AutoOpMode {
         telemetry.addData(">", "Press Play to start tracking");
         telemetry.update();
         waitForStart();
-        clearTimer(1);
+        clearTimer(1);// tensor flow timer
+        clearTimer(2);// rack and pinon timer
+
+        while (armstrong.magnetSensor.getState() && getSeconds(2)<9) {
+            telemetry.addData("Digital Touch", "Is Not Pressed");
+            armstrong.lifterUp();
+            armstrong.collectServoLeftSlow();
+            armstrong.collectServoRightSlow();
+            RC.t.addData(getSeconds(2));
+            //new untested
+        }
+
+
+        telemetry.addData("Digital Touch", "Is Pressed");
+        armstrong.unlatch();
+
+
+
+
 
 
         if (opModeIsActive()) {
             /** Activate Tensor Flow Object Detection. */
             if (tfod != null) {
                 tfod.activate();
+
             }
 
             while (opModeIsActive()) {
@@ -140,15 +163,15 @@ public class ConceptTensorFlowObjectDetectionWebcam extends AutoOpMode {
                             if (goldMineralX != -1 && silverMineral1X != -1 && silverMineral2X != -1) {
                                 if (goldMineralX < silverMineral1X && goldMineralX < silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Left");
-                                    armstrong.LeftSample();
+                                    mineralOri = LEFT;
                                     sleep(1000);
                                 } else if (goldMineralX > silverMineral1X && goldMineralX > silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Right");
-                                    armstrong.RightSample();
+                                    mineralOri = RIGHT;
                                     sleep(1000);
                                 } else {
                                     telemetry.addData("Gold Mineral Position", "Center");
-                                    armstrong.wallPush();
+                                    mineralOri = CENTER;
                                     sleep(100);
                                 }
                             }
@@ -158,20 +181,41 @@ public class ConceptTensorFlowObjectDetectionWebcam extends AutoOpMode {
                          if (updatedRecognitions != null) {
                              if (updatedRecognitions.size() < 3) {
                                  if (getSeconds(1) > 4) {
-                                     armstrong.markDown();
-                                     sleep(1000);
+                                     mineralOri = CENTER;
                                      //RC.t.addData("playing middle program anyways");
                                  }//time
                              }//size
                         }//size null
                     }//null
                 }
+
             }
         }
 
         if (tfod != null) {
             tfod.shutdown();
         }
+        //go forwards a li''l bit
+        armstrong.forwardDistance(300,0.5);
+        //lower depending on mineral
+        if (mineralOri == LEFT){
+            armstrong.LeftSample();
+        }
+        else if (mineralOri == CENTER){
+            armstrong.MiddleSample();
+        }
+        else if (mineralOri == RIGHT){
+            armstrong.RightSample();
+        }
+        //sample
+        armstrong.forwardDistance(200, 0.5);
+        //marker
+        armstrong.markDown();
+        sleep(1000);
+        telemetry.addData("status","wall down");
+        //crater
+        //add bang-bang here
+
     }
 
     /**
