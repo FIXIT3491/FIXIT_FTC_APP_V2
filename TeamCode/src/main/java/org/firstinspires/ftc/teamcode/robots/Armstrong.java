@@ -99,8 +99,8 @@ public class Armstrong extends Robot {
     }
 
     //setting latch
-    public void unlatch() {latch.setPosition(0.2);}
-    public void setLatch() {latch.setPosition(0.8);}
+    public void unlatch() {latch.setPosition(0);}
+    public void setLatch() {latch.setPosition(1);}
 
 
 
@@ -120,18 +120,18 @@ public class Armstrong extends Robot {
     public void collectServoRightSlow() {rightCollectServo.setPower(-0.05);}
 
     public void armup() {CollectMotor.setPower(0.2);}
+    public void armupslow() {CollectMotor.setPower(0.1);}
     public void armdown() {CollectMotor.setPower(-0.2);}
+    public void armdownslow() {CollectMotor.setPower(-0.1);}
     public void armstop() {CollectMotor.setPower(0);}
 
     //setting IMU
     public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
 
-    public long DOWNDISTANCE = 1000;
-
     public void RightSample() {rightWing.setPosition(0.1);}
-    public void LeftSample()  {leftWing.setPosition(0.9);}
+    public void LeftSample()  {leftWing.setPosition(0.96);}
 
-    public void RightWingStore() {rightWing.setPosition(0.9);}
+    public void RightWingStore() {rightWing.setPosition(0.8);}
     public void LeftWingStore() {leftWing.setPosition(0.1);}
 
     public void wallPush(){linear.setPosition(0.3);}

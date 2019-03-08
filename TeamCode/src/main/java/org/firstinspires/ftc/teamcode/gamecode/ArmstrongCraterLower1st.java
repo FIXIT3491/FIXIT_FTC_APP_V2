@@ -30,26 +30,19 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import java.util.List;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.teamcode.robots.Armstrong;
-import org.firstinspires.ftc.teamcode.RC;
-
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
-import org.firstinspires.ftc.teamcode.robots.Armstrong;
-import org.firstinspires.ftc.teamcode.gamecode.ArmstrongLandDumpMiddletheirsdos;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 import org.firstinspires.ftc.teamcode.robots.Robot;
 import org.firstinspires.ftc.teamcode.util.RuckusUtils;
+
+import java.util.List;
 
 /**
  * This 2018-2019 OpMode illustrates the basics of using the TensorFlow Object Detection API to
@@ -62,7 +55,7 @@ import org.firstinspires.ftc.teamcode.util.RuckusUtils;
  * is explained below.
  */
 @Autonomous
-public class ArmstrongMarkerLower1st extends AutoOpMode {
+public class ArmstrongCraterLower1st extends AutoOpMode {
     private static final String TFOD_MODEL_ASSET = "RoverRuckus.tflite";
     private static final String LABEL_GOLD_MINERAL = "Gold Mineral";
     private static final String LABEL_SILVER_MINERAL = "Silver Mineral";
@@ -192,49 +185,43 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
         }
 
         if (mineralOri == Robot.LEFT){
-            armstrong.forwardDistance(200, 0.5);
-            RC.t.addData("lefttt");
+            telemetry.addData("Gold Mineral Position", "Left");
+            mineralOri = LEFT;
+            sleep(100);
+            RC.t.addData("Left");
             armstrong.LeftSample();
-            sleep(1000);
-            armstrong.forwardDistance(200, 0.5);
-            armstrong.LeftWingStore();
-            sleep(600);
-            //sample
-            armstrong.forwardDistance(250, 0.5);
-            //marker
-            armstrong.markWallDown();
-            sleep(1000);
-            telemetry.addData("Status", "WallDown");
+            sleep(2000);
+            armstrong.forward(0.3);
+            sleep(2000);
+            armstrong.markDown();
+            armstrong.stop();
+            return;
         }
         else if (mineralOri == Robot.CENTRE){
-            armstrong.forwardDistance(200, 0.5);
+            telemetry.addData("Gold Mineral Position", "Center");
+            mineralOri = CENTER;
+            sleep(100);
             RC.t.addData("centerrr");
             armstrong.MiddleSample();
-            sleep(1000);
-            armstrong.forwardDistance(200, 0.5);
-            armstrong.LeftWingStore();
-            sleep(600);
-            //sample
-            armstrong.forwardDistance(250, 0.5);
-            //marker
-            armstrong.markWallDown();
-            sleep(1000);
-            telemetry.addData("Status", "WallDown");
+            sleep(2000);
+            armstrong.forward(0.3);
+            sleep(2000);
+            armstrong.markDown();
+            armstrong.stop();
+            return;;
         }
         else if (mineralOri == Robot.RIGHT){
-            armstrong.forwardDistance(200, 0.5);
-            RC.t.addData("rightttt");
+            telemetry.addData("Gold Mineral Position", "Right");
+            mineralOri = RIGHT;
+            sleep(100);
+            RC.t.addData("Right");
             armstrong.RightSample();
-            sleep(1000);
-            armstrong.forwardDistance(200, 0.5);
-            armstrong.LeftWingStore();
-            sleep(600);
-            //sample
-            armstrong.forwardDistance(250, 0.5);
-            //marker
-            armstrong.markWallDown();
-            sleep(1000);
-            telemetry.addData("Status", "WallDown");
+            sleep(2000);
+            armstrong.forward(0.3);
+            sleep(2000);
+            armstrong.markDown();
+            armstrong.stop();
+            return;
         }
 
 
@@ -272,85 +259,3 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
         tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABEL_GOLD_MINERAL, LABEL_SILVER_MINERAL);
     }
 }
-
-
-//                            if (goldMineralX != -1 && silverMineral1X != -1 && silverMineral2X != -1) {
-//                                if (goldMineralX < silverMineral1X && goldMineralX < silverMineral2X) {
-//                                    //return GOLD;
-//                                    telemetry.addData("Gold Mineral Position", "Left");
-//                                    mineralOri = LEFT;
-//                                    sleep(100);
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    armstrong.stop();
-//
-//                                    armstrong.LeftSample();
-//                                    sleep(1000);
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    armstrong.stop();
-//                                    armstrong.LeftWingStore();
-//                                    sleep(600);
-//                                    //sample
-//                                    armstrong.markWallDown();
-//                                    sleep(1000);
-//                                    telemetry.addData("Status", "WallDown");
-//                                    armstrong.backward(0.3);
-//                                    sleep(500);
-//                                    armstrong.stop();
-//                                    return;
-//                                } else if (goldMineralX > silverMineral1X && goldMineralX > silverMineral2X) {
-//                                    telemetry.addData("Gold Mineral Position", "Right");
-//                                    mineralOri = RIGHT;
-//                                    RC.t.addData("rightttt");
-//                                    sleep(100);
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    armstrong.stop();
-//
-//                                    armstrong.RightSample();
-//                                    sleep(1000);
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    armstrong.stop();
-//                                    armstrong.RightWingStore();
-//                                    sleep(1000);
-//                                    //sample
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    //marker
-//                                    armstrong.markWallDown();
-//                                    sleep(1000);
-//                                    telemetry.addData("Status", "WallDown");
-//                                    armstrong.backward(0.3);
-//                                    sleep(500);
-//                                    armstrong.stop();
-//                                    return;
-//                                } else {
-//                                    telemetry.addData("Gold Mineral Position", "Center");
-//                                    mineralOri = CENTER;
-//                                    sleep(100);
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    armstrong.stop();
-//
-//                                    armstrong.MiddleSample();
-//                                    sleep(1000);
-//                                    armstrong.forward(0.5);
-//                                    sleep(1000);
-//                                    armstrong.stop();
-//                                    armstrong.RightWingStore();
-//                                    armstrong.LeftWingStore();
-//                                    sleep(600);
-//                                    //sample
-//                                    armstrong.markWallDown();
-//                                    sleep(1000);
-//                                    telemetry.addData("Status", "WallDown");
-//                                    armstrong.backward(0.3);
-//                                    sleep(500);
-//                                    armstrong.stop();
-//                                    return;
-//                                }
-//                            }
-//                        }
-//                        telemetry.update();

@@ -31,6 +31,7 @@ public class Robot {
     public static final int OUT = 8;
     public static final int OPEN = 9;
     public static final int CLOSE = 10;
+    public static final int CENTRE = 11;
     /**
      * This is the left drive system motor
      */
@@ -335,6 +336,43 @@ public class Robot {
 
         stop();
     }//imuTurnR
+
+
+    //SF
+    public void oneMTurnL(double speed){
+        motorL.setPower(speed);
+    }
+    public void imuNoInTurnL(double degrees, double speed) {
+
+        if(degrees < degreeTolerance) return;
+        //if its a really small degree, don't bother ^^^
+        oneMTurnL(speed);
+
+        double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
+        //Assigns begin angle and target angle
+        double targetAngle = MathUtils.cvtAngleToNewDomain(beginAngle + degrees);
+
+        while (RC.l.opModeIsActive()) {
+
+            double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
+            //figure out current angle
+            double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(targetAngle - currentAngle);
+
+            Log.i("Angle", currentAngle + "");
+            Log.i("AnSpeeds", motorL.getPower() + ", " + motorR.getPower());
+
+            //turnR(angleToTurn / 180 * (speed - minTurningSpeed) + minTurningSpeed);
+
+            turnL(0.3);
+
+            if (angleToTurn < degreeTolerance) {
+                break;
+            }//if
+        }//while
+
+
+        stop();
+    }//imuNoInTurnR
 
     /**
      * Turn left using the IMU for a given degrees. There is a built in ramping functionality.

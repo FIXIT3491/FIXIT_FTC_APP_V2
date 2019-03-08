@@ -98,12 +98,12 @@ public class ArmstrongTeleop extends TeleOpMode {
         //latcher
         if (joy2.leftBumper()) {
             armstrong.setLatch();
-            telemetry.addData("latch is UP", "UP MAN");
+            telemetry.addData("latch is UP", "set latch");
 
         }
         else if (joy2.leftTrigger()){
             armstrong.unlatch();
-            telemetry.addData("latch is DOWN", "UNLATCHED");
+            telemetry.addData("latch is DOWN", "unlatch");
 
         }
 
@@ -128,7 +128,7 @@ public class ArmstrongTeleop extends TeleOpMode {
 
         //to make sure the robot doesn't flip
 
-        if (System.currentTimeMillis()%1000 == 0);{
+        if(System.currentTimeMillis()%1000 == 0);{
             armstrong.MOTOR_SPEED_PAST = armstrong.MOTOR_SPEED;
             armstrong.MOTOR_SPEED = gamepad1.left_stick_y;
             armstrong.AVR_MOTOR_DIFF = Math.abs(armstrong.MOTOR_SPEED - armstrong.MOTOR_SPEED_PAST);

@@ -20,6 +20,8 @@ public class ArmstrongTest extends AutoOpMode {
     public void runOp() throws InterruptedException {
         //init phase
         Armstrong armstrong = new Armstrong();
+//        armstrong.motorL.setReverse(!armstrong.motorL.isReversed());
+
         FXTAnalogUltrasonicSensor ultrasonic = new FXTAnalogUltrasonicSensor("ultrasonic");
 
 
@@ -32,12 +34,21 @@ public class ArmstrongTest extends AutoOpMode {
 
 
         waitForStart();
-        armstrong.motorL.resetEncoder();
-        armstrong.motorR.resetEncoder();
-        armstrong.forwardDistance(100, 0.3);
+
+        armstrong.forward(300);
         sleep(1000);
-        telemetry.addData("ml", armstrong.motorL.getPosition());
-        armstrong.forwardDistance(200, 0.3);
+        armstrong.stop();
+
+
+
+//        armstrong.motorL.resetEncoder();
+//        armstrong.motorR.resetEncoder();
+//        armstrong.forwardDistance(100, 0.3);
+//        sleep(1000);
+////        telemetry.addData("ml", armstrong.motorL.getPosition());
+//        telemetry.addData("left", armstrong.motorL.getPosition());
+//        telemetry.addData("right", armstrong.motorR.getPosition());
+//        armstrong.forwardDistance(200, 0.3);
 //        //this is after the driver presses play
 //        telemetry.addData("Status", "Play");
 //       armstrong.forwardDistance(100, 0.3);

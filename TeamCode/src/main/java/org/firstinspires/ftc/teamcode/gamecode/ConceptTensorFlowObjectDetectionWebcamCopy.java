@@ -102,7 +102,6 @@ public class ConceptTensorFlowObjectDetectionWebcamCopy extends AutoOpMode {
         waitForStart();
         clearTimer(1);
 
-
         if (opModeIsActive()) {
             /** Activate Tensor Flow Object Detection. */
             if (tfod != null) {
@@ -132,16 +131,13 @@ public class ConceptTensorFlowObjectDetectionWebcamCopy extends AutoOpMode {
                             if (goldMineralX != -1 && silverMineral1X != -1 && silverMineral2X != -1) {
                                 if (goldMineralX < silverMineral1X && goldMineralX < silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Left");
-                                    armstrong.LeftSample();
-                                    sleep(1000);
+
                                 } else if (goldMineralX > silverMineral1X && goldMineralX > silverMineral2X) {
                                     telemetry.addData("Gold Mineral Position", "Right");
-                                    armstrong.RightSample();
-                                    sleep(1000);
+
                                 } else {
                                     telemetry.addData("Gold Mineral Position", "Center");
-                                    armstrong.wallPush();
-                                    sleep(100);
+
                                 }
                             }
                         }
@@ -183,7 +179,6 @@ public class ConceptTensorFlowObjectDetectionWebcamCopy extends AutoOpMode {
 
         // Loading trackables is not necessary for the Tensor Flow Object Detection engine.
     }
-
     /**
      * Initialize the Tensor Flow Object Detection engine.
      */

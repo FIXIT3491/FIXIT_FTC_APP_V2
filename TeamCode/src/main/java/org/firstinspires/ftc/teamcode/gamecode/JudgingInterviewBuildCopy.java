@@ -2,15 +2,14 @@ package org.firstinspires.ftc.teamcode.gamecode;
 
 import android.speech.tts.TextToSpeech;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.opmodesupport.LinearTeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
-import org.firstinspires.ftc.teamcode.robots.Fermion;
+
 @TeleOp
-public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpeech.OnInitListener{
+public class JudgingInterviewBuildCopy extends LinearTeleOpMode implements TextToSpeech.OnInitListener{
 
     TextToSpeech text;
     Armstrong armstrong;
@@ -64,7 +63,7 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             while (opModeIsActive() && text.isSpeaking()) {
                  idle();
             }
-            armstrong.armupslow();
+            armstrong.armdownslow();
             sleep(1500);
             armstrong.armstop();
 
@@ -73,18 +72,18 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
-            armstrong.armdownslow();
+            armstrong.armupslow();
             sleep(1500);
             armstrong.armstop();
 
-            text.speak("The arms are geared and use torque to reach either side of Armstrong.", TextToSpeech.QUEUE_FLUSH, null);
+            text.speak("The arms are geared and use torque to reach either side of Armstrong. Ishaan catch!", TextToSpeech.QUEUE_FLUSH, null);
             sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
             }
 
-            armstrong.armupslow();
-            sleep(1500);
+            armstrong.armdownslow();
+            sleep(1900);
             armstrong.armstop();
 
             armstrong.collectServoRightDown();
@@ -97,7 +96,7 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
             armstrong.collectServoRightStop();
             armstrong.collectServoLeftStop();
 
-            text.speak(" I got these groovy wings for sampling as well as this rad wall" , TextToSpeech.QUEUE_FLUSH, null);
+            text.speak(" I got these groovy wings for sampling as well as this rad wall", TextToSpeech.QUEUE_FLUSH, null);
             sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
@@ -116,7 +115,7 @@ public class JudgingInterviewBuild extends LinearTeleOpMode implements TextToSpe
 
             armstrong.markDown();
 
-            text.speak("wow. With all that, I’m ready to blast off into competition at any time!", TextToSpeech.QUEUE_FLUSH, null);
+            text.speak("With that I'm ready to blast into competition at any time!", TextToSpeech.QUEUE_FLUSH, null);
             sleep(50);
             while (opModeIsActive() && text.isSpeaking()) {
                 idle();
