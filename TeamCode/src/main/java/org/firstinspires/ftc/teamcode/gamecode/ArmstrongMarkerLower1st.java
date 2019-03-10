@@ -116,25 +116,29 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
         telemetry.addData(">", "Press Play to start tracking");
         telemetry.update();
         waitForStart();
+
+
         clearTimer(2);// rack and pinon timer
 
 
-        while (armstrong.magnetSensor.getState() && getSeconds(2)<12) {
+        while (armstrong.magnetSensor.getState() && getSeconds(2)<7) {
             telemetry.addData("Digital Touch", "Is Not Pressed");
             armstrong.lifterUp();
             armstrong.collectServoLeftSlow();
             armstrong.collectServoRightSlow();
             RC.t.addData(getSeconds(2));
-            //new untested
         }
-
 
         telemetry.addData("Digital Touch", "Is Pressed");
         armstrong.lifterStop();
         armstrong.unlatch();
         sleep(2000);
         telemetry.addData("un", "latched");
+
         clearTimer(1);// start tensor flow timer
+        while (getSeconds(1) < 4){
+            RC.t.addData(getSeconds(1));
+        }
 
 
 
@@ -151,6 +155,7 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
                 List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
                 if (updatedRecognitions != null) {
                     telemetry.addData("# Object Detected", updatedRecognitions.size());
+                    RC.t.addData(getSeconds(1));
                     if (updatedRecognitions.size() == 3) {
                         int goldMineralX = -1;
                         int silverMineral1X = -1;
@@ -163,24 +168,20 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
                             } else {
                                 silverMineral2X = (int) recognition.getLeft();
                             }
+                            mineralOri = RuckusUtils.getCubePostition(goldMineralX, silverMineral1X, silverMineral2X);
                         }
-
-                        RC.t.addData(getSeconds(1));
-                        if (updatedRecognitions.size() != 3 || mineralOri == -1 && getSeconds(1)>4) {
-                            mineralOri = Robot.CENTRE;
-                            RC.t.addData("Automatically Centre");
-                            break;
-                        }
-
-                        mineralOri = RuckusUtils.getCubePostition(goldMineralX, silverMineral1X, silverMineral2X);
-
-                        if(mineralOri > -1){
-                            RC.t.addData("Mineral Config", mineralOri);
-                            break;
-                        }
-
-                    }//size
-                }//size null
+                    }
+                    if (updatedRecognitions.size() != 3 || mineralOri == -1 && getSeconds(1) > 4) {
+                        mineralOri = Robot.CENTRE;
+                        RC.t.addData("Automatically Centre");
+                        break;
+                    }
+                    if (mineralOri > -1) {
+                        RC.t.addData("Mineral Config", mineralOri);
+                        break;
+                    }
+                }//size
+                //size null
 
             }
 
@@ -190,13 +191,13 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
         if (tfod != null) {
             tfod.shutdown();
         }
-
         if (mineralOri == Robot.LEFT){
-            armstrong.forwardDistance(200, 0.5);
-            RC.t.addData("lefttt");
+
+            armstrong.forwardDistance(300, 0.5);
+            RC.t.addData("Found that its lefttt");
             armstrong.LeftSample();
             sleep(1000);
-            armstrong.forwardDistance(200, 0.5);
+            armstrong.forwardDistance(300, 0.5);
             armstrong.LeftWingStore();
             sleep(600);
             //sample
@@ -207,11 +208,11 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
             telemetry.addData("Status", "WallDown");
         }
         else if (mineralOri == Robot.CENTRE){
-            armstrong.forwardDistance(200, 0.5);
-            RC.t.addData("centerrr");
+            armstrong.forwardDistance(300, 0.5);
+            RC.t.addData("Found that its centerrr");
             armstrong.MiddleSample();
             sleep(1000);
-            armstrong.forwardDistance(200, 0.5);
+            armstrong.forwardDistance(300, 0.5);
             armstrong.LeftWingStore();
             sleep(600);
             //sample
@@ -222,11 +223,11 @@ public class ArmstrongMarkerLower1st extends AutoOpMode {
             telemetry.addData("Status", "WallDown");
         }
         else if (mineralOri == Robot.RIGHT){
-            armstrong.forwardDistance(200, 0.5);
-            RC.t.addData("rightttt");
+            armstrong.forwardDistance(300, 0.5);
+            RC.t.addData("Found that its rightttt");
             armstrong.RightSample();
             sleep(1000);
-            armstrong.forwardDistance(200, 0.5);
+            armstrong.forwardDistance(300, 0.5);
             armstrong.LeftWingStore();
             sleep(600);
             //sample

@@ -219,6 +219,11 @@ public class Robot {
             if(motorR.isFin()){
                 motorR.stop();
             }//if
+//
+//            if(motorR.isFin() && motorL.isFin()){
+//                motorL.stop();
+//                motorR.stop();
+//            }
 
             Log.i("Encoders", "Left: " + motorL.getPosition() + ", Right: " + motorR.getPosition());
             Log.i("EncodersT", "Left: " + motorL.getTarget() + ", Right: " + motorR.getTarget());
@@ -342,11 +347,11 @@ public class Robot {
     public void oneMTurnL(double speed){
         motorL.setPower(speed);
     }
-    public void imuNoInTurnL(double degrees, double speed) {
+    public void SfIMUTurnLNoIn(double degrees, double speed) {
 
         if(degrees < degreeTolerance) return;
         //if its a really small degree, don't bother ^^^
-        oneMTurnL(speed);
+        oneMTurnL(-speed);
 
         double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
         //Assigns begin angle and target angle
@@ -361,9 +366,10 @@ public class Robot {
             Log.i("Angle", currentAngle + "");
             Log.i("AnSpeeds", motorL.getPower() + ", " + motorR.getPower());
 
-            //turnR(angleToTurn / 180 * (speed - minTurningSpeed) + minTurningSpeed);
+            speed = (angleToTurn/180)*speed;
+            oneMTurnL(-speed);
 
-            turnL(0.3);
+
 
             if (angleToTurn < degreeTolerance) {
                 break;

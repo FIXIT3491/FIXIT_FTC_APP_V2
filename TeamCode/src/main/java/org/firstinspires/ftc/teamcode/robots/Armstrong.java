@@ -99,8 +99,8 @@ public class Armstrong extends Robot {
     }
 
     //setting latch
-    public void unlatch() {latch.setPosition(0);}
-    public void setLatch() {latch.setPosition(1);}
+    public void unlatch() {latch.setPosition(0.1);}
+    public void setLatch() {latch.setPosition(0.9);}
 
 
 
@@ -146,6 +146,7 @@ public class Armstrong extends Robot {
         RightWingStore();
         LeftWingStore();
         RC.l.sleep(1000);
+        wallIn();
     }
 
     public void RightForwardSample(){

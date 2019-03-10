@@ -22,7 +22,8 @@ public class Motor implements FXTDevice, Timeable {
 
     private int beginningPosition = 0;
     private double minSpeed = 0.09;
-    private int positioningAccuracy = 20;
+    private int positioningAccuracy = 60;
+    //was 20
 
     public enum MotorType {
         AM20,

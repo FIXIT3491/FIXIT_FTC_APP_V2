@@ -50,6 +50,7 @@ public class TouchSensorTest extends AutoOpMode {
                 armstrong.collectServoRightSlow();
                 RC.t.addData(getSeconds(2));
             }
+            armstrong.lifterStop();
             armstrong.unlatch();
             sleep(1000);
             armstrong.forward(0.5);

@@ -146,9 +146,9 @@ public class ConceptTensorFlowObjectDetectionWebcamCopy extends AutoOpMode {
                          if (updatedRecognitions != null) {
                              if (updatedRecognitions.size() < 3) {
                                  if (getSeconds(1) > 4) {
-                                     armstrong.markDown();
                                      sleep(1000);
-                                     //RC.t.addData("playing middle program anyways");
+
+                                     telemetry.addData("we are", "playing middle program anyways");
                                  }//time
                              }//size
                         }//size null

@@ -70,6 +70,7 @@ public class BlueTurn extends AutoOpMode{
             bot.stop();
         } else {
             telemetry.addData("Jewels", "Blue Red");
+            clearTimer(3);
             bot.forwardDistance(18, 0.2);
             bot.stop();
         }
