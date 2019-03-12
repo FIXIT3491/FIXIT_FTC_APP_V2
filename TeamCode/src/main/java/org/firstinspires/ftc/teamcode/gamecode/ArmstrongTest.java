@@ -34,12 +34,12 @@ public class ArmstrongTest extends AutoOpMode {
 
 
         waitForStart();
-        armstrong.forwardDistance(300, 0.3);
+//        armstrong.forwardDistance(300, 0.3);
 
-//        while (opModeIsActive()) {
-//            Orientation orient = armstrong.imu.getAngularOrientation();
-//            telemetry.addData("first angle", orient.firstAngle);
-//        }
+        while (opModeIsActive()) {
+            Orientation orient = armstrong.imu.getAngularOrientation();
+            telemetry.addData("first angle", orient.firstAngle);
+        }
 
 
 //        armstrong.motorL.resetEncoder();

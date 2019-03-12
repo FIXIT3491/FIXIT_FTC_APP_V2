@@ -50,7 +50,8 @@ public class Armstrong extends Robot {
         magnetSensor = RC.h.get(DigitalChannel.class, "sensor_digital");
         magnetSensor.setMode(DigitalChannel.Mode.INPUT);
         FXTAnalogUltrasonicSensor ultrasonic = new FXTAnalogUltrasonicSensor("ultrasonic");
-
+        motorL.setMinimumSpeed(0.1);
+        motorR.setMinimumSpeed(0.1);
 
         //Armstrong armstrong = new Armstrong();
 
@@ -74,7 +75,6 @@ public class Armstrong extends Robot {
     }
 
 
-    //setting modes for sweeper
 
 
     //setting direction for lifter

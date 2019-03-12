@@ -14,6 +14,6 @@ public class SFTests extends AutoOpMode {
         Robot robot = new Robot();
 
         waitForStart();
-        robot.SfIMUTurnLNoIn(10, 0.3);
+        robot.SfIMUTurnLNoIn(180, 0.3);
     }
 }

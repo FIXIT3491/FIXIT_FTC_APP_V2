@@ -360,16 +360,13 @@ public class Robot {
         while (RC.l.opModeIsActive()) {
 
             double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
-            //figure out current angle
+            //figure out curret angl
             double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(targetAngle - currentAngle);
 
             Log.i("Angle", currentAngle + "");
             Log.i("AnSpeeds", motorL.getPower() + ", " + motorR.getPower());
 
-            speed = (angleToTurn/180)*speed;
             oneMTurnL(-speed);
-
-
 
             if (angleToTurn < degreeTolerance) {
                 break;
@@ -378,8 +375,7 @@ public class Robot {
 
 
         stop();
-    }//imuNoInTurnR
-
+    }//noimuTurnL
     /**
      * Turn left using the IMU for a given degrees. There is a built in ramping functionality.
      * @param degrees The degrees to turn

@@ -193,7 +193,9 @@ public class ArmstrongCraterLower1st extends AutoOpMode {
             sleep(2000);
             armstrong.forward(0.3);
             sleep(2000);
-            armstrong.markDown();
+            armstrong.stop();
+            armstrong.markWallDown();
+            sleep(1000);
             armstrong.stop();
             return;
         }
@@ -207,6 +209,9 @@ public class ArmstrongCraterLower1st extends AutoOpMode {
             armstrong.forward(0.3);
             sleep(3000);
             armstrong.stop();
+            armstrong.markWallDown();
+            sleep(1000);
+            armstrong.stop();
             return;
         }
         else if (mineralOri == Robot.RIGHT){
@@ -218,7 +223,9 @@ public class ArmstrongCraterLower1st extends AutoOpMode {
             sleep(2000);
             armstrong.forward(0.3);
             sleep(2000);
-            armstrong.markDown();
+            armstrong.stop();
+            armstrong.markWallDown();
+            sleep(1000);
             armstrong.stop();
             return;
         }
