@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
 
 @Autonomous
-public class TouchSensorTest extends AutoOpMode {
+public class TouchSensorCrater extends AutoOpMode {
 
     /**
      * The REV Robotics Touch Sensor

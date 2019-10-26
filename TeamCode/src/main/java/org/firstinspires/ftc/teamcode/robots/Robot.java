@@ -351,7 +351,6 @@ public class Robot {
 
         if(degrees < degreeTolerance) return;
         //if its a really small degree, don't bother ^^^
-        oneMTurnL(-speed);
 
         double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
         //Assigns begin angle and target angle
@@ -363,10 +362,56 @@ public class Robot {
             //figure out curret angl
             double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(targetAngle - currentAngle);
 
-            Log.i("Angle", currentAngle + "");
-            Log.i("AnSpeeds", motorL.getPower() + ", " + motorR.getPower());
+//            Log.i("Angle", currentAngle + "");
+//            Log.i("AnSpeeds", motorL.getPower() + ", " + motorR.getPower());
+            Log.i("AngleToTurn", String.valueOf(angleToTurn));
+            Log.i("target angle", String.valueOf(targetAngle));
+            Log.i("Ratio", String.valueOf((targetAngle/angleToTurn)));
 
             oneMTurnL(-speed);
+
+            if (angleToTurn>degreeTolerance){
+                RC.t.addData("Ratio", (angleToTurn/targetAngle));
+                RC.t.addData("target angle", targetAngle);
+                RC.t.addData("AngleToTurn", angleToTurn);
+            }
+
+            if (angleToTurn < degreeTolerance) {
+                break;
+            }//if
+        }//while
+
+
+        stop();
+    }//noimuTurnL
+    public void SfIMUTurnLIn(double degrees, double speed) {
+
+        if(degrees < degreeTolerance) return;
+        //if its a really small degree, don't bother ^^^
+
+        double beginAngle = MathUtils.cvtAngleToNewDomain(getAngle());
+        //Assigns begin angle and target angle
+        double targetAngle = MathUtils.cvtAngleToNewDomain(beginAngle + degrees);
+
+        while (RC.l.opModeIsActive()) {
+
+            double currentAngle = MathUtils.cvtAngleToNewDomain(getAngle());
+            //figure out curret angl
+            double angleToTurn = MathUtils.cvtAngleJumpToNewDomain(targetAngle - currentAngle);
+
+//            Log.i("Angle", currentAngle + "");
+//            Log.i("AnSpeeds", motorL.getPower() + ", " + motorR.getPower());
+            Log.i("AngleToTurn", String.valueOf(angleToTurn));
+            Log.i("target angle", String.valueOf(targetAngle));
+            Log.i("Ratio", String.valueOf((targetAngle/angleToTurn)));
+
+            oneMTurnL((Math.round(angleToTurn)/targetAngle)*-speed);
+
+            if (angleToTurn>degreeTolerance){
+                RC.t.addData("Ratio", (angleToTurn/targetAngle));
+                RC.t.addData("target angle", targetAngle);
+                RC.t.addData("AngleToTurn", angleToTurn);
+            }
 
             if (angleToTurn < degreeTolerance) {
                 break;

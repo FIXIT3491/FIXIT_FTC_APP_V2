@@ -129,18 +129,20 @@ public class Armstrong extends Robot {
     public double getAngle() {return -imu.getAngularOrientation().firstAngle;}
 
     public void RightSample() {rightWing.setPosition(0.1);}
-    public void LeftSample()  {leftWing.setPosition(0.96);}
+    public void LeftSample()  {leftWing.setPosition(0.85);}
 
     public void RightWingStore() {rightWing.setPosition(0.8);}
     public void LeftWingStore() {leftWing.setPosition(0.1);}
 
     public void wallPush(){linear.setPosition(0.3);}
-    public void wallIn() {linear.setPosition(0.7);}
-    //public void wallStop() {linear.setPosition(0);}
+    public void wallIn() {linear.setPosition(-0.3);}
+    public void wallStop() {linear.setPosition(0);}
+
 
     public void MiddleSample() {
         LeftSample();
         RightSample();
+        RC.l.sleep(300);
         wallPush();
         RC.l.sleep(1000);
         RightWingStore();
@@ -158,6 +160,9 @@ public class Armstrong extends Robot {
 
     //Set Wall-E position
 
+
+
+    // mechanum testing below here
 
 
 
