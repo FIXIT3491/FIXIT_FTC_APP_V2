@@ -29,7 +29,6 @@ public class Armstrong extends Robot {
     private FXTServo leftWing;
     private FXTCRServo leftCollectServo;
     private FXTCRServo rightCollectServo;
-
     public FXTAnalogUltrasonicSensor ultrasonic;
 
 

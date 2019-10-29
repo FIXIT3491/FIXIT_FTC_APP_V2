@@ -80,9 +80,6 @@ public class ArmstrongTeleop extends TeleOpMode {
             armstrong.markDown();
         }
 
-
-
-
         //lifter
         if (joy2.rightBumper()) {
             armstrong.lifterUp();
