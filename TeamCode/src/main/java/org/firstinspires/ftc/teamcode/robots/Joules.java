@@ -41,7 +41,8 @@ public class Joules  {
     }
 
     public void DriveBackward(double speed){
-
+        TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
+        FrontLeft.setPower(speed);
     }
 
     public void StrafeLeft(double speed){
