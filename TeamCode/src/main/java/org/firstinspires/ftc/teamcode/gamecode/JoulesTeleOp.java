@@ -18,40 +18,36 @@ public class JoulesTeleOp extends TeleOpMode {
 
     @Override
     public void loopOpMode() {
-        if (joy1.buttonA()) {
-            joules.DriveForward(0.5);
-        }
-        joules.Stop();
 
-        if(joy1.buttonB()){
-            joules.StrafeLeft(0.5);
-        }
-        joules.Stop();
-
-        if (joy1.buttonY()){
-            joules.TurnLeft(0.5);
-        }
-        joules.Stop();
-
-        if (joy1.buttonA()){
-            joules.DriveBackward(0.5);}
-        joules.Stop();
-
-        if(joy1.buttonB()){
-            joules.StrafeRight(0.5);
-        }
-        joules.Stop();
-
-        if (joy1.buttonY()) {
-            joules.TurnRight(0.5);
-        }
-        joules.Stop();
-
-        joules.DriveForward(gamepad1.left_stick_y*1.5);
-        joules.StrafeLeft(gamepad1.left_stick_x*1.5);
-        joules.TurnLeft(gamepad1.right_stick_x*1.5);
-
+        joules.DriveForward(gamepad1.left_stick_y*2);
+        joules.StrafeLeft(gamepad1.left_stick_x*2);
+        joules.TurnLeft(gamepad1.right_stick_x*2);
         //gamepad 1 right stick is not working rn
 
+        joules.Wrist.setPower(gamepad2.left_stick_y);
+        joules.ArmMotor.setPower(gamepad2.right_stick_y/2);
+
+        if (joy2.buttonX()){
+            joules.CapUp();
+        }
+        if (joy2.buttonB()){
+            joules.CapDown();
+        }
+
+        if (joy2.buttonY()){
+            joules.ArmXOut();
+        }
+        if (joy2.buttonA()){
+            joules.ArmXIn();
+        }
+        joules.ArmXStop();
+
+
+        if (joy2.rightTrigger()){
+            joules.ClawGrab();
+        }
+        if (joy2.rightBumper()){
+            joules.ClawDrop();
+        }
     }
 }

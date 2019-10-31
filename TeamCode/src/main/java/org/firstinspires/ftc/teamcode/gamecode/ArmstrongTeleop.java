@@ -10,10 +10,7 @@ import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Armstrong;
-@TeleOp
-
-
-public class ArmstrongTeleop extends TeleOpMode {
+ class ArmstrongTeleop extends TeleOpMode {
     Armstrong armstrong;
     @Override
     public void initialize() {

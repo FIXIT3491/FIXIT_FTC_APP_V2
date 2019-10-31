@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.robots;
 
+import android.graphics.Paint;
+
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.RC;
@@ -17,8 +20,16 @@ public class Joules  {
     private Motor BackLeft;
     private String VEER_CHECK_TASK_KEY = "Joules.VEERCHECK";
 
+    //arm servoes
     private FXTCRServo ArmXtnd;
-    private Servo Claw;
+    private FXTCRServo Claw;
+    public FXTCRServo Wrist;
+    //arm motor
+    public Motor ArmMotor;
+
+    //Capstone
+    private FXTServo CapLeft;
+    private FXTServo CapRight;
 
 
 
@@ -32,15 +43,21 @@ public class Joules  {
         BackRight = new Motor("BackRight");
         BackLeft = new Motor("BackLeft");
 
+        ArmXtnd = new FXTCRServo("armExtender");
+        ArmMotor = new Motor("arm");
+        Wrist = new FXTCRServo("wrist");
+        Claw =  new FXTCRServo("claw");
+
+        CapLeft = new FXTServo("CapLeft");
+        CapRight = new FXTServo("CapRight");
+
         FrontRight.setMinimumSpeed(0.1);
         FrontLeft.setMinimumSpeed(0.1);
         BackRight.setMinimumSpeed(0.1);
         BackLeft.setMinimumSpeed(0.1);
-
-
-
-
     }
+
+    //Robot driving
     public void DriveForward(double speed){
         TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
         FrontLeft.setPower(-speed);
@@ -48,7 +65,6 @@ public class Joules  {
         BackLeft.setPower(-speed);
         BackRight.setPower(speed);
     }
-
     public void DriveBackward(double speed){
         TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
         FrontLeft.setPower(speed);
@@ -57,7 +73,6 @@ public class Joules  {
         BackRight.setPower(-speed);
 
     }
-
     public void StrafeLeft(double speed){
         TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
         FrontLeft.setPower(speed);
@@ -65,7 +80,6 @@ public class Joules  {
         BackLeft.setPower(-speed);
         BackRight.setPower(-speed);
     }
-
     public void StrafeRight(double speed){
         TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
         FrontLeft.setPower(-speed);
@@ -73,7 +87,6 @@ public class Joules  {
         BackLeft.setPower(speed);
         BackRight.setPower(speed);
     }
-
     public void TurnLeft(double speed){
         TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
         FrontLeft.setPower(-speed);
@@ -82,7 +95,6 @@ public class Joules  {
         BackRight.setPower(-speed);
 
     }
-
     public void TurnRight(double speed){
         TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
         FrontLeft.setPower(speed);
@@ -90,13 +102,56 @@ public class Joules  {
         BackLeft.setPower(speed);
         BackRight.setPower(speed);
     }
-
     public void Stop(){
         FrontLeft.setPower(0);
         FrontRight.setPower(0);
         BackLeft.setPower(0);
         BackRight.setPower(0);
     }
-    //Actual Mechanum Drive
+
+    //Capstone
+    public void CapDown(){
+        CapLeft.setPosition(0.1);
+        CapRight.setPosition(0.1);
+    }
+    public void CapUp(){
+        CapLeft.setPosition(0.9);
+        CapRight.setPosition(0.9);
+    }
+
+    //Arm
+    public void ArmFor(){
+        ArmMotor.setPower(1);
+    }
+
+    public void ArmBack(){
+        ArmMotor.setPower(-1);
+    }
+
+    public void ArmStop(){
+        ArmMotor.setPower(0);
+    }
+
+    //Arm Extender
+    public void ArmXOut(){
+        ArmXtnd.setPower(0.5);
+    }
+    public void ArmXIn(){
+        ArmXtnd.setPower(-0.6);
+    }
+    public void ArmXStop(){
+        ArmXtnd.setPower(0);
+    }
+
+
+    //claw
+    public void ClawGrab(){
+        Claw.setPower(-0.4);
+    }
+    public void ClawDrop(){
+        Claw.setPower(0.6);
+    }
+
+
 
 }
