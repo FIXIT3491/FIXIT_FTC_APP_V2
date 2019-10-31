@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
 import org.firstinspires.ftc.teamcode.robots.Joules;
 
@@ -32,8 +33,11 @@ public class JoulesTeleOp extends TeleOpMode {
         joules.Stop();
 
 
-        //joules.DriveForward(gamepad1.right_stick_y);
-        //joules.StrafeLeft(gamepad1.right_stick_x);
+        joules.DriveForward(gamepad1.left_stick_y*1.5);
+        joules.StrafeLeft(gamepad1.left_stick_x*1.5);
+        joules.TurnLeft(gamepad1.right_stick_x*1.5);
+
+        //gamepad 1 right stick is not working rn
 
     }
 }
