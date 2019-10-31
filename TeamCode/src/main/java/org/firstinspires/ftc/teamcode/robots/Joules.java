@@ -50,6 +50,11 @@ public class Joules  {
     }
 
     public void DriveBackward(double speed){
+        TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
+        FrontLeft.setPower(speed);
+        FrontRight.setPower(-speed);
+        BackLeft.setPower(speed);
+        BackRight.setPower(-speed);
 
     }
 
@@ -62,6 +67,11 @@ public class Joules  {
     }
 
     public void StrafeRight(double speed){
+        TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
+        FrontLeft.setPower(-speed);
+        FrontRight.setPower(-speed);
+        BackLeft.setPower(speed);
+        BackRight.setPower(speed);
     }
 
     public void TurnLeft(double speed){
@@ -71,6 +81,14 @@ public class Joules  {
         BackLeft.setPower(-speed);
         BackRight.setPower(-speed);
 
+    }
+
+    public void TurnRight(double speed){
+        TaskHandler.pauseTask(VEER_CHECK_TASK_KEY);
+        FrontLeft.setPower(speed);
+        FrontRight.setPower(speed);
+        BackLeft.setPower(speed);
+        BackRight.setPower(speed);
     }
 
     public void Stop(){

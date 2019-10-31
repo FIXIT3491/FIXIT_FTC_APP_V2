@@ -18,8 +18,9 @@ public class JoulesTeleOp extends TeleOpMode {
 
     @Override
     public void loopOpMode() {
-        if (joy1.buttonA()){
-            joules.DriveForward(0.5);}
+        if (joy1.buttonA()) {
+            joules.DriveForward(0.5);
+        }
         joules.Stop();
 
         if(joy1.buttonB()){
@@ -32,6 +33,19 @@ public class JoulesTeleOp extends TeleOpMode {
         }
         joules.Stop();
 
+        if (joy1.buttonA()){
+            joules.DriveBackward(0.5);}
+        joules.Stop();
+
+        if(joy1.buttonB()){
+            joules.StrafeRight(0.5);
+        }
+        joules.Stop();
+
+        if (joy1.buttonY()) {
+            joules.TurnRight(0.5);
+        }
+        joules.Stop();
 
         joules.DriveForward(gamepad1.left_stick_y*1.5);
         joules.StrafeLeft(gamepad1.left_stick_x*1.5);
