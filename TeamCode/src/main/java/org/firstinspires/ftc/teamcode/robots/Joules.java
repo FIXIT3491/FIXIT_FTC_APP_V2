@@ -1,11 +1,14 @@
 package org.firstinspires.ftc.teamcode.robots;
 
+import com.qualcomm.robotcore.hardware.Servo;
+
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.newhardware.FXTCRServo;
 import org.firstinspires.ftc.teamcode.newhardware.FXTSensors.FXTAnalogUltrasonicSensor;
 import org.firstinspires.ftc.teamcode.newhardware.FXTServo;
 import org.firstinspires.ftc.teamcode.newhardware.Motor;
 import org.firstinspires.ftc.teamcode.roboticslibrary.TaskHandler;
+import org.opencv.photo.CalibrateRobertson;
 
 public class Joules  {
     private Motor FrontRight;
@@ -14,12 +17,16 @@ public class Joules  {
     private Motor BackLeft;
     private String VEER_CHECK_TASK_KEY = "Joules.VEERCHECK";
 
+    private FXTCRServo ArmXtnd;
+    private Servo Claw;
+
 
 
     private float GEAR_RATIO = 1/2;
 
     public Joules(){
         // don't know if we need super();
+        //Motors!!
         FrontRight = new Motor("FrontRight");
         FrontLeft = new Motor("FrontLeft");
         BackRight = new Motor("BackRight");
@@ -29,6 +36,8 @@ public class Joules  {
         FrontLeft.setMinimumSpeed(0.1);
         BackRight.setMinimumSpeed(0.1);
         BackLeft.setMinimumSpeed(0.1);
+
+
 
 
     }
