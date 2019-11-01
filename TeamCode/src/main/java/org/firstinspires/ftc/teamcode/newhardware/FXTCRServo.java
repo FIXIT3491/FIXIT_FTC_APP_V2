@@ -61,4 +61,6 @@ public class FXTCRServo extends CRServoImpl implements FXTDevice, Timeable {
         }//if
     }
 
+    public void setPower(int power) {
+    }
 }

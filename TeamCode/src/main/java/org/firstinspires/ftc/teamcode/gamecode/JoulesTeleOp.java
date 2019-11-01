@@ -19,9 +19,10 @@ public class JoulesTeleOp extends TeleOpMode {
     @Override
     public void loopOpMode() {
 
-        joules.DriveForward(gamepad1.left_stick_y*2);
-        joules.StrafeLeft(gamepad1.left_stick_x*2);
+        joules.DriveForward(gamepad1.left_stick_y*-2);
+        joules.StrafeLeft(gamepad1.left_stick_x*-2);
         joules.TurnLeft(gamepad1.right_stick_x*2);
+
         //gamepad 1 right stick is not working rn
 
         joules.Wrist.setPower(gamepad2.left_stick_y);
@@ -39,8 +40,9 @@ public class JoulesTeleOp extends TeleOpMode {
         }
         if (joy2.buttonA()){
             joules.ArmXIn();
+        } else {
+            joules.ArmXStop();
         }
-        joules.ArmXStop();
 
 
         if (joy2.rightTrigger()){
@@ -48,6 +50,13 @@ public class JoulesTeleOp extends TeleOpMode {
         }
         if (joy2.rightBumper()){
             joules.ClawDrop();
+        }
+
+        if (joy2.leftTrigger()){
+            joules.FoundationGrab();
+        }
+        if (joy2.leftBumper()){
+            joules.FoundationDrop();
         }
     }
 }
