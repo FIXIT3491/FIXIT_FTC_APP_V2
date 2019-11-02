@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.sun.tools.javac.util.Position;
 
 import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.opmodesupport.TeleOpMode;
@@ -13,7 +14,7 @@ public class JoulesTeleOp extends TeleOpMode {
     @Override
     public void initialize() {
         joules = new Joules();
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "Initialized!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     @Override
@@ -40,16 +41,22 @@ public class JoulesTeleOp extends TeleOpMode {
             joules.ArmXOut();
         } else if (joy2.buttonA()){
             joules.ArmXIn();
-        } else {
+        }
+        else {
             joules.ArmXStop();
         }
 
 
         if (joy2.rightTrigger()){
             joules.ClawGrab();
+            //joules.Claw.setPosition(joules.Claw.getPosition()+0.2);
+            //RC.t.addData("claw position!", joules.Claw.getPosition());
         }
         if (joy2.rightBumper()){
             joules.ClawDrop();
+            //joules.Claw.setPosition(joules.Claw.getPosition()-0.2);
+            //RC.t.addData("claw position", joules.Claw.getPosition());
+            //maybe add a sleep?
         }
 
         if (joy2.leftTrigger()){

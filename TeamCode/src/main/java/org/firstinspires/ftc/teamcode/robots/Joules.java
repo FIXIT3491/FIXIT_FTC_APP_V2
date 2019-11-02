@@ -22,8 +22,8 @@ public class Joules  {
 
     //arm servoes
     private FXTCRServo ArmXtnd;
-    private FXTCRServo Claw;
-    private FXTCRServo Foundation;
+    public FXTServo Claw;
+    private FXTServo Foundation;
     public FXTCRServo Wrist;
     //arm motor
     public Motor ArmMotor;
@@ -47,8 +47,8 @@ public class Joules  {
         ArmXtnd = new FXTCRServo("armExtender");
         ArmMotor = new Motor("arm");
         Wrist = new FXTCRServo("wrist");
-        Claw =  new FXTCRServo("claw");
-        Foundation = new FXTCRServo("foundation");
+        Claw =  new FXTServo("claw");
+        Foundation = new FXTServo("foundation");
 
         CapLeft = new FXTServo("CapLeft");
         CapRight = new FXTServo("CapRight");
@@ -142,30 +142,29 @@ public class Joules  {
         ArmXtnd.setPower(-0.6);
     }
     public void ArmXStop(){
-        ArmXtnd.setPower(0);
+        ArmXtnd.setPower(0.1);
+        RC.t.addData("arm stopped");
     }
 
 
     //claw
     public void ClawGrab(){
-        Claw.setPower(-0.4);
+        Claw.setPosition(0.4);
     }
     public void ClawDrop(){
-        Claw.setPower(0.6);
+        Claw.setPosition(0.6);
     }
+
 
     //foundation
     public void FoundationDrop(){
-        Foundation.setZeroPosition(-0.4);
+        Foundation.setPosition(0.2);
     }
     public void FoundationGrab(){
-        Foundation.setZeroPosition(0.6);
+        Foundation.setPosition(0.4);
     }
 
 
 
 
 }
-
-
-//I'm so proud :))))). im ur favourite
