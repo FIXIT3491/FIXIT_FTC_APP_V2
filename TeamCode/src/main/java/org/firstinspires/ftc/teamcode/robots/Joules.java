@@ -156,11 +156,14 @@ public class Joules  {
 
     //foundation
     public void FoundationDrop(){
-        Foundation.setPower(-0.4);
+        Foundation.setZeroPosition(-0.4);
     }
     public void FoundationGrab(){
-        Foundation.setPower(0.6);
+        Foundation.setZeroPosition(0.6);
     }
 
 
 }
+
+
+//I'm so proud :))))). im ur favourite
