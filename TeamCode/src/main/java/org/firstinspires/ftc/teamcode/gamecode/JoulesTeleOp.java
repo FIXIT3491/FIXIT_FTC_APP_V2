@@ -14,7 +14,8 @@ public class JoulesTeleOp extends TeleOpMode {
     @Override
     public void initialize() {
         joules = new Joules();
-        telemetry.addData("Status", "Initialized!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        joules.CapDown();
+        telemetry.addData("Status", "Initialized");
     }
 
     @Override
@@ -49,14 +50,21 @@ public class JoulesTeleOp extends TeleOpMode {
 
         if (joy2.rightTrigger()){
             joules.ClawGrab();
-            //joules.Claw.setPosition(joules.Claw.getPosition()+0.2);
-            //RC.t.addData("claw position!", joules.Claw.getPosition());
+            //joules.Claw.setPosition((joules.Claw.getPosition()-0.1));
+            //RC.t.addData("Current claw position!", joules.Claw.getPosition());
+            //RC.t.addData("Claw postion", (joules.Claw.getPosition()-0.1));
         }
         if (joy2.rightBumper()){
             joules.ClawDrop();
-            //joules.Claw.setPosition(joules.Claw.getPosition()-0.2);
-            //RC.t.addData("claw position", joules.Claw.getPosition());
+            //if (joules.Claw.getPosition() == 0  1);
+            //joules.Claw.setPosition(joules.Claw.getPosition()+0.2);
+            //RC.t.addData("current claw position", joules.Claw.getPosition());
+            //RC.t.addData("claws postiont", (joules.Claw.getPosition()+0.1));
             //maybe add a sleep?
+        }
+
+        if (joy2.buttonDown()){
+            joules.Claw.setPosition(0.6);
         }
 
         if (joy2.leftTrigger()){

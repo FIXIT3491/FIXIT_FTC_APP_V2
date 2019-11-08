@@ -150,6 +150,7 @@ public class Joules  {
     //claw
     public void ClawGrab(){
         Claw.setPosition(0.4);
+        //if system.
     }
     public void ClawDrop(){
         Claw.setPosition(0.6);
