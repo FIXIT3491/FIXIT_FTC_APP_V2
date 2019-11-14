@@ -38,6 +38,8 @@ public class ColourSensorTes extends AutoOpMode {
                 //here add the skystone grabber to go down
             }
         }
+        //maybe change to a double pronged 1f statment
+        //if (argb sees a block and if red is small
 
 //        while (colorSensor.alpha()>100){
 //            joules.DriveBackward(0.3);
