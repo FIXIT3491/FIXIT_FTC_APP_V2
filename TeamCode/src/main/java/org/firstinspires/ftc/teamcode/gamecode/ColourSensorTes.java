@@ -23,11 +23,16 @@ public class ColourSensorTes extends AutoOpMode {
         int STRAFESTATE = 0;
 
         telemetry.addData("Status", "initialized");
+
+
         colorSensor = hardwareMap.colorSensor.get("colour");
         colorSensorDown = hardwareMap.colorSensor.get("ColourDown");
         StoneDist = hardwareMap.get(DistanceSensor.class, "Distance");
+
+
         int a = 1;
         int i = 1;
+        int o = 1;
 
         waitForStart();
         while (opModeIsActive()) {
@@ -102,14 +107,14 @@ public class ColourSensorTes extends AutoOpMode {
                 }
 
                 if (STONESTATE == 5) {
-                    if (i == 1) {
+                    if (o == 1) {
                         joules.DriveForward(0.5);
                         sleep(1000);
                         joules.StoneUp();
                         sleep(2000);
                         joules.StoneStop();
                         joules.Stop();
-                        i += 1;
+                        o += 1;
                     }
                 }
 
