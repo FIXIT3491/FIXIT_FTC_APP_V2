@@ -4,6 +4,7 @@ import android.graphics.Paint;
 import android.hardware.Sensor;
 
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -29,13 +30,14 @@ public class Joules  {
     //arm servoes
     private FXTServo Foundation1;
     private FXTServo Foundation2;
-    private FXTServo StoneMover;
+
+    private Motor StoneMover;
     //arm motor
 
     //Capstone
     private FXTServo Capstone;
 
-    public int STONESTATE;
+    public static int STONESTATE;
     private float GEAR_RATIO = 1/2;
 
     public Joules(){
@@ -52,7 +54,7 @@ public class Joules  {
 
         Capstone = new FXTServo("Capstone");
 
-        StoneMover = new FXTServo("StoneMover");
+        StoneMover = new Motor("StoneMover");
 
 
         FrontRight.setMinimumSpeed(0.1);
@@ -133,10 +135,15 @@ public class Joules  {
     }
 
     public void StoneDown(){
-        StoneMover.setPosition(0.2);
+        StoneMover.setPower(-0.2);
+
     }
     public void StoneUp(){
-        StoneMover.setPosition(1);
+        StoneMover.setPower(0.3);
+
+    }
+    public void StoneStop(){
+        StoneMover.setPower(0);
     }
 
 

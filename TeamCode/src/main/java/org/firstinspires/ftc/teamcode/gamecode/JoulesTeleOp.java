@@ -46,6 +46,9 @@ public class JoulesTeleOp extends TeleOpMode {
         else if (joy2.rightBumper()){
             joules.StoneUp();
         }
+        else{
+            joules.StoneStop();
+        }
 
     }
 }
