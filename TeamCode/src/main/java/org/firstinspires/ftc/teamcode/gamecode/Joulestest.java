@@ -25,48 +25,14 @@ public class Joulestest extends AutoOpMode {
         colorSensorDown = hardwareMap.colorSensor.get("ColourDown");
         StoneDist = hardwareMap.get(DistanceSensor.class, "Distance");
         waitForStart();
-        while(opModeIsActive()){
-        RC.t.addData("blue", colorSensorDown.blue());}
-//        while (opModeIsActive()) {
-//            if (STONESTATE == 3) {
-//                joules.StoneDown();
-//                sleep(2500);
-//                joules.StoneStop();
-//                joules.StrafeRight(0.3);
-//                sleep(1500);
-//                joules.Stop();
-//                STONESTATE = 4;
-//            }
-//            if (STONESTATE == 4) {
-//                joules.DriveForward(0.5);
-//                if (colorSensorDown.blue() > 330) {// if detect blue line
-//                    STONESTATE = 5;
-//                }
-//
-//                if (STONESTATE == 5) {
-//                    if (i == 1) {
-//                        joules.DriveForward(0.5);
-//                        sleep(1000);
-//                        joules.StoneUp();
-//                        sleep(2000);
-//                        joules.StoneStop();
-//                        joules.Stop();
-//                        i += 1;
-//                    }
-//                }
-//
-//            }
-//        }
-
-//       while (opModeIsActive()) {
-//           RC.t.addData("Stone dist", StoneDist.getDistance(DistanceUnit.MM));
-//           RC.t.addData("STRAFESTATE", STRAFESTATE);
-//       }
-//            //RC.t.addData("bLUE", colorSensor.blue());
-//            RC.t.addData("rED", colorSensorDown.red());
-//            //RC.t.addData("Green", colorSensor.green());
-//               RC.t.addData("Luminosity", colorSensor.alpha());}
-//            RC.t.addData("Distance", StoneDist.getDistance(DistanceUnit.MM));}
+        while (opModeIsActive()) {
+            RC.t.addData("blue", colorSensorDown.blue()); //checks colour sensor down is blue
+//          RC.t.addData("Stone dist", StoneDist.getDistance(DistanceUnit.MM)); //distance sensor
+            //RC.t.addData("bLUE", colorSensor.blue()); // colour sensor for stones blue value
+//           RC.t.addData("rED", colorSensorDown.red()); // colour sensor down red value
+//          RC.t.addData("Green", colorSensor.green()); // colour sensor for stones green value
+//          RC.t.addData("Luminosity", colorSensor.alpha()); // colour sensor for stones luminosity value
+            //  RC.t.addData("color sum", colorSensor.argb()); // colour sensor for stones full colour value
 //
 ////            while (colorSensor.argb() < 10){
 ////                joules.DriveBackward(0.5);
@@ -82,8 +48,8 @@ public class Joulestest extends AutoOpMode {
 ////                //here add the skystone grabber to go down
 ////            }
 //        }
-        //maybe change to a double pronged 1f statment
-        //if (argb sees a block and if red is small
+            //maybe change to a double pronged 1f statment
+            //if (argb sees a block and if red is small
 
 //        while (colorSensor.alpha()>100){
 //            joules.DriveBackward(0.3);
@@ -96,7 +62,7 @@ public class Joulestest extends AutoOpMode {
 //        joules.Stop();
 //        }
 
-        //        while (opModeIsActive()) {
+            //        while (opModeIsActive()) {
 //            //RC.t.addData("bLUE", colorSensor.blue());
 //            RC.t.addData("rED", colorSensorDown.red());
 //            //RC.t.addData("Green", colorSensor.green());
@@ -131,5 +97,6 @@ public class Joulestest extends AutoOpMode {
 //        joules.Stop();
 //        }
 
+        }
     }
 }
