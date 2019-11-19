@@ -18,19 +18,28 @@ public class JoulesTeleOp extends TeleOpMode {
         telemetry.addData("Status", "Initialized");
     }
 
-    @Override
+
     public void loopOpMode() {
+
         if (gamepad1.left_stick_y > 0){
         joules.DriveBackward(gamepad1.left_stick_y*2);}
         else if (gamepad1.left_stick_x > 0){
         joules.StrafeRight(gamepad1.left_stick_x*2);}
-        else if (gamepad1.right_stick_x >0 ){
+        else if (gamepad1.right_stick_x > 0 ){
         joules.TurnLeft(gamepad1.right_stick_x*2);}
+        else if (gamepad1.left_stick_y < 0){
+            joules.DriveForward(gamepad1.left_stick_y*-2);}
+        else if (gamepad1.left_stick_x < 0){
+            joules.StrafeLeft(gamepad1.left_stick_x*-2);}
+        else if (gamepad1.right_stick_x < 0 ){
+            joules.TurnRight(gamepad1.right_stick_x*-2);}
+        else { joules.Stop();
+        }
 
-        //old teleop
-//        joules.DriveBackward(gamepad1.left_stick_y*2);
-//        joules.StrafeRight(gamepad1.left_stick_x*2);
-//        joules.TurnLeft(gamepad1.right_stick_x*2);
+
+        /*joules.DriveBackward(gamepad1.left_stick_y*2);
+        joules.StrafeRight(gamepad1.left_stick_x*2);
+        joules.TurnLeft(gamepad1.right_stick_x*2);*/
 
 
         if (joy2.buttonX()){
