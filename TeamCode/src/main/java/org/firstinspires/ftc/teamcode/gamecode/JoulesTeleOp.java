@@ -20,10 +20,17 @@ public class JoulesTeleOp extends TeleOpMode {
 
     @Override
     public void loopOpMode() {
+        if (gamepad1.left_stick_y > 0){
+        joules.DriveBackward(gamepad1.left_stick_y*2);}
+        else if (gamepad1.left_stick_x > 0){
+        joules.StrafeRight(gamepad1.left_stick_x*2);}
+        else if (gamepad1.right_stick_x >0 ){
+        joules.TurnLeft(gamepad1.right_stick_x*2);}
 
-        joules.DriveBackward(gamepad1.left_stick_y*2);
-        joules.StrafeRight(gamepad1.left_stick_x*2);
-        joules.TurnLeft(gamepad1.right_stick_x*2);
+        //old teleop
+//        joules.DriveBackward(gamepad1.left_stick_y*2);
+//        joules.StrafeRight(gamepad1.left_stick_x*2);
+//        joules.TurnLeft(gamepad1.right_stick_x*2);
 
 
         if (joy2.buttonX()){
