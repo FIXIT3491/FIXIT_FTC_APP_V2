@@ -40,6 +40,7 @@ public class Joules  {
     public static int STONESTATE;
     private float GEAR_RATIO = 1/2;
 
+
     public Joules(){
         // don't know if we need super();
         //Motors!!
@@ -130,8 +131,8 @@ public class Joules  {
         Foundation2.setPosition(0.2);
     }
     public void FoundationGrab(){
-        Foundation1.setPosition(0.45);
-        Foundation2.setPosition(0.45);
+        Foundation1.setPosition(0.44);
+        Foundation2.setPosition(0.44);
     }
 
     public void StoneDown(){

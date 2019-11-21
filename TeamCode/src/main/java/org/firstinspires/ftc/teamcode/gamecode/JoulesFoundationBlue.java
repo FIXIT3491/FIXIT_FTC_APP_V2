@@ -14,14 +14,37 @@ public class JoulesFoundationBlue extends AutoOpMode {
         waitForStart();
 
 
-        joules.DriveBackward(0.5);
-        sleep(1500);
+        joules.DriveForward(0.5);
+        sleep(1700);
         joules.Stop();
 
         joules.FoundationGrab();
         sleep(2000);
         joules.Stop();
 
+        joules.DriveBackward(1);
+        sleep(1400);
+        joules.Stop();
+
+        joules.TurnLeft(0.7);
+        sleep(500);
+        joules.Stop();
+
+        joules.FoundationDrop();
+        sleep(2000);
+        joules.Stop();
+
+        joules.TurnRight(0.5);
+        sleep(500);
+        joules.Stop();
+
+        joules.DriveBackward(1);
+        sleep(500);
+        joules.Stop();
+
+        joules.StrafeLeft(1);
+        sleep(1100); //1700 is good for parking
+        joules.Stop();
 
 
 

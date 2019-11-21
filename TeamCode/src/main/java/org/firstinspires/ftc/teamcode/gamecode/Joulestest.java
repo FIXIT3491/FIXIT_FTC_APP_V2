@@ -26,7 +26,8 @@ public class Joulestest extends AutoOpMode {
         StoneDist = hardwareMap.get(DistanceSensor.class, "Distance");
         waitForStart();
         while (opModeIsActive()) {
-            RC.t.addData("blue", colorSensorDown.blue()); //checks colour sensor down is blue
+            RC.t.addData("red", colorSensor.red());
+            RC.t.addData("stone dist", StoneDist.getDistance(DistanceUnit.MM));
 //          RC.t.addData("Stone dist", StoneDist.getDistance(DistanceUnit.MM)); //distance sensor
             //RC.t.addData("bLUE", colorSensor.blue()); // colour sensor for stones blue value
 //           RC.t.addData("rED", colorSensorDown.red()); // colour sensor down red value
