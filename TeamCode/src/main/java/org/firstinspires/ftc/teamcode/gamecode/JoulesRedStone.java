@@ -1,19 +1,16 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
-import org.firstinspires.ftc.teamcode.robots.Joules;
-
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.RC;
+import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
+import org.firstinspires.ftc.teamcode.robots.Joules;
 
 @Autonomous
-public class ColourSensorTes extends AutoOpMode {
+public class JoulesRedStone extends AutoOpMode {
     public void runOp() throws InterruptedException {
         Joules joules = new Joules();
         ColorSensor colorSensor;
@@ -35,7 +32,7 @@ public class ColourSensorTes extends AutoOpMode {
         int o = 1;
         int x = 0;
 
-        int blueline = 310; //blue value of blueline coloursensordown.blue
+        int redline = 310; //blue value of blueline coloursensordown.blue
         int rowdist = 300; //when robot detects row of stones distancesensor
         int strafedistlow = 90; //how close robot has to be to stones for the colour sensor to know if its a skystone or a stone distancesensor
         int strafedisthigh = 120;
@@ -46,13 +43,13 @@ public class ColourSensorTes extends AutoOpMode {
         while (opModeIsActive()) {
             if (STONESTATE == 0) {
                 if (i == 1) {
-                    joules.StrafeLeft(0.4);
+                    joules.StrafeRight(0.4);
                     sleep(2200);
                     joules.Stop();
                     i += 1;
                 }
                 joules.DriveBackward(0.5); //go fast
-                if (colorSensorDown.blue() > blueline) {// if detect blue line
+                if (colorSensorDown.blue() > redline) {// if detect blue line
                     STONESTATE = 1;
                     RC.t.addData("Detected Blue Line");
                 }
@@ -96,21 +93,21 @@ public class ColourSensorTes extends AutoOpMode {
 
                 if (STRAFESTATE == 1) {
                     joules.Stop();
-                    joules.StrafeLeft(0.3);
+                    joules.StrafeRight(0.3);
                     if (StoneDist.getDistance(DistanceUnit.MM) < strafedisthigh) {
                         STRAFESTATE = 0;
                     }
                 }
                 if (STRAFESTATE == 2){
                     joules.Stop();
-                    joules.StrafeRight(0.3);
+                    joules.StrafeLeft(0.3);
                     if (StoneDist.getDistance(DistanceUnit.MM) > strafedistlow) {
                         STRAFESTATE = 0;
                     }
                 }
 
                 if (STONESTATE == 3) {
-                    joules.StrafeLeft(0.3);
+                    joules.StrafeRight(0.3);
                     sleep(500);
                     joules.Stop();
                     STONESTATE = 4;
@@ -121,13 +118,13 @@ public class ColourSensorTes extends AutoOpMode {
                     joules.StoneDown();
                     sleep(3300);
                     joules.StoneStop();
-                    joules.StrafeRight(0.3);
+                    joules.StrafeLeft(0.3);
                     sleep(1600);
                     joules.Stop();
-                    joules.StrafeLeft(0.3);
+                    joules.StrafeRight(0.3);
                     sleep(200);
                     joules.Stop();
-                    joules.StrafeRight(0.3);
+                    joules.StrafeLeft(0.3);
                     sleep(200);
                     joules.Stop();
                     STONESTATE = 5;}

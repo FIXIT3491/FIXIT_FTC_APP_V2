@@ -1,22 +1,25 @@
 package org.firstinspires.ftc.teamcode.gamecode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.RC;
 import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Joules;
 
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+
+import org.firstinspires.ftc.teamcode.RC;
+
 @Autonomous
-public class JoulesBlueFoundationStone extends AutoOpMode {
+public class JoulesBlueStone extends AutoOpMode {
     public void runOp() throws InterruptedException {
         Joules joules = new Joules();
         ColorSensor colorSensor;
         ColorSensor colorSensorDown;
         DistanceSensor StoneDist;
-        int STONESTATE = -1;
+        int STONESTATE = 0;
         int STRAFESTATE = 0;
 
         telemetry.addData("Status", "initialized");
@@ -41,62 +44,6 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
 
         waitForStart();
         while (opModeIsActive()) {
-
-            if (STONESTATE == -1) {
-
-                joules.DriveForward(0.5);
-                sleep(1000);
-                joules.Stop();
-
-                joules.FoundationGrab();
-                sleep(2500);
-                joules.Stop();
-
-                joules.DriveBackward(1);
-                sleep(1600);
-                joules.Stop();
-
-                joules.DriveForward(0.7);
-                sleep(200);
-                joules.Stop();
-
-                joules.StrafeLeft(1);
-                sleep(600);
-                joules.Stop();
-
-                joules.DriveBackward(1);
-                sleep(300);
-                joules.Stop();
-
-                joules.FoundationDrop();
-                sleep(2000);
-                joules.Stop();
-
-                joules.DriveBackward(1);
-                sleep(200);
-                joules.Stop();
-
-                joules.StrafeLeft(1);
-                sleep(700); //1700 is good for parking
-                joules.Stop();
-
-                joules.DriveForward(1);
-                sleep(300);
-                joules.Stop();
-
-                joules.TurnLeft(1);
-                sleep(500);
-                joules.Stop();
-
-                joules.StrafeRight(1);
-                sleep(1000);
-                joules.Stop();
-
-
-                STONESTATE = 0;
-            }
-
-
             if (STONESTATE == 0) {
                 if (i == 1) {
                     joules.StrafeLeft(0.4);
@@ -132,7 +79,6 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                 joules.Stop();
                 //drive backwards medium
                 if (STRAFESTATE == 0) {
-                    clearTimer(1);
                     joules.Stop();
                     joules.DriveBackward(0.2);
                     if (StoneDist.getDistance(DistanceUnit.MM) > strafedisthigh) {
@@ -141,7 +87,7 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                     else if (StoneDist.getDistance(DistanceUnit.MM)< strafedistlow){
                         STRAFESTATE = 2;
 
-                    }else if (colorSensor.alpha()<skystonevalue || getSeconds(1) > 10) { //if detect skystones
+                    }else if (colorSensor.alpha()<skystonevalue) { //if detect skystones
                         joules.Stop();
                         STONESTATE = 3;
                     }
@@ -206,7 +152,7 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                         sleep(2000);
                         joules.StoneStop();
                         joules.DriveBackward(0.5);
-                        sleep(1500);
+                        sleep(2000);
                         joules.Stop();
                         o += 1;
                     }

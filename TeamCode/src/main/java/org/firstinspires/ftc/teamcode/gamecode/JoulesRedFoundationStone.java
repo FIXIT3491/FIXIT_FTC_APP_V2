@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Joules;
 
 @Autonomous
-public class JoulesBlueFoundationStone extends AutoOpMode {
+public class JoulesRedFoundationStone extends AutoOpMode {
     public void runOp() throws InterruptedException {
         Joules joules = new Joules();
         ColorSensor colorSensor;
@@ -32,7 +32,7 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
         int o = 1;
         int x = 0;
 
-        int blueline = 310; //blue value of blueline coloursensordown.blue
+        int redline = 310; //blue value of redline coloursensordown.red
         int rowdist = 300; //when robot detects row of stones distancesensor
         int strafedistlow = 90; //how close robot has to be to stones for the colour sensor to know if its a skystone or a stone distancesensor
         int strafedisthigh = 120;
@@ -45,7 +45,7 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
             if (STONESTATE == -1) {
 
                 joules.DriveForward(0.5);
-                sleep(1000);
+                sleep(800);
                 joules.Stop();
 
                 joules.FoundationGrab();
@@ -53,14 +53,14 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                 joules.Stop();
 
                 joules.DriveBackward(1);
-                sleep(1600);
+                sleep(900);
                 joules.Stop();
 
                 joules.DriveForward(0.7);
-                sleep(200);
+                sleep(100);
                 joules.Stop();
 
-                joules.StrafeLeft(1);
+                joules.StrafeRight(1);
                 sleep(600);
                 joules.Stop();
 
@@ -76,22 +76,21 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                 sleep(200);
                 joules.Stop();
 
-                joules.StrafeLeft(1);
-                sleep(700); //1700 is good for parking
+                joules.StrafeRight(1);
+                sleep(400); //1700 is good for parking
                 joules.Stop();
 
                 joules.DriveForward(1);
                 sleep(300);
                 joules.Stop();
 
-                joules.TurnLeft(1);
+                joules.TurnRight(1);
                 sleep(500);
                 joules.Stop();
 
-                joules.StrafeRight(1);
+                joules.StrafeLeft(1);
                 sleep(1000);
                 joules.Stop();
-
 
                 STONESTATE = 0;
             }
@@ -99,19 +98,19 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
 
             if (STONESTATE == 0) {
                 if (i == 1) {
-                    joules.StrafeLeft(0.4);
+                    joules.StrafeRight(0.4);
                     sleep(2200);
                     joules.Stop();
                     i += 1;
                 }
                 joules.DriveBackward(0.5); //go fast
-                if (colorSensorDown.blue() > blueline) {// if detect blue line
+                if (colorSensorDown.red() > redline) {// if detect red line
                     STONESTATE = 1;
-                    RC.t.addData("Detected Blue Line");
+                    RC.t.addData("Detected Red Line");
                 }
             }
 
-            if (STONESTATE == 1) {// if detect blue line
+            if (STONESTATE == 1) {// if detect red line
                 RC.t.addData("Stone State", STONESTATE);
                 //drive backwards fast
                 if (a == 1) {
@@ -132,7 +131,6 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                 joules.Stop();
                 //drive backwards medium
                 if (STRAFESTATE == 0) {
-                    clearTimer(1);
                     joules.Stop();
                     joules.DriveBackward(0.2);
                     if (StoneDist.getDistance(DistanceUnit.MM) > strafedisthigh) {
@@ -150,21 +148,21 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
 
                 if (STRAFESTATE == 1) {
                     joules.Stop();
-                    joules.StrafeLeft(0.3);
+                    joules.StrafeRight(0.3);
                     if (StoneDist.getDistance(DistanceUnit.MM) < strafedisthigh) {
                         STRAFESTATE = 0;
                     }
                 }
                 if (STRAFESTATE == 2){
                     joules.Stop();
-                    joules.StrafeRight(0.3);
+                    joules.StrafeLeft(0.3);
                     if (StoneDist.getDistance(DistanceUnit.MM) > strafedistlow) {
                         STRAFESTATE = 0;
                     }
                 }
 
                 if (STONESTATE == 3) {
-                    joules.StrafeLeft(0.3);
+                    joules.StrafeRight(0.3);
                     sleep(500);
                     joules.Stop();
                     STONESTATE = 4;
@@ -175,19 +173,19 @@ public class JoulesBlueFoundationStone extends AutoOpMode {
                     joules.StoneDown();
                     sleep(3300);
                     joules.StoneStop();
-                    joules.StrafeRight(0.3);
+                    joules.StrafeLeft(0.3);
                     sleep(1600);
                     joules.Stop();
-                    joules.StrafeLeft(0.3);
+                    joules.StrafeRight(0.3);
                     sleep(200);
                     joules.Stop();
-                    joules.StrafeRight(0.3);
+                    joules.StrafeLeft(0.3);
                     sleep(200);
                     joules.Stop();
                     STONESTATE = 5;}
 
                 if (STONESTATE == 5) {
-                    RC.t.addData("blue", colorSensorDown.blue());
+                    RC.t.addData("red", colorSensorDown.red());
                     joules.DriveForward(0.2);
                     STONESTATE = 6;
 //                    if (colorSensorDown.blue() > 40) {// if detect blue line
