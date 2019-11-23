@@ -88,7 +88,7 @@ public class JoulesRedFoundationStone extends AutoOpMode {
                 sleep(500);
                 joules.Stop();
 
-                joules.StrafeRight(0.8);
+                joules.StrafeRight(0.8);//
                 sleep(1000);
                 joules.Stop();
 
