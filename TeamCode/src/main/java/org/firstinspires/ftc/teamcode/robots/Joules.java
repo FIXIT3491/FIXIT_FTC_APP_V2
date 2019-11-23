@@ -147,7 +147,4 @@ public class Joules  {
         StoneMover.setPower(0);
     }
 
-
-
-
 }

@@ -30,7 +30,7 @@ public class Joulestest extends AutoOpMode {
             RC.t.addData("stone dist", StoneDist.getDistance(DistanceUnit.MM));
 //          RC.t.addData("Stone dist", StoneDist.getDistance(DistanceUnit.MM)); //distance sensor
             //RC.t.addData("bLUE", colorSensor.blue()); // colour sensor for stones blue value
-//           RC.t.addData("rED", colorSensorDown.red()); // colour sensor down red value
+//          RC.t.addData("rED", colorSensorDown.red()); // colour sensor down red value
 //          RC.t.addData("Green", colorSensor.green()); // colour sensor for stones green value
 //          RC.t.addData("Luminosity", colorSensor.alpha()); // colour sensor for stones luminosity value
             //  RC.t.addData("color sum", colorSensor.argb()); // colour sensor for stones full colour value
