@@ -6,35 +6,30 @@ import org.firstinspires.ftc.teamcode.opmodesupport.AutoOpMode;
 import org.firstinspires.ftc.teamcode.robots.Joules;
 
 @Autonomous
-public class JoulesFoundationBlue extends AutoOpMode {
+public class JoulesRedFoundation extends AutoOpMode {
     public void runOp() throws InterruptedException {
         Joules joules = new Joules();
 
         telemetry.addData("Status", "initialized");
         waitForStart();
 
-
         joules.DriveForward(0.5);
-        sleep(2000);
+        sleep(1800);
         joules.Stop();
 
         joules.FoundationGrab();
         sleep(2500);
         joules.Stop();
 
-        joules.DriveBackward(1);
-        sleep(1600);
+        joules.DriveBackward(0.7);
+        sleep(1800);
         joules.Stop();
 
         joules.DriveForward(0.7);
         sleep(100);
         joules.Stop();
 
-//        joules.TurnLeft(0.7);
-//        sleep(500);
-//        joules.Stop();
-
-        joules.StrafeLeft(1);
+        joules.StrafeRight(1);
         sleep(600);
         joules.Stop();
 
@@ -46,15 +41,12 @@ public class JoulesFoundationBlue extends AutoOpMode {
         sleep(2000);
         joules.Stop();
 
-//        joules.TurnRight(0.5);
-//        sleep(500);
-//        joules.Stop();
 
         joules.DriveBackward(1);
         sleep(200);
         joules.Stop();
 
-        joules.StrafeLeft(1);
+        joules.StrafeRight(1);
         sleep(500); //1700 is good for parking
         joules.Stop();
 
@@ -62,13 +54,14 @@ public class JoulesFoundationBlue extends AutoOpMode {
         sleep(300);
         joules.Stop();
 
-        joules.TurnLeft(1);
+        joules.TurnRight(1);
         sleep(500);
         joules.Stop();
 
-        joules.StrafeRight(1);
-        sleep(500);
+        joules.StrafeLeft(0.8);
+        sleep(1500);
         joules.Stop();
+
 
 
 

@@ -40,7 +40,7 @@ public class Motor implements FXTDevice, Timeable {
 
     public Motor (DcMotor motor) {
         this.m = motor;
-        m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        m.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);//used to be run without encoders
         m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }//Motor
 
@@ -122,7 +122,7 @@ public class Motor implements FXTDevice, Timeable {
         setTarget(getBaseCurrentPosition() + target - getAbsolutePosition());
     }//setAbsoluteTarget
 
-    public void setTarget(int tik) {
+    public void  setTarget(int tik) {
         synchronized (m) {
             m.setTargetPosition(tik);
         }//synchronized

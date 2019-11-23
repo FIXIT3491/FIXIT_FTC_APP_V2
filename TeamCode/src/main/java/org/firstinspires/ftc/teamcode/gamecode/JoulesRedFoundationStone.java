@@ -52,8 +52,8 @@ public class JoulesRedFoundationStone extends AutoOpMode {
                 sleep(2500);
                 joules.Stop();
 
-                joules.DriveBackward(1);
-                sleep(1600);
+                joules.DriveBackward(0.7);
+                sleep(1800);
                 joules.Stop();
 
                 joules.DriveForward(0.7);
@@ -64,13 +64,14 @@ public class JoulesRedFoundationStone extends AutoOpMode {
                 sleep(600);
                 joules.Stop();
 
-                joules.DriveBackward(0.7);
-                sleep(1800);
+                joules.DriveBackward(1);
+                sleep(300);
                 joules.Stop();
 
                 joules.FoundationDrop();
                 sleep(2000);
                 joules.Stop();
+
 
                 joules.DriveBackward(1);
                 sleep(200);
@@ -84,14 +85,13 @@ public class JoulesRedFoundationStone extends AutoOpMode {
                 sleep(300);
                 joules.Stop();
 
-                joules.TurnLeft(1);
+                joules.TurnRight(1);
                 sleep(500);
                 joules.Stop();
 
-                joules.StrafeRight(0.8);//
+                joules.StrafeLeft(0.8);
                 sleep(1000);
                 joules.Stop();
-
 
                 STONESTATE = 0;
             }

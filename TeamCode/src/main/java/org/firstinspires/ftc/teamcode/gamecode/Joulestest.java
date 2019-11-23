@@ -25,9 +25,19 @@ public class Joulestest extends AutoOpMode {
         colorSensorDown = hardwareMap.colorSensor.get("ColourDown");
         StoneDist = hardwareMap.get(DistanceSensor.class, "Distance");
         waitForStart();
-        while (opModeIsActive()) {
-            RC.t.addData("red", colorSensor.red());
-            RC.t.addData("stone dist", StoneDist.getDistance(DistanceUnit.MM));
+
+        joules.DriveForwardEnc(0.5, 2000);
+        sleep(100000);
+
+
+
+
+//      while (opModeIsActive()) {
+
+
+
+//            RC.t.addData("red", colorSensor.red());
+//            RC.t.addData("stone dist", StoneDist.getDistance(DistanceUnit.MM));
 //          RC.t.addData("Stone dist", StoneDist.getDistance(DistanceUnit.MM)); //distance sensor
             //RC.t.addData("bLUE", colorSensor.blue()); // colour sensor for stones blue value
 //          RC.t.addData("rED", colorSensorDown.red()); // colour sensor down red value
@@ -98,6 +108,6 @@ public class Joulestest extends AutoOpMode {
 //        joules.Stop();
 //        }
 
-        }
+//        }
     }
 }
