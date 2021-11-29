@@ -1,3 +1,9 @@
+# FIX IT FTC APP V2
+FIX IT FTC APP V2 has been discontinued, and will no longer be updated.
+
+The "README" below is kept for historic purposes only.
+**************************************************************************************
+
 ## Welcome!
 This GitHub repository contains the source code that is used to build an Android app to control a *FIRST* Tech Challenge competition robot.  To use this SDK, download/clone the entire project to your local computer.
 
